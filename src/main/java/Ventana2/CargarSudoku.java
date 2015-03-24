@@ -1,4 +1,4 @@
-package Ventanas;
+package Ventana2;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
