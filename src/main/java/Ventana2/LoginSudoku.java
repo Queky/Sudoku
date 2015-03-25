@@ -1,3 +1,4 @@
+package Ventanas;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -10,6 +11,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 
 
 public class LoginSudoku extends JFrame {
@@ -19,8 +21,8 @@ public class LoginSudoku extends JFrame {
 	private JLabel lblNombre;
 	private JLabel lblNivelDeDificultad;
 	private JTextField textField;
-	private JTextField textField_1;
 	private JButton btnOk;
+	private JComboBox comboBox;
 
 	/**
 	 * Launch the application.
@@ -73,8 +75,8 @@ public class LoginSudoku extends JFrame {
 			panel.add(getLblNombre());
 			panel.add(getLblNivelDeDificultad());
 			panel.add(getTextField());
-			panel.add(getTextField_1());
 			panel.add(getBtnOk());
+			panel.add(getComboBox());
 		}
 		return panel;
 	}
@@ -100,19 +102,21 @@ public class LoginSudoku extends JFrame {
 		}
 		return textField;
 	}
-	private JTextField getTextField_1() {
-		if (textField_1 == null) {
-			textField_1 = new JTextField();
-			textField_1.setBounds(128, 45, 128, 20);
-			textField_1.setColumns(10);
-		}
-		return textField_1;
-	}
 	private JButton getBtnOk() {
 		if (btnOk == null) {
 			btnOk = new JButton("OK");
 			btnOk.setBounds(120, 80, 60, 25);
 		}
 		return btnOk;
+	}
+	private JComboBox getComboBox() {
+		if (comboBox == null) {
+			comboBox = new JComboBox();
+			comboBox.setBounds(128, 45, 52, 20);
+			comboBox.addItem("1");
+			comboBox.addItem("2");
+			comboBox.addItem("3");
+		}
+		return comboBox;
 	}
 }
