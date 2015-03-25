@@ -1,18 +1,17 @@
-package Ventanas;
+package Ventana;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Toolkit;
 
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JTextField;
 import javax.swing.JRadioButton;
-import javax.swing.ButtonGroup;
-
-import java.awt.Dimension;
+import javax.swing.WindowConstants;
+import javax.swing.border.EmptyBorder;
 
 public class CargarSudoku extends JDialog {
 
@@ -28,7 +27,7 @@ public class CargarSudoku extends JDialog {
 	public static void main(String[] args) {
 		try {
 			CargarSudoku dialog = new CargarSudoku();
-			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+			dialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 			dialog.setVisible(true);
 		} catch (Exception e) {
 			e.printStackTrace();

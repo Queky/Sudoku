@@ -1,17 +1,17 @@
-package Ventanas;
+package Ventana;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Toolkit;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
 
 
 public class LoginSudoku extends JFrame {
@@ -26,7 +26,7 @@ public class LoginSudoku extends JFrame {
 
 	/**
 	 * Launch the application.
-	 */
+	 */ 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
