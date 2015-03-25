@@ -112,11 +112,7 @@ public class LoginSudoku extends JFrame {
 	private JComboBox getComboBox() {
 		if (comboBox == null) {
 			comboBox = new JComboBox();
-<<<<<<< HEAD
-			comboBox.setBounds(128, 45, 55, 20);
-=======
 			comboBox.setBounds(128, 45, 60, 20);
->>>>>>> origin/HU1-SudokuLogin
 			comboBox.addItem("1");
 			comboBox.addItem("2");
 			comboBox.addItem("3");
