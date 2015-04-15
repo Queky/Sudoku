@@ -1,5 +1,7 @@
 package Ventana;
 
+import java.sql.*;
+
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.EventQueue;
@@ -109,10 +111,21 @@ public class LoginSudoku extends JFrame {
 			btnOk = new JButton("OK");
 			btnOk.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-				
 						if(!textField.getText().equals("")){
-							
 							System.out.println("tira");
+							try {
+								Class.forName("con.mysql.jdbc.Driver");
+								}catch (ClassNotFoundException e1){};
+								Connection con;
+								try{
+								String url="jdbc:mysql://localhost:3306/sudoku?user=root&password=root";
+								con=DriverManager.getConnection(url);
+								System.out.println("conexion abierta");
+								Statement st= con.createStatement();
+								ResultSet rs=st.executeQuery("INSERT INTO `sudoku`.`jugadores` (`nombre`) VALUES ('"+textField.getText()+"');");
+								con.close();
+								}catch(SQLException e5){ }
+								
 							
 						}
 				
