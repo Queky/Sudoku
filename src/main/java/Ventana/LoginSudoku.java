@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -12,6 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+import java.awt.event.ActionListener;
 
 
 public class LoginSudoku extends JFrame {
@@ -105,6 +107,18 @@ public class LoginSudoku extends JFrame {
 	private JButton getBtnOk() {
 		if (btnOk == null) {
 			btnOk = new JButton("OK");
+			btnOk.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+				
+						if(!textField.getText().equals("")){
+							
+							System.out.println("tira");
+							
+						}
+				
+				}
+			});
+		
 			btnOk.setBounds(120, 80, 60, 25);
 		}
 		return btnOk;
