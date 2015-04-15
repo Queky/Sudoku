@@ -1,6 +1,8 @@
+CREATE DATABASE  IF NOT EXISTS `Sudoku` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `Sudoku`;
 -- MySQL dump 10.13  Distrib 5.6.19, for osx10.7 (i386)
 --
--- Host: localhost    Database: SudokuBBDD
+-- Host: localhost    Database: Sudoku
 -- ------------------------------------------------------
 -- Server version	5.6.23
 
@@ -24,4 +26,4 @@
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-04-09 17:59:54
+-- Dump completed on 2015-04-15  8:35:05
