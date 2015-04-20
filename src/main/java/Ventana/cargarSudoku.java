@@ -170,6 +170,7 @@ public class cargarSudoku extends JFrame {
 			textField = new JTextField();
 			textField.setBounds(2, 2, 50, 50);
 			textField.setColumns(10);
+			textField.setHorizontalAlignment(JTextField.CENTER);
 		}
 		return textField;
 	}
@@ -178,6 +179,7 @@ public class cargarSudoku extends JFrame {
 			textField_1 = new JTextField();
 			textField_1.setBounds(2, 55, 50, 50);
 			textField_1.setColumns(10);
+			textField_1.setHorizontalAlignment(JTextField.CENTER);
 		}
 		return textField_1;
 	}
@@ -186,6 +188,7 @@ public class cargarSudoku extends JFrame {
 			textField_2 = new JTextField();
 			textField_2.setBounds(2, 108, 50, 50);
 			textField_2.setColumns(10);
+			textField_2.setHorizontalAlignment(JTextField.CENTER);;
 		}
 		return textField_2;
 	}
@@ -194,6 +197,7 @@ public class cargarSudoku extends JFrame {
 			textField_3 = new JTextField();
 			textField_3.setColumns(10);
 			textField_3.setBounds(54, 2, 50, 50);
+			textField_3.setHorizontalAlignment(JTextField.CENTER);
 		}
 		return textField_3;
 	}
@@ -202,6 +206,7 @@ public class cargarSudoku extends JFrame {
 			textField_4 = new JTextField();
 			textField_4.setColumns(10);
 			textField_4.setBounds(54, 55, 50, 50);
+			textField_4.setHorizontalAlignment(JTextField.CENTER);
 		}
 		return textField_4;
 	}
@@ -210,6 +215,7 @@ public class cargarSudoku extends JFrame {
 			textField_5 = new JTextField();
 			textField_5.setColumns(10);
 			textField_5.setBounds(54, 108, 50, 50);
+			textField_5.setHorizontalAlignment(JTextField.CENTER);
 		}
 		return textField_5;
 	}
@@ -218,6 +224,7 @@ public class cargarSudoku extends JFrame {
 			textField_6 = new JTextField();
 			textField_6.setColumns(10);
 			textField_6.setBounds(107, 2, 50, 50);
+			textField_6.setHorizontalAlignment(JTextField.CENTER);
 		}
 		return textField_6;
 	}
@@ -226,6 +233,7 @@ public class cargarSudoku extends JFrame {
 			textField_7 = new JTextField();
 			textField_7.setColumns(10);
 			textField_7.setBounds(107, 55, 50, 50);
+			textField_7.setHorizontalAlignment(JTextField.CENTER);
 		}
 		return textField_7;
 	}
@@ -234,6 +242,7 @@ public class cargarSudoku extends JFrame {
 			textField_8 = new JTextField();
 			textField_8.setColumns(10);
 			textField_8.setBounds(107, 108, 50, 50);
+			textField_8.setHorizontalAlignment(JTextField.CENTER);
 		}
 		return textField_8;
 	}
@@ -259,6 +268,7 @@ public class cargarSudoku extends JFrame {
 			textField_9 = new JTextField();
 			textField_9.setColumns(10);
 			textField_9.setBounds(2, 2, 50, 50);
+			textField_9.setHorizontalAlignment(JTextField.CENTER);
 		}
 		return textField_9;
 	}
@@ -267,6 +277,7 @@ public class cargarSudoku extends JFrame {
 			textField_10 = new JTextField();
 			textField_10.setColumns(10);
 			textField_10.setBounds(2, 55, 50, 50);
+			textField_10.setHorizontalAlignment(JTextField.CENTER);
 		}
 		return textField_10;
 	}
@@ -275,6 +286,7 @@ public class cargarSudoku extends JFrame {
 			textField_11 = new JTextField();
 			textField_11.setColumns(10);
 			textField_11.setBounds(2, 108, 50, 50);
+			textField_11.setHorizontalAlignment(JTextField.CENTER);
 		}
 		return textField_11;
 	}
@@ -283,6 +295,7 @@ public class cargarSudoku extends JFrame {
 			textField_12 = new JTextField();
 			textField_12.setColumns(10);
 			textField_12.setBounds(54, 2, 50, 50);
+			textField_12.setHorizontalAlignment(JTextField.CENTER);
 		}
 		return textField_12;
 	}
@@ -291,6 +304,7 @@ public class cargarSudoku extends JFrame {
 			textField_13 = new JTextField();
 			textField_13.setColumns(10);
 			textField_13.setBounds(54, 55, 50, 50);
+			textField_13.setHorizontalAlignment(JTextField.CENTER);
 		}
 		return textField_13;
 	}
@@ -299,6 +313,7 @@ public class cargarSudoku extends JFrame {
 			textField_14 = new JTextField();
 			textField_14.setColumns(10);
 			textField_14.setBounds(54, 108, 50, 50);
+			textField_14.setHorizontalAlignment(JTextField.CENTER);
 		}
 		return textField_14;
 	}
@@ -307,6 +322,7 @@ public class cargarSudoku extends JFrame {
 			textField_15 = new JTextField();
 			textField_15.setColumns(10);
 			textField_15.setBounds(107, 2, 50, 50);
+			textField_15.setHorizontalAlignment(JTextField.CENTER);
 		}
 		return textField_15;
 	}
@@ -315,6 +331,7 @@ public class cargarSudoku extends JFrame {
 			textField_16 = new JTextField();
 			textField_16.setColumns(10);
 			textField_16.setBounds(107, 55, 50, 50);
+			textField_16.setHorizontalAlignment(JTextField.CENTER);
 		}
 		return textField_16;
 	}
@@ -323,6 +340,7 @@ public class cargarSudoku extends JFrame {
 			textField_17 = new JTextField();
 			textField_17.setColumns(10);
 			textField_17.setBounds(107, 108, 50, 50);
+			textField_17.setHorizontalAlignment(JTextField.CENTER);
 		}
 		return textField_17;
 	}
@@ -348,6 +366,7 @@ public class cargarSudoku extends JFrame {
 			textField_18 = new JTextField();
 			textField_18.setColumns(10);
 			textField_18.setBounds(2, 2, 50, 50);
+			textField_18.setHorizontalAlignment(JTextField.CENTER);
 		}
 		return textField_18;
 	}
@@ -356,6 +375,7 @@ public class cargarSudoku extends JFrame {
 			textField_19 = new JTextField();
 			textField_19.setColumns(10);
 			textField_19.setBounds(2, 55, 50, 50);
+			textField_19.setHorizontalAlignment(JTextField.CENTER);
 		}
 		return textField_19;
 	}
@@ -364,6 +384,7 @@ public class cargarSudoku extends JFrame {
 			textField_20 = new JTextField();
 			textField_20.setColumns(10);
 			textField_20.setBounds(2, 108, 50, 50);
+			textField_20.setHorizontalAlignment(JTextField.CENTER);
 		}
 		return textField_20;
 	}
@@ -372,6 +393,7 @@ public class cargarSudoku extends JFrame {
 			textField_21 = new JTextField();
 			textField_21.setColumns(10);
 			textField_21.setBounds(54, 2, 50, 50);
+			textField_21.setHorizontalAlignment(JTextField.CENTER);
 		}
 		return textField_21;
 	}
@@ -380,6 +402,7 @@ public class cargarSudoku extends JFrame {
 			textField_22 = new JTextField();
 			textField_22.setColumns(10);
 			textField_22.setBounds(54, 55, 50, 50);
+			textField_22.setHorizontalAlignment(JTextField.CENTER);
 		}
 		return textField_22;
 	}
@@ -388,6 +411,7 @@ public class cargarSudoku extends JFrame {
 			textField_23 = new JTextField();
 			textField_23.setColumns(10);
 			textField_23.setBounds(54, 108, 50, 50);
+			textField_23.setHorizontalAlignment(JTextField.CENTER);
 		}
 		return textField_23;
 	}
@@ -396,6 +420,7 @@ public class cargarSudoku extends JFrame {
 			textField_24 = new JTextField();
 			textField_24.setColumns(10);
 			textField_24.setBounds(107, 2, 50, 50);
+			textField_24.setHorizontalAlignment(JTextField.CENTER);
 		}
 		return textField_24;
 	}
@@ -404,6 +429,7 @@ public class cargarSudoku extends JFrame {
 			textField_25 = new JTextField();
 			textField_25.setColumns(10);
 			textField_25.setBounds(107, 55, 50, 50);
+			textField_25.setHorizontalAlignment(JTextField.CENTER);
 		}
 		return textField_25;
 	}
@@ -412,6 +438,7 @@ public class cargarSudoku extends JFrame {
 			textField_26 = new JTextField();
 			textField_26.setColumns(10);
 			textField_26.setBounds(107, 108, 50, 50);
+			textField_26.setHorizontalAlignment(JTextField.CENTER);
 		}
 		return textField_26;
 	}
@@ -437,6 +464,7 @@ public class cargarSudoku extends JFrame {
 			textField_27 = new JTextField();
 			textField_27.setColumns(10);
 			textField_27.setBounds(2, 2, 50, 50);
+			textField_27.setHorizontalAlignment(JTextField.CENTER);
 		}
 		return textField_27;
 	}
@@ -445,6 +473,7 @@ public class cargarSudoku extends JFrame {
 			textField_28 = new JTextField();
 			textField_28.setColumns(10);
 			textField_28.setBounds(2, 55, 50, 50);
+			textField_28.setHorizontalAlignment(JTextField.CENTER);
 		}
 		return textField_28;
 	}
@@ -453,6 +482,7 @@ public class cargarSudoku extends JFrame {
 			textField_29 = new JTextField();
 			textField_29.setColumns(10);
 			textField_29.setBounds(2, 108, 50, 50);
+			textField_29.setHorizontalAlignment(JTextField.CENTER);
 		}
 		return textField_29;
 	}
@@ -461,6 +491,7 @@ public class cargarSudoku extends JFrame {
 			textField_30 = new JTextField();
 			textField_30.setColumns(10);
 			textField_30.setBounds(54, 2, 50, 50);
+			textField_30.setHorizontalAlignment(JTextField.CENTER);
 		}
 		return textField_30;
 	}
@@ -469,6 +500,7 @@ public class cargarSudoku extends JFrame {
 			textField_31 = new JTextField();
 			textField_31.setColumns(10);
 			textField_31.setBounds(54, 55, 50, 50);
+			textField_31.setHorizontalAlignment(JTextField.CENTER);
 		}
 		return textField_31;
 	}
@@ -477,6 +509,7 @@ public class cargarSudoku extends JFrame {
 			textField_32 = new JTextField();
 			textField_32.setColumns(10);
 			textField_32.setBounds(54, 108, 50, 50);
+			textField_32.setHorizontalAlignment(JTextField.CENTER);
 		}
 		return textField_32;
 	}
@@ -485,6 +518,7 @@ public class cargarSudoku extends JFrame {
 			textField_33 = new JTextField();
 			textField_33.setColumns(10);
 			textField_33.setBounds(107, 2, 50, 50);
+			textField_33.setHorizontalAlignment(JTextField.CENTER);
 		}
 		return textField_33;
 	}
@@ -501,6 +535,7 @@ public class cargarSudoku extends JFrame {
 			textField_35 = new JTextField();
 			textField_35.setColumns(10);
 			textField_35.setBounds(107, 108, 50, 50);
+			textField_35.setHorizontalAlignment(JTextField.CENTER);
 		}
 		return textField_35;
 	}
@@ -526,6 +561,7 @@ public class cargarSudoku extends JFrame {
 			textField_36 = new JTextField();
 			textField_36.setColumns(10);
 			textField_36.setBounds(2, 2, 50, 50);
+			textField_36.setHorizontalAlignment(JTextField.CENTER);
 		}
 		return textField_36;
 	}
@@ -534,6 +570,7 @@ public class cargarSudoku extends JFrame {
 			textField_37 = new JTextField();
 			textField_37.setColumns(10);
 			textField_37.setBounds(2, 55, 50, 50);
+			textField_37.setHorizontalAlignment(JTextField.CENTER);
 		}
 		return textField_37;
 	}
@@ -542,6 +579,7 @@ public class cargarSudoku extends JFrame {
 			textField_38 = new JTextField();
 			textField_38.setColumns(10);
 			textField_38.setBounds(2, 108, 50, 50);
+			textField_38.setHorizontalAlignment(JTextField.CENTER);
 		}
 		return textField_38;
 	}
@@ -550,6 +588,7 @@ public class cargarSudoku extends JFrame {
 			textField_39 = new JTextField();
 			textField_39.setColumns(10);
 			textField_39.setBounds(54, 2, 50, 50);
+			textField_39.setHorizontalAlignment(JTextField.CENTER);
 		}
 		return textField_39;
 	}
@@ -558,6 +597,7 @@ public class cargarSudoku extends JFrame {
 			textField_40 = new JTextField();
 			textField_40.setColumns(10);
 			textField_40.setBounds(54, 55, 50, 50);
+			textField_40.setHorizontalAlignment(JTextField.CENTER);
 		}
 		return textField_40;
 	}
@@ -566,6 +606,7 @@ public class cargarSudoku extends JFrame {
 			textField_41 = new JTextField();
 			textField_41.setColumns(10);
 			textField_41.setBounds(54, 108, 50, 50);
+			textField_41.setHorizontalAlignment(JTextField.CENTER);
 		}
 		return textField_41;
 	}
@@ -574,6 +615,7 @@ public class cargarSudoku extends JFrame {
 			textField_42 = new JTextField();
 			textField_42.setColumns(10);
 			textField_42.setBounds(107, 2, 50, 50);
+			textField_42.setHorizontalAlignment(JTextField.CENTER);
 		}
 		return textField_42;
 	}
@@ -582,6 +624,7 @@ public class cargarSudoku extends JFrame {
 			textField_43 = new JTextField();
 			textField_43.setColumns(10);
 			textField_43.setBounds(107, 55, 50, 50);
+			textField_43.setHorizontalAlignment(JTextField.CENTER);
 		}
 		return textField_43;
 	}
@@ -590,6 +633,7 @@ public class cargarSudoku extends JFrame {
 			textField_44 = new JTextField();
 			textField_44.setColumns(10);
 			textField_44.setBounds(107, 108, 50, 50);
+			textField_44.setHorizontalAlignment(JTextField.CENTER);
 		}
 		return textField_44;
 	}
@@ -615,6 +659,7 @@ public class cargarSudoku extends JFrame {
 			textField_45 = new JTextField();
 			textField_45.setColumns(10);
 			textField_45.setBounds(2, 2, 50, 50);
+			textField_45.setHorizontalAlignment(JTextField.CENTER);
 		}
 		return textField_45;
 	}
@@ -623,6 +668,7 @@ public class cargarSudoku extends JFrame {
 			textField_46 = new JTextField();
 			textField_46.setColumns(10);
 			textField_46.setBounds(2, 55, 50, 50);
+			textField_46.setHorizontalAlignment(JTextField.CENTER);
 		}
 		return textField_46;
 	}
@@ -631,6 +677,7 @@ public class cargarSudoku extends JFrame {
 			textField_47 = new JTextField();
 			textField_47.setColumns(10);
 			textField_47.setBounds(2, 108, 50, 50);
+			textField_47.setHorizontalAlignment(JTextField.CENTER);
 		}
 		return textField_47;
 	}
@@ -639,6 +686,7 @@ public class cargarSudoku extends JFrame {
 			textField_48 = new JTextField();
 			textField_48.setColumns(10);
 			textField_48.setBounds(54, 2, 50, 50);
+			textField_48.setHorizontalAlignment(JTextField.CENTER);
 		}
 		return textField_48;
 	}
@@ -647,6 +695,7 @@ public class cargarSudoku extends JFrame {
 			textField_49 = new JTextField();
 			textField_49.setColumns(10);
 			textField_49.setBounds(54, 55, 50, 50);
+			textField_49.setHorizontalAlignment(JTextField.CENTER);
 		}
 		return textField_49;
 	}
@@ -655,6 +704,7 @@ public class cargarSudoku extends JFrame {
 			textField_50 = new JTextField();
 			textField_50.setColumns(10);
 			textField_50.setBounds(54, 108, 50, 50);
+			textField_50.setHorizontalAlignment(JTextField.CENTER);
 		}
 		return textField_50;
 	}
@@ -663,6 +713,7 @@ public class cargarSudoku extends JFrame {
 			textField_51 = new JTextField();
 			textField_51.setColumns(10);
 			textField_51.setBounds(107, 2, 50, 50);
+			textField_51.setHorizontalAlignment(JTextField.CENTER);
 		}
 		return textField_51;
 	}
@@ -671,6 +722,7 @@ public class cargarSudoku extends JFrame {
 			textField_52 = new JTextField();
 			textField_52.setColumns(10);
 			textField_52.setBounds(107, 55, 50, 50);
+			textField_52.setHorizontalAlignment(JTextField.CENTER);
 		}
 		return textField_52;
 	}
@@ -679,6 +731,7 @@ public class cargarSudoku extends JFrame {
 			textField_53 = new JTextField();
 			textField_53.setColumns(10);
 			textField_53.setBounds(107, 108, 50, 50);
+			textField_53.setHorizontalAlignment(JTextField.CENTER);
 		}
 		return textField_53;
 	}
@@ -704,6 +757,7 @@ public class cargarSudoku extends JFrame {
 			textField_54 = new JTextField();
 			textField_54.setColumns(10);
 			textField_54.setBounds(2, 2, 50, 50);
+			textField_54.setHorizontalAlignment(JTextField.CENTER);
 		}
 		return textField_54;
 	}
@@ -712,6 +766,7 @@ public class cargarSudoku extends JFrame {
 			textField_55 = new JTextField();
 			textField_55.setColumns(10);
 			textField_55.setBounds(2, 55, 50, 50);
+			textField_55.setHorizontalAlignment(JTextField.CENTER);
 		}
 		return textField_55;
 	}
@@ -720,6 +775,7 @@ public class cargarSudoku extends JFrame {
 			textField_56 = new JTextField();
 			textField_56.setColumns(10);
 			textField_56.setBounds(2, 108, 50, 50);
+			textField_56.setHorizontalAlignment(JTextField.CENTER);
 		}
 		return textField_56;
 	}
@@ -728,6 +784,7 @@ public class cargarSudoku extends JFrame {
 			textField_57 = new JTextField();
 			textField_57.setColumns(10);
 			textField_57.setBounds(54, 2, 50, 50);
+			textField_57.setHorizontalAlignment(JTextField.CENTER);
 		}
 		return textField_57;
 	}
@@ -736,6 +793,7 @@ public class cargarSudoku extends JFrame {
 			textField_58 = new JTextField();
 			textField_58.setColumns(10);
 			textField_58.setBounds(54, 55, 50, 50);
+			textField_58.setHorizontalAlignment(JTextField.CENTER);
 		}
 		return textField_58;
 	}
@@ -744,6 +802,7 @@ public class cargarSudoku extends JFrame {
 			textField_59 = new JTextField();
 			textField_59.setColumns(10);
 			textField_59.setBounds(54, 108, 50, 50);
+			textField_59.setHorizontalAlignment(JTextField.CENTER);
 		}
 		return textField_59;
 	}
@@ -752,6 +811,7 @@ public class cargarSudoku extends JFrame {
 			textField_60 = new JTextField();
 			textField_60.setColumns(10);
 			textField_60.setBounds(107, 2, 50, 50);
+			textField_60.setHorizontalAlignment(JTextField.CENTER);
 		}
 		return textField_60;
 	}
@@ -760,6 +820,7 @@ public class cargarSudoku extends JFrame {
 			textField_61 = new JTextField();
 			textField_61.setColumns(10);
 			textField_61.setBounds(107, 55, 50, 50);
+			textField_61.setHorizontalAlignment(JTextField.CENTER);
 		}
 		return textField_61;
 	}
@@ -768,6 +829,7 @@ public class cargarSudoku extends JFrame {
 			textField_62 = new JTextField();
 			textField_62.setColumns(10);
 			textField_62.setBounds(107, 108, 50, 50);
+			textField_62.setHorizontalAlignment(JTextField.CENTER);
 		}
 		return textField_62;
 	}
@@ -793,6 +855,7 @@ public class cargarSudoku extends JFrame {
 			textField_63 = new JTextField();
 			textField_63.setColumns(10);
 			textField_63.setBounds(2, 2, 50, 50);
+			textField_63.setHorizontalAlignment(JTextField.CENTER);
 		}
 		return textField_63;
 	}
@@ -801,6 +864,7 @@ public class cargarSudoku extends JFrame {
 			textField_64 = new JTextField();
 			textField_64.setColumns(10);
 			textField_64.setBounds(2, 55, 50, 50);
+			textField_64.setHorizontalAlignment(JTextField.CENTER);
 		}
 		return textField_64;
 	}
@@ -809,6 +873,7 @@ public class cargarSudoku extends JFrame {
 			textField_65 = new JTextField();
 			textField_65.setColumns(10);
 			textField_65.setBounds(2, 108, 50, 50);
+			textField_65.setHorizontalAlignment(JTextField.CENTER);
 		}
 		return textField_65;
 	}
@@ -817,6 +882,7 @@ public class cargarSudoku extends JFrame {
 			textField_66 = new JTextField();
 			textField_66.setColumns(10);
 			textField_66.setBounds(54, 2, 50, 50);
+			textField_66.setHorizontalAlignment(JTextField.CENTER);
 		}
 		return textField_66;
 	}
@@ -825,6 +891,7 @@ public class cargarSudoku extends JFrame {
 			textField_67 = new JTextField();
 			textField_67.setColumns(10);
 			textField_67.setBounds(54, 55, 50, 50);
+			textField_67.setHorizontalAlignment(JTextField.CENTER);
 		}
 		return textField_67;
 	}
@@ -833,6 +900,7 @@ public class cargarSudoku extends JFrame {
 			textField_68 = new JTextField();
 			textField_68.setColumns(10);
 			textField_68.setBounds(54, 108, 50, 50);
+			textField_68.setHorizontalAlignment(JTextField.CENTER);
 		}
 		return textField_68;
 	}
@@ -841,6 +909,7 @@ public class cargarSudoku extends JFrame {
 			textField_69 = new JTextField();
 			textField_69.setColumns(10);
 			textField_69.setBounds(107, 2, 50, 50);
+			textField_69.setHorizontalAlignment(JTextField.CENTER);
 		}
 		return textField_69;
 	}
@@ -849,6 +918,7 @@ public class cargarSudoku extends JFrame {
 			textField_70 = new JTextField();
 			textField_70.setColumns(10);
 			textField_70.setBounds(107, 55, 50, 50);
+			textField_70.setHorizontalAlignment(JTextField.CENTER);
 		}
 		return textField_70;
 	}
@@ -857,6 +927,7 @@ public class cargarSudoku extends JFrame {
 			textField_71 = new JTextField();
 			textField_71.setColumns(10);
 			textField_71.setBounds(107, 108, 50, 50);
+			textField_71.setHorizontalAlignment(JTextField.CENTER);
 		}
 		return textField_71;
 	}
@@ -882,6 +953,7 @@ public class cargarSudoku extends JFrame {
 			textField_72 = new JTextField();
 			textField_72.setColumns(10);
 			textField_72.setBounds(2, 2, 50, 50);
+			textField_72.setHorizontalAlignment(JTextField.CENTER);
 		}
 		return textField_72;
 	}
@@ -890,6 +962,7 @@ public class cargarSudoku extends JFrame {
 			textField_73 = new JTextField();
 			textField_73.setColumns(10);
 			textField_73.setBounds(2, 55, 50, 50);
+			textField_73.setHorizontalAlignment(JTextField.CENTER);
 		}
 		return textField_73;
 	}
@@ -898,6 +971,7 @@ public class cargarSudoku extends JFrame {
 			textField_74 = new JTextField();
 			textField_74.setColumns(10);
 			textField_74.setBounds(2, 108, 50, 50);
+			textField_74.setHorizontalAlignment(JTextField.CENTER);
 		}
 		return textField_74;
 	}
@@ -906,6 +980,7 @@ public class cargarSudoku extends JFrame {
 			textField_75 = new JTextField();
 			textField_75.setColumns(10);
 			textField_75.setBounds(54, 2, 50, 50);
+			textField_75.setHorizontalAlignment(JTextField.CENTER);
 		}
 		return textField_75;
 	}
@@ -914,6 +989,7 @@ public class cargarSudoku extends JFrame {
 			textField_76 = new JTextField();
 			textField_76.setColumns(10);
 			textField_76.setBounds(54, 55, 50, 50);
+			textField_76.setHorizontalAlignment(JTextField.CENTER);
 		}
 		return textField_76;
 	}
@@ -922,6 +998,7 @@ public class cargarSudoku extends JFrame {
 			textField_77 = new JTextField();
 			textField_77.setColumns(10);
 			textField_77.setBounds(54, 108, 50, 50);
+			textField_77.setHorizontalAlignment(JTextField.CENTER);
 		}
 		return textField_77;
 	}
@@ -930,6 +1007,7 @@ public class cargarSudoku extends JFrame {
 			textField_78 = new JTextField();
 			textField_78.setColumns(10);
 			textField_78.setBounds(107, 2, 50, 50);
+			textField_78.setHorizontalAlignment(JTextField.CENTER);
 		}
 		return textField_78;
 	}
@@ -938,6 +1016,7 @@ public class cargarSudoku extends JFrame {
 			textField_79 = new JTextField();
 			textField_79.setColumns(10);
 			textField_79.setBounds(107, 55, 50, 50);
+			textField_79.setHorizontalAlignment(JTextField.CENTER);
 		}
 		return textField_79;
 	}
@@ -946,6 +1025,7 @@ public class cargarSudoku extends JFrame {
 			textField_80 = new JTextField();
 			textField_80.setColumns(10);
 			textField_80.setBounds(107, 108, 50, 50);
+			textField_80.setHorizontalAlignment(JTextField.CENTER);
 		}
 		return textField_80;
 	}
