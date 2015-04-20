@@ -1,18 +1,12 @@
 package Ventana;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JTable;
 import javax.swing.JTextField;
-import java.awt.Component;
-import javax.swing.JRadioButton;
-import java.awt.GridLayout;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
+import javax.swing.SwingConstants;
 
 public class cargarSudoku extends JFrame {
 
@@ -168,6 +162,7 @@ public class cargarSudoku extends JFrame {
 	private JTextField getTextField() {
 		if (textField == null) {
 			textField = new JTextField();
+			textField.setHorizontalAlignment(SwingConstants.CENTER);
 			textField.setBounds(2, 2, 50, 50);
 			textField.setColumns(10);
 			textField.setHorizontalAlignment(JTextField.CENTER);
@@ -177,6 +172,7 @@ public class cargarSudoku extends JFrame {
 	private JTextField getTextField_1() {
 		if (textField_1 == null) {
 			textField_1 = new JTextField();
+			textField_1.setHorizontalAlignment(SwingConstants.CENTER);
 			textField_1.setBounds(2, 55, 50, 50);
 			textField_1.setColumns(10);
 			textField_1.setHorizontalAlignment(JTextField.CENTER);
@@ -186,6 +182,7 @@ public class cargarSudoku extends JFrame {
 	private JTextField getTextField_2() {
 		if (textField_2 == null) {
 			textField_2 = new JTextField();
+			textField_2.setHorizontalAlignment(SwingConstants.CENTER);
 			textField_2.setBounds(2, 108, 50, 50);
 			textField_2.setColumns(10);
 			textField_2.setHorizontalAlignment(JTextField.CENTER);;
@@ -195,6 +192,7 @@ public class cargarSudoku extends JFrame {
 	private JTextField getTextField_3() {
 		if (textField_3 == null) {
 			textField_3 = new JTextField();
+			textField_3.setHorizontalAlignment(SwingConstants.CENTER);
 			textField_3.setColumns(10);
 			textField_3.setBounds(54, 2, 50, 50);
 			textField_3.setHorizontalAlignment(JTextField.CENTER);
@@ -204,6 +202,7 @@ public class cargarSudoku extends JFrame {
 	private JTextField getTextField_4() {
 		if (textField_4 == null) {
 			textField_4 = new JTextField();
+			textField_4.setHorizontalAlignment(SwingConstants.CENTER);
 			textField_4.setColumns(10);
 			textField_4.setBounds(54, 55, 50, 50);
 			textField_4.setHorizontalAlignment(JTextField.CENTER);
