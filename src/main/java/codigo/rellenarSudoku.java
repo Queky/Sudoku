@@ -41,6 +41,7 @@ public class rellenarSudoku {
 					Method functionCall = cargarSudoku.class.getMethod("setTextField_"+i, JTextField.class);
 					JTextField jT = new JTextField();
 					jT.setText(Character.toString(linea.charAt(posTxt)));
+					jT.setEditable(false);
 					functionCall.invoke(cSu, jT);
 				}
 				posTxt++;
