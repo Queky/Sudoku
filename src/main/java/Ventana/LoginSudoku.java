@@ -124,6 +124,7 @@ public class LoginSudoku extends JFrame {
 								Statement st= con.createStatement();
 								st.executeUpdate("INSERT INTO `sudoku`.`infojuego` (`nombreJugador`,`nivel_dificultad`) VALUES ('"+textField.getText()+"','"+comboBox.getSelectedIndex()+"');");
 								con.close();
+								
 								}catch(SQLException e5){System.out.println(e5.toString()); }
 								
 							
