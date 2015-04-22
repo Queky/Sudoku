@@ -122,7 +122,7 @@ public class LoginSudoku extends JFrame {
 								con=DriverManager.getConnection(url);
 								System.out.println("conexion abierta");
 								Statement st= con.createStatement();
-								st.executeUpdate("INSERT INTO `sudoku`.`infojuego` (`nombreJugador`,`nivel_dificultad`) VALUES ('"+textField.getText()+"','"+comboBox.getSelectedIndex()+"');");
+								st.executeUpdate("INSERT INTO `sudoku`.`infojuego` (`nombreJugador`,`nivel_dificultad`) VALUES ('"+textField.getText()+"','"+(comboBox.getSelectedIndex()+1)+"');");
 								con.close();
 								
 								}catch(SQLException e5){System.out.println(e5.toString()); }
