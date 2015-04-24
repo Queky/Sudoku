@@ -112,19 +112,7 @@ public class LoginSudoku extends JFrame {
 			btnOk.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 						if(!textField.getText().equals("")){
-							System.out.println("tira");
-							try {
-								Class.forName("con.mysql.jdbc.Driver");
-								}catch (ClassNotFoundException e1){};
-								Connection con;
-								try{
-								String url="jdbc:mysql://localhost:3306/sudoku?user=root&password=root";
-								con=DriverManager.getConnection(url);
-								System.out.println("conexion abierta");
-								Statement st= con.createStatement();
-								st.executeUpdate("INSERT INTO `sudoku`.`infojuego` (`nombreJugador`,`nivel_dificultad`) VALUES ('"+textField.getText()+"','"+(comboBox.getSelectedIndex()+1)+"');");
-								con.close();
-								}catch(SQLException e5){System.out.println(e5.toString()); }
+						
 						}
 				}
 			});
