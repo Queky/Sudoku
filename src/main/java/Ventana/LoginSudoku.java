@@ -1,7 +1,6 @@
 package Ventana;
 
 import java.sql.*;
-
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.EventQueue;
@@ -15,6 +14,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+
+import codigo.ConexionConBBDD;
+
 import java.awt.event.ActionListener;
 
 
@@ -112,7 +114,9 @@ public class LoginSudoku extends JFrame {
 			btnOk.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 						if(!textField.getText().equals("")){
-						
+							ConexionConBBDD con = ConexionConBBDD.getConexionConBBDD();
+							con.añadirDatosLoguin(textField.getText(), comboBox.getSelectedIndex()+1 );
+								
 						}
 				}
 			});
