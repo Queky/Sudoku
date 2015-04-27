@@ -76,12 +76,12 @@ public class CargarSudoku extends JFrame{
 			for(int i=0; i<9; i++){
 				for(int j=0; j<9; j++){
 				listaSudoku[i][j]=new JFormattedTextField(mascara);
-				final JFormattedTextField textField = listaSudoku[i][j];
-		        textField.addMouseListener(new MouseAdapter(){
+				final JFormattedTextField jT = listaSudoku[i][j];
+		        jT.addMouseListener(new MouseAdapter(){
 		            @Override
 		            public void mouseClicked(MouseEvent e){
-		                if(textField.isEditable())
-		            		textField.selectAll();
+		                if(jT.isEditable())
+		            		jT.selectAll();
 		            }
 		        });
 				listaSudoku[i][j].setHorizontalAlignment(JFormattedTextField.CENTER);

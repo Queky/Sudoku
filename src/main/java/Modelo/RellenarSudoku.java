@@ -8,6 +8,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.nio.file.Paths;
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
+
 import Vista.CargarSudoku;
 
 public class RellenarSudoku {
@@ -16,6 +17,7 @@ public class RellenarSudoku {
 		loadDoneSudoku("s001", "inaki");
 	}
 	
+	@SuppressWarnings("resource")
 	public static void loadDoneSudoku(String sudokuName, String sudokuLevel) throws IOException, NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException{
 		
 		try {			
