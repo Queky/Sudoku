@@ -5,12 +5,9 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.nio.file.Paths;
-
+import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
-import javax.swing.JTextField;
-
 import Vista.CargarSudoku;
 
 public class RellenarSudoku {
@@ -40,7 +37,7 @@ public class RellenarSudoku {
 			String linea = read.readLine();
 			for(int i=0; i<9; i++){
 				for(int j=0; j<9; j++){
-					JTextField jT = new JTextField();
+					JFormattedTextField jT = new JFormattedTextField();
 					if(linea.charAt(posTxt)!='0'){
 						jT.setText(Character.toString(linea.charAt(posTxt)));
 						cSu.setCasillaSudoku(jT, i, j, false);

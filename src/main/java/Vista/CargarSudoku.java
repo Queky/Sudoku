@@ -1,24 +1,25 @@
 package Vista;
 
 import java.awt.EventQueue;
-
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.text.ParseException;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JTextField;
+import javax.swing.text.MaskFormatter;
+import javax.swing.JFormattedTextField;
 import javax.swing.SwingConstants;
 import javax.swing.JLabel;
-
-import Modelo.JTextFieldLimit;
 import javax.swing.JButton;
 
-public class CargarSudoku extends JFrame {
+public class CargarSudoku extends JFrame{
 		
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 3108827976249420404L;
-	private JTextField[][] listaSudoku;
+	private JFormattedTextField[][] listaSudoku;
 	private JPanel contentPane;
 	private JPanel Cuadricula1;
 	private JPanel Cuadricula2;
@@ -60,6 +61,7 @@ public class CargarSudoku extends JFrame {
 	}
 
 	private void initialize() {
+		try {
 			setTitle("Sudoku");
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			setBounds(100, 100, 600, 600);
@@ -67,12 +69,22 @@ public class CargarSudoku extends JFrame {
 			contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 			setContentPane(contentPane);
 			contentPane.setLayout(null);
-			listaSudoku = new JTextField[9][9];
+			listaSudoku = new JFormattedTextField[9][9];
+			MaskFormatter mascara = new MaskFormatter("#");
+			mascara.setInvalidCharacters("0, ");
+			mascara.setOverwriteMode(true);
 			for(int i=0; i<9; i++){
 				for(int j=0; j<9; j++){
-					listaSudoku[i][j]=new JTextField();
-					listaSudoku[i][j].setHorizontalAlignment(JTextField.CENTER);
-					listaSudoku[i][j].setDocument(new JTextFieldLimit(1));
+				listaSudoku[i][j]=new JFormattedTextField(mascara);
+				final JFormattedTextField textField = listaSudoku[i][j];
+		        textField.addMouseListener(new MouseAdapter(){
+		            @Override
+		            public void mouseClicked(MouseEvent e){
+		                if(textField.isEditable())
+		            		textField.selectAll();
+		            }
+		        });
+				listaSudoku[i][j].setHorizontalAlignment(JFormattedTextField.CENTER);
 				}
 			}
 			contentPane.add(getCuadricula1());
@@ -86,9 +98,13 @@ public class CargarSudoku extends JFrame {
 			contentPane.add(getCuadricula9());
 			contentPane.add(getSudokuId());
 			contentPane.add(getDLevel());
-		contentPane.add(getNivelDificultad());
-		contentPane.add(getCodigoSudoku());
-		contentPane.add(getBtnNewButton());
+			contentPane.add(getNivelDificultad());
+			contentPane.add(getCodigoSudoku());
+			contentPane.add(getBtnNewButton());
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 	}
 	
 	private JPanel getCuadricula1() {
@@ -266,11 +282,11 @@ public class CargarSudoku extends JFrame {
 		return Cuadricula9;
 	}
 
-	public JTextField[][] getListaSudoku() {
+	public JFormattedTextField[][] getListaSudoku() {
 		return listaSudoku;
 	}
 
-	public void setCasillaSudoku(JTextField pCasillaSudoku, int x, int y, boolean editable) {
+	public void setCasillaSudoku(JFormattedTextField pCasillaSudoku, int x, int y, boolean editable) {
 
 		listaSudoku[x][y].setText(pCasillaSudoku.getText());
 		listaSudoku[x][y].setEditable(editable);
@@ -322,4 +338,5 @@ public class CargarSudoku extends JFrame {
 		}
 		return btnNewButton;
 	}
+
 }
