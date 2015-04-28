@@ -1,9 +1,13 @@
 package Vista;
 
+import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.text.ParseException;
+import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -12,9 +16,10 @@ import javax.swing.JFormattedTextField;
 import javax.swing.SwingConstants;
 import javax.swing.JLabel;
 import javax.swing.JButton;
+import Modelo.CorregirSudoku;
 
-public class CargarSudoku extends JFrame{
-		
+public class CargarSudoku extends JFrame {
+
 	/**
 	 * 
 	 */
@@ -34,7 +39,9 @@ public class CargarSudoku extends JFrame{
 	private JLabel dLevel;
 	private JLabel nivelDificultad;
 	private JLabel CodigoSudoku;
-	private JButton btnNewButton;
+	private JButton btnCorregir;
+	private MaskFormatter mascara;
+	private CorregirSudoku cSCor;
 
 	/**
 	 * Launch the application.
@@ -55,7 +62,7 @@ public class CargarSudoku extends JFrame{
 	/**
 	 * Create the frame.
 	 */
-	
+
 	public CargarSudoku() {
 		initialize();
 	}
@@ -70,21 +77,21 @@ public class CargarSudoku extends JFrame{
 			setContentPane(contentPane);
 			contentPane.setLayout(null);
 			listaSudoku = new JFormattedTextField[9][9];
-			MaskFormatter mascara = new MaskFormatter("#");
+			mascara = new MaskFormatter("#");
 			mascara.setInvalidCharacters("0, ");
-			mascara.setOverwriteMode(true);
-			for(int i=0; i<9; i++){
-				for(int j=0; j<9; j++){
-				listaSudoku[i][j]=new JFormattedTextField(mascara);
-				final JFormattedTextField jT = listaSudoku[i][j];
-		        jT.addMouseListener(new MouseAdapter(){
-		            @Override
-		            public void mouseClicked(MouseEvent e){
-		                if(jT.isEditable())
-		            		jT.selectAll();
-		            }
-		        });
-				listaSudoku[i][j].setHorizontalAlignment(JFormattedTextField.CENTER);
+			for (int i = 0; i < 9; i++) {
+				for (int j = 0; j < 9; j++) {
+					listaSudoku[i][j] = new JFormattedTextField(mascara);
+					final JFormattedTextField jT = listaSudoku[i][j];
+					jT.addMouseListener(new MouseAdapter() {
+						@Override
+						public void mouseClicked(MouseEvent e) {
+							if (jT.isEditable())
+								jT.selectAll();
+						}
+					});
+					listaSudoku[i][j]
+							.setHorizontalAlignment(JFormattedTextField.CENTER);
 				}
 			}
 			contentPane.add(getCuadricula1());
@@ -101,195 +108,204 @@ public class CargarSudoku extends JFrame{
 			contentPane.add(getNivelDificultad());
 			contentPane.add(getCodigoSudoku());
 			contentPane.add(getBtnNewButton());
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
-	
+
 	private JPanel getCuadricula1() {
 		if (Cuadricula1 == null) {
 			Cuadricula1 = new JPanel();
 			Cuadricula1.setBounds(45, 45, 160, 160);
 			Cuadricula1.setLayout(null);
-			for(int i=0; i<3; i++){
-				for(int j=0; j<3; j++){
+			for (int i = 0; i < 3; i++) {
+				for (int j = 0; j < 3; j++) {
 					Cuadricula1.add(listaSudoku[i][j]);
-					listaSudoku[i][j].setBounds(j*54, 27*i*2, 50, 50);
+					listaSudoku[i][j].setBounds(j * 54, 27 * i * 2, 50, 50);
 				}
 			}
 		}
 		return Cuadricula1;
 	}
-	
+
 	private JPanel getCuadricula2() {
 		if (Cuadricula2 == null) {
 			Cuadricula2 = new JPanel();
 			Cuadricula2.setLayout(null);
 			Cuadricula2.setBounds(220, 45, 160, 160);
-			int x=0;
-			int y=0;
-			for(int i=0; i<3; i++){
-				for(int j=3; j<6; j++){
+			int x = 0;
+			int y = 0;
+			for (int i = 0; i < 3; i++) {
+				for (int j = 3; j < 6; j++) {
 					Cuadricula2.add(listaSudoku[i][j]);
-					listaSudoku[i][j].setBounds(x*54, 27*y*2, 50, 50);
+					listaSudoku[i][j].setBounds(x * 54, 27 * y * 2, 50, 50);
 					x++;
 				}
-				x=0;
+				x = 0;
 				y++;
 			}
 		}
 		return Cuadricula2;
 	}
-	
+
 	private JPanel getCuadricula3() {
 		if (Cuadricula3 == null) {
 			Cuadricula3 = new JPanel();
 			Cuadricula3.setLayout(null);
 			Cuadricula3.setBounds(395, 45, 160, 160);
-			int x=0;
-			int y=0;
-			for(int i=0; i<3; i++){
-				for(int j=6; j<9; j++){
+			int x = 0;
+			int y = 0;
+			for (int i = 0; i < 3; i++) {
+				for (int j = 6; j < 9; j++) {
 					Cuadricula3.add(listaSudoku[i][j]);
-					listaSudoku[i][j].setBounds(x*54, 27*y*2, 50, 50);
+					listaSudoku[i][j].setBounds(x * 54, 27 * y * 2, 50, 50);
 					x++;
 				}
-				x=0;
+				x = 0;
 				y++;
 			}
 		}
 		return Cuadricula3;
 	}
-	
+
 	private JPanel getCuadricula4() {
 		if (Cuadricula4 == null) {
 			Cuadricula4 = new JPanel();
 			Cuadricula4.setLayout(null);
 			Cuadricula4.setBounds(45, 220, 160, 160);
-			int x=0;
-			int y=0;
-			for(int i=3; i<6; i++){
-				for(int j=0; j<3; j++){
+			int x = 0;
+			int y = 0;
+			for (int i = 3; i < 6; i++) {
+				for (int j = 0; j < 3; j++) {
 					Cuadricula4.add(listaSudoku[i][j]);
-					listaSudoku[i][j].setBounds(x*54, 27*y*2, 50, 50);
+					listaSudoku[i][j].setBounds(x * 54, 27 * y * 2, 50, 50);
 					x++;
 				}
-				x=0;
+				x = 0;
 				y++;
 			}
 		}
 		return Cuadricula4;
 	}
-	
+
 	private JPanel getCuadricula5() {
 		if (Cuadricula5 == null) {
 			Cuadricula5 = new JPanel();
 			Cuadricula5.setLayout(null);
 			Cuadricula5.setBounds(220, 220, 160, 160);
-			int x=0;
-			int y=0;
-			for(int i=3; i<6; i++){
-				for(int j=3; j<6; j++){
+			int x = 0;
+			int y = 0;
+			for (int i = 3; i < 6; i++) {
+				for (int j = 3; j < 6; j++) {
 					Cuadricula5.add(listaSudoku[i][j]);
-					listaSudoku[i][j].setBounds(x*54, 27*y*2, 50, 50);
+					listaSudoku[i][j].setBounds(x * 54, 27 * y * 2, 50, 50);
 					x++;
 				}
-				x=0;
+				x = 0;
 				y++;
 			}
 		}
 		return Cuadricula5;
 	}
-	
+
 	private JPanel getCuadricula6() {
 		if (Cuadricula6 == null) {
 			Cuadricula6 = new JPanel();
 			Cuadricula6.setLayout(null);
 			Cuadricula6.setBounds(395, 220, 160, 160);
-			int x=0;
-			int y=0;
-			for(int i=3; i<6; i++){
-				for(int j=6; j<9; j++){
+			int x = 0;
+			int y = 0;
+			for (int i = 3; i < 6; i++) {
+				for (int j = 6; j < 9; j++) {
 					Cuadricula6.add(listaSudoku[i][j]);
-					listaSudoku[i][j].setBounds(x*54, 27*y*2, 50, 50);
+					listaSudoku[i][j].setBounds(x * 54, 27 * y * 2, 50, 50);
 					x++;
 				}
-				x=0;
+				x = 0;
 				y++;
 			}
 		}
 		return Cuadricula6;
 	}
-	
+
 	private JPanel getCuadricula7() {
 		if (Cuadricula7 == null) {
 			Cuadricula7 = new JPanel();
 			Cuadricula7.setLayout(null);
 			Cuadricula7.setBounds(45, 392, 160, 160);
-			int x=0;
-			int y=0;
-			for(int i=6; i<9; i++){
-				for(int j=0; j<3; j++){
+			int x = 0;
+			int y = 0;
+			for (int i = 6; i < 9; i++) {
+				for (int j = 0; j < 3; j++) {
 					Cuadricula7.add(listaSudoku[i][j]);
-					listaSudoku[i][j].setBounds(x*54, 27*y*2, 50, 50);
+					listaSudoku[i][j].setBounds(x * 54, 27 * y * 2, 50, 50);
 					x++;
 				}
-				x=0;
+				x = 0;
 				y++;
 			}
 		}
 		return Cuadricula7;
 	}
-	
+
 	private JPanel getCuadricula8() {
 		if (Cuadricula8 == null) {
 			Cuadricula8 = new JPanel();
 			Cuadricula8.setLayout(null);
 			Cuadricula8.setBounds(220, 392, 160, 160);
-			int x=0;
-			int y=0;
-			for(int i=6; i<9; i++){
-				for(int j=3; j<6; j++){
+			int x = 0;
+			int y = 0;
+			for (int i = 6; i < 9; i++) {
+				for (int j = 3; j < 6; j++) {
 					Cuadricula8.add(listaSudoku[i][j]);
-					listaSudoku[i][j].setBounds(x*54, 27*y*2, 50, 50);
+					listaSudoku[i][j].setBounds(x * 54, 27 * y * 2, 50, 50);
 					x++;
 				}
-				x=0;
+				x = 0;
 				y++;
 			}
 		}
 		return Cuadricula8;
 	}
-	
+
 	private JPanel getCuadricula9() {
 		if (Cuadricula9 == null) {
 			Cuadricula9 = new JPanel();
 			Cuadricula9.setLayout(null);
 			Cuadricula9.setBounds(395, 392, 160, 160);
-			int x=0;
-			int y=0;
-			for(int i=6; i<9; i++){
-				for(int j=6; j<9; j++){
+			int x = 0;
+			int y = 0;
+			for (int i = 6; i < 9; i++) {
+				for (int j = 6; j < 9; j++) {
 					Cuadricula9.add(listaSudoku[i][j]);
-					listaSudoku[i][j].setBounds(x*54, 27*y*2, 50, 50);
+					listaSudoku[i][j].setBounds(x * 54, 27 * y * 2, 50, 50);
 					x++;
 				}
-				x=0;
+				x = 0;
 				y++;
 			}
 		}
 		return Cuadricula9;
 	}
 
-	public JFormattedTextField[][] getListaSudoku() {
-		return listaSudoku;
+	public JFormattedTextField[][] getListaSudoku(
+			JFormattedTextField[][] pListSud) {
+		for (int i = 0; i < 9; i++) {
+			for (int j = 0; j < 9; j++) {
+				pListSud[i][j].setText(listaSudoku[i][j].getText());
+			}
+		}
+		return pListSud;
 	}
 
-	public void setCasillaSudoku(JFormattedTextField pCasillaSudoku, int x, int y, boolean editable) {
+	public void setCasillaSudoku(JFormattedTextField pCasillaSudoku, int x,
+			int y, boolean editable) {
 
 		listaSudoku[x][y].setText(pCasillaSudoku.getText());
 		listaSudoku[x][y].setEditable(editable);
+		listaSudoku[x][y].setBackground(Color.LIGHT_GRAY);
+		listaSudoku[x][y].setFocusable(false);
 	}
 
 	private JLabel getSudokuId() {
@@ -300,6 +316,7 @@ public class CargarSudoku extends JFrame{
 		}
 		return sudokuId;
 	}
+
 	private JLabel getDLevel() {
 		if (dLevel == null) {
 			dLevel = new JLabel("Nivel de dificultad:");
@@ -307,6 +324,7 @@ public class CargarSudoku extends JFrame{
 		}
 		return dLevel;
 	}
+
 	private JLabel getNivelDificultad() {
 		if (nivelDificultad == null) {
 			nivelDificultad = new JLabel("");
@@ -315,6 +333,7 @@ public class CargarSudoku extends JFrame{
 		}
 		return nivelDificultad;
 	}
+
 	private JLabel getCodigoSudoku() {
 		if (CodigoSudoku == null) {
 			CodigoSudoku = new JLabel("");
@@ -331,12 +350,35 @@ public class CargarSudoku extends JFrame{
 	public void setCodigoSudoku(JLabel pCodigoSudoku) {
 		CodigoSudoku.setText(pCodigoSudoku.getText());
 	}
+
 	private JButton getBtnNewButton() {
-		if (btnNewButton == null) {
-			btnNewButton = new JButton("Corregir");
-			btnNewButton.setBounds(242, 12, 117, 29);
+		if (btnCorregir == null) {
+			btnCorregir = new JButton("Corregir");
+			btnCorregir.setBounds(242, 12, 117, 29);
 		}
-		return btnNewButton;
+		btnCorregir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent pE) {
+				// TODO Auto-generated method stub
+				cSCor = new CorregirSudoku();
+				cSCor.correccionVertical(listaSudoku);
+			}
+		});
+		return btnCorregir;
 	}
 
+	public void subrayarLinea(boolean pVertical, List<Integer> pColumnasMal) {
+		if (pVertical) {
+			System.out.println(pColumnasMal);
+			for (int i = 0; i < pColumnasMal.size(); i++) {
+				for (int j = 0; j < 9; j++) {
+					if (listaSudoku[j][pColumnasMal.get(i)].isEditable()) {
+						listaSudoku[j][pColumnasMal.get(i)]
+								.setBackground(Color.RED);
+						listaSudoku[j][pColumnasMal.get(i)].repaint();
+						listaSudoku[j][pColumnasMal.get(i)].revalidate();
+					}
+				}
+			}
+		}
+	}
 }
