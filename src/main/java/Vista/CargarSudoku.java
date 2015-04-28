@@ -1,6 +1,7 @@
 package Vista;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -8,14 +9,19 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.text.ParseException;
 import java.util.List;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.text.MaskFormatter;
+import javax.swing.text.PlainDocument;
 import javax.swing.JFormattedTextField;
 import javax.swing.SwingConstants;
 import javax.swing.JLabel;
 import javax.swing.JButton;
+import javax.swing.SwingUtilities;
+import javax.swing.SwingWorker;
+
 import Modelo.CorregirSudoku;
 
 public class CargarSudoku extends JFrame {
@@ -25,6 +31,7 @@ public class CargarSudoku extends JFrame {
 	 */
 	private static final long serialVersionUID = 3108827976249420404L;
 	private JFormattedTextField[][] listaSudoku;
+	private JPanel[] cuadriculas;
 	private JPanel contentPane;
 	private JPanel Cuadricula1;
 	private JPanel Cuadricula2;
@@ -233,7 +240,7 @@ public class CargarSudoku extends JFrame {
 		if (Cuadricula7 == null) {
 			Cuadricula7 = new JPanel();
 			Cuadricula7.setLayout(null);
-			Cuadricula7.setBounds(45, 392, 160, 160);
+			Cuadricula7.setBounds(45, 395, 160, 160);
 			int x = 0;
 			int y = 0;
 			for (int i = 6; i < 9; i++) {
@@ -253,7 +260,7 @@ public class CargarSudoku extends JFrame {
 		if (Cuadricula8 == null) {
 			Cuadricula8 = new JPanel();
 			Cuadricula8.setLayout(null);
-			Cuadricula8.setBounds(220, 392, 160, 160);
+			Cuadricula8.setBounds(220, 395, 160, 160);
 			int x = 0;
 			int y = 0;
 			for (int i = 6; i < 9; i++) {
@@ -273,7 +280,7 @@ public class CargarSudoku extends JFrame {
 		if (Cuadricula9 == null) {
 			Cuadricula9 = new JPanel();
 			Cuadricula9.setLayout(null);
-			Cuadricula9.setBounds(395, 392, 160, 160);
+			Cuadricula9.setBounds(395, 395, 160, 160);
 			int x = 0;
 			int y = 0;
 			for (int i = 6; i < 9; i++) {
@@ -361,24 +368,58 @@ public class CargarSudoku extends JFrame {
 				// TODO Auto-generated method stub
 				cSCor = new CorregirSudoku();
 				cSCor.correccionVertical(listaSudoku);
+				cSCor.correccionHorizontal(listaSudoku);
+				subrayarVertical(cSCor.getColumnasVertMal(), cSCor.getFilasHorMal());
+				subrayarHorizontal(cSCor.getFilasHorMal(),
+						cSCor.getColumnasVertMal());
 			}
 		});
 		return btnCorregir;
 	}
-
-	public void subrayarLinea(boolean pVertical, List<Integer> pColumnasMal) {
-		if (pVertical) {
-			System.out.println(pColumnasMal);
-			for (int i = 0; i < pColumnasMal.size(); i++) {
+	
+	public void subrayarVertical(List<Integer> pColumnasMal, List<Integer> pFilasMal) {
+		System.out.println(pColumnasMal);
+		if (!pColumnasMal.isEmpty() || !pFilasMal.isEmpty()) {
+			for (int i = 0; i < 9; i++) {
 				for (int j = 0; j < 9; j++) {
-					if (listaSudoku[j][pColumnasMal.get(i)].isEditable()) {
-						listaSudoku[j][pColumnasMal.get(i)]
-								.setBackground(Color.RED);
-						listaSudoku[j][pColumnasMal.get(i)].repaint();
-						listaSudoku[j][pColumnasMal.get(i)].revalidate();
-					}
+					if (listaSudoku[j][i].isEditable() && pColumnasMal.contains(i)) {
+						listaSudoku[j][i].setBackground(Color.RED);
+					} else if (listaSudoku[j][i].isEditable() && !pColumnasMal.contains(i))
+						listaSudoku[j][i].setBackground(Color.WHITE);
 				}
 			}
+		} else
+			ponerEnBlanco();
+	}
+
+	private void ponerEnBlanco() {
+		// TODO Auto-generated method stub
+		for (int i = 0; i < 9; i++) {
+			for (int j = 0; j < 9; j++) {
+				if(listaSudoku[i][j].isEditable() && listaSudoku[i][j].getBackground().equals(Color.RED))
+					listaSudoku[i][j].setBackground(Color.WHITE);
+			}
 		}
+
+	}
+
+	public void subrayarHorizontal(List<Integer> pFilasMal,
+			List<Integer> pColumMal) {
+		System.out.println(pFilasMal);
+		if (!pFilasMal.isEmpty() || !pColumMal.isEmpty()) {
+			for (int i = 0; i < 9; i++) {
+				for (int j = 0; j < 9; j++) {
+					if (listaSudoku[i][j].isEditable() && pFilasMal.contains(i)) {
+						listaSudoku[i][j].setBackground(Color.RED);
+					} else if (listaSudoku[i][j].isEditable() && !pFilasMal.contains(j) && !listaSudoku[i][j].getBackground().equals(Color.RED))
+						listaSudoku[i][j].setBackground(Color.WHITE);
+				}
+			}
+		}else
+			ponerEnBlanco();
+	}
+
+	public void subrayarCuadricula(List<Integer> pCuadMal) {
+
 	}
 }
