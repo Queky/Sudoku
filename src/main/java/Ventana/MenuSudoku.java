@@ -13,6 +13,7 @@ import java.awt.event.ActionEvent;
 
 public class MenuSudoku extends JFrame {
 	private JButton btnNuevoJuego;
+	private JButton btnSocre;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -39,6 +40,7 @@ public class MenuSudoku extends JFrame {
 		setContentPane(p);
 		p.setLayout(null);
 		p.add(getBtnNuevoJuego());
+		p.add(getBtnSocre());
 	}
 
 	private JButton getBtnNuevoJuego() {
@@ -56,5 +58,16 @@ public class MenuSudoku extends JFrame {
 			btnNuevoJuego.setBounds(165, 165, 120, 30);
 		}
 		return btnNuevoJuego;
+	}
+	private JButton getBtnSocre() {
+		if (btnSocre == null) {
+			btnSocre = new JButton("Score");
+			btnSocre.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+				}
+			});
+			btnSocre.setBounds(165, 224, 120, 30);
+		}
+		return btnSocre;
 	}
 }
