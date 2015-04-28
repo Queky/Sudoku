@@ -21,7 +21,8 @@ import java.awt.event.ActionListener;
 
 
 public class LoginSudoku extends JFrame {
-
+	
+	private static LoginSudoku mLoginSudoku = new LoginSudoku();
 	private JPanel contentPane;
 	private JPanel panel;
 	private JLabel lblNombre;
@@ -49,8 +50,14 @@ public class LoginSudoku extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public LoginSudoku() {
+	private LoginSudoku() {
 		initialize();
+	}
+	public static LoginSudoku getLoguinSudoku(){
+		if(mLoginSudoku == null){
+			mLoginSudoku= new LoginSudoku(); 
+		}
+		return mLoginSudoku;
 	}
 	private void initialize() {
 		setResizable(false);
