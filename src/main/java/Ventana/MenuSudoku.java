@@ -10,6 +10,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Window.Type;
 
 public class MenuSudoku extends JFrame {
 	private JButton btnNuevoJuego;
@@ -34,6 +35,8 @@ public class MenuSudoku extends JFrame {
 	}
 
 	private void initialize() {
+		setTitle("SudokuJava");
+		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 450);
 		PanelImagen p = new PanelImagen();
@@ -76,7 +79,7 @@ public class MenuSudoku extends JFrame {
 		if (lblNewLabel == null) {
 			lblNewLabel = new JLabel("");
 			lblNewLabel.setIcon(new ImageIcon("C:\\Users\\BEEP\\Desktop\\cooltext117730252101418.png"));
-			lblNewLabel.setBounds(89, 28, 362, 114);
+			lblNewLabel.setBounds(87, 40, 362, 114);
 		}
 		return lblNewLabel;
 	}
