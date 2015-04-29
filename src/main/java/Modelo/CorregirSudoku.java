@@ -1,17 +1,17 @@
 package Modelo;
-import java.awt.Component;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JFormattedTextField;
+import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
-
-import Vista.CargarSudoku;
 
 public class CorregirSudoku {
 
 	private List<Integer> columnasVertMal;
 	private List<Integer> filasHorMal;
+	private List<Integer> listaCuadricula;
 
 	public CorregirSudoku() {
 		// TODO Auto-generated constructor stub
@@ -79,16 +79,26 @@ public class CorregirSudoku {
 			}
 		});
 	}
-	
-	public void correccionCuadricula(JFormattedTextField[][] listaSud) {
-		String num;
-		List<Integer> listaCuadricula = new ArrayList<Integer>();
-		CargarSudoku cS = new CargarSudoku();
-		
-		for(int i=0; i<9; i++){
-			Component c=cS.getContentPane().getComponent(i);
-			//c.getComponentAt
+
+	public boolean correccionCuadricula(JPanel cuadricula) {
+
+		boolean repetido = false;
+		JFormattedTextField jT = new JFormattedTextField();
+		String num = null;
+		for (int i = 0; i < cuadricula.getComponents().length; i++) {
+			jT=(JFormattedTextField) cuadricula.getComponent(i);
+			if(!jT.getText().equals(" "))
+				num = jT.getText();
+				for(int j=0; j<cuadricula.getComponents().length; j++){
+					if(j!=i){
+						jT=(JFormattedTextField) cuadricula.getComponent(j);
+						if(num.equals(jT.getText()) && jT.isEditable()){
+							repetido=true;
+						}
+					}
+				}
 		}
+		return repetido;
 	}
 
 	public List<Integer> getColumnasVertMal() {
@@ -99,15 +109,12 @@ public class CorregirSudoku {
 		return filasHorMal;
 	}
 
-	public void limpiarLista(List<Integer> pList) {
-		pList.removeAll(pList);
+	public List<Integer> getListaCuadricula() {
+		return listaCuadricula;
 	}
 
-	public boolean correccionCuadricula() {
-
-		boolean cuadricula = false;
-
-		return cuadricula;
+	public void limpiarLista(List<Integer> pList) {
+		pList.removeAll(pList);
 	}
 
 }

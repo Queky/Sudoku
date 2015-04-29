@@ -22,7 +22,7 @@ public class RellenarSudoku {
 			throws IOException {
 
 		try {
-			CargarSudoku cSu = new CargarSudoku();
+			CargarSudoku cSu = CargarSudoku.getInstance();
 			String directory = Paths.get(".").toAbsolutePath().normalize()
 					.toString();
 			File f = new File(directory + "/SudokusToLoad/sudokuak.txt");

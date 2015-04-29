@@ -29,9 +29,9 @@ public class CargarSudoku extends JFrame {
 	/**
 	 * 
 	 */
+	private static CargarSudoku mCargarSudoku;
 	private static final long serialVersionUID = 3108827976249420404L;
 	private JFormattedTextField[][] listaSudoku;
-	private JPanel[] cuadriculas;
 	private JPanel contentPane;
 	private JPanel Cuadricula1;
 	private JPanel Cuadricula2;
@@ -69,8 +69,16 @@ public class CargarSudoku extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-
-	public CargarSudoku() {
+	
+	// Singleton
+	public static CargarSudoku getInstance() {
+		if(mCargarSudoku==null){
+			mCargarSudoku = new CargarSudoku();
+		}
+		return mCargarSudoku;
+	}
+	
+	private CargarSudoku() {
 		initialize();
 	}
 
@@ -404,7 +412,7 @@ public class CargarSudoku extends JFrame {
 	}
 
 	public void subrayarHorizontal(List<Integer> pFilasMal,
-			List<Integer> pColumMal) {
+		List<Integer> pColumMal) {
 		System.out.println(pFilasMal);
 		if (!pFilasMal.isEmpty() || !pColumMal.isEmpty()) {
 			for (int i = 0; i < 9; i++) {
@@ -419,7 +427,7 @@ public class CargarSudoku extends JFrame {
 			ponerEnBlanco();
 	}
 
-	public void subrayarCuadricula(List<Integer> pCuadMal) {
-
+	public void subrayarCuadricula(boolean pintar) {
+		System.out.println(pintar);
 	}
 }
