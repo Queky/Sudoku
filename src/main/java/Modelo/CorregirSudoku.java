@@ -11,7 +11,9 @@ public class CorregirSudoku {
 
 	private List<Integer> columnasVertMal;
 	private List<Integer> filasHorMal;
-	private List<Integer> listaCuadricula;
+	private boolean repetido;
+	private JFormattedTextField jT;
+	private JFormattedTextField num;
 
 	public CorregirSudoku() {
 		// TODO Auto-generated constructor stub
@@ -80,24 +82,28 @@ public class CorregirSudoku {
 		});
 	}
 
-	public boolean correccionCuadricula(JPanel cuadricula) {
+	public void correccionCuadricula(JPanel cuadricula) {
 
-		boolean repetido = false;
-		JFormattedTextField jT = new JFormattedTextField();
-		String num = null;
-		for (int i = 0; i < cuadricula.getComponents().length; i++) {
-			jT=(JFormattedTextField) cuadricula.getComponent(i);
-			if(!jT.getText().equals(" "))
-				num = jT.getText();
-				for(int j=0; j<cuadricula.getComponents().length; j++){
-					if(j!=i){
-						jT=(JFormattedTextField) cuadricula.getComponent(j);
-						if(num.equals(jT.getText()) && jT.isEditable()){
-							repetido=true;
-						}
+		repetido = false;
+		jT = new JFormattedTextField();
+		num = null;
+
+		for (int i = 0; i < cuadricula.getComponents().length && !repetido; i++) {
+			jT = (JFormattedTextField) cuadricula.getComponent(i);
+			if (!jT.getText().isEmpty())
+				num = jT;
+			for (int j = i + 1; j < cuadricula.getComponents().length && !repetido; j++) {
+				jT = (JFormattedTextField) cuadricula.getComponent(j);
+				if (!jT.getText().equals(" ")) {
+					if (num.getText().equals(jT.getText())) {
+						repetido = true;
 					}
 				}
+			}
 		}
+	}
+
+	public boolean isRepetido() {
 		return repetido;
 	}
 
@@ -107,10 +113,6 @@ public class CorregirSudoku {
 
 	public List<Integer> getFilasHorMal() {
 		return filasHorMal;
-	}
-
-	public List<Integer> getListaCuadricula() {
-		return listaCuadricula;
 	}
 
 	public void limpiarLista(List<Integer> pList) {

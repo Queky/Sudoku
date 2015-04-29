@@ -33,6 +33,7 @@ public class CargarSudoku extends JFrame {
 	private static final long serialVersionUID = 3108827976249420404L;
 	private JFormattedTextField[][] listaSudoku;
 	private JPanel contentPane;
+	private JPanel[] cuadriculas;
 	private JPanel Cuadricula1;
 	private JPanel Cuadricula2;
 	private JPanel Cuadricula3;
@@ -118,6 +119,7 @@ public class CargarSudoku extends JFrame {
 			contentPane.add(getCuadricula7());
 			contentPane.add(getCuadricula8());
 			contentPane.add(getCuadricula9());
+
 			contentPane.add(getSudokuId());
 			contentPane.add(getDLevel());
 			contentPane.add(getNivelDificultad());
@@ -380,6 +382,24 @@ public class CargarSudoku extends JFrame {
 				subrayarVertical(cSCor.getColumnasVertMal(), cSCor.getFilasHorMal());
 				subrayarHorizontal(cSCor.getFilasHorMal(),
 						cSCor.getColumnasVertMal());
+				cSCor.correccionCuadricula(Cuadricula1);
+				subrayarCuadricula(cSCor.isRepetido(), Cuadricula1);
+				cSCor.correccionCuadricula(Cuadricula2);
+				subrayarCuadricula(cSCor.isRepetido(), Cuadricula2);
+				cSCor.correccionCuadricula(Cuadricula3);
+				subrayarCuadricula(cSCor.isRepetido(), Cuadricula3);
+				cSCor.correccionCuadricula(Cuadricula4);
+				subrayarCuadricula(cSCor.isRepetido(), Cuadricula4);
+				cSCor.correccionCuadricula(Cuadricula5);
+				subrayarCuadricula(cSCor.isRepetido(), Cuadricula5);
+				cSCor.correccionCuadricula(Cuadricula6);
+				subrayarCuadricula(cSCor.isRepetido(), Cuadricula6);
+				cSCor.correccionCuadricula(Cuadricula7);
+				subrayarCuadricula(cSCor.isRepetido(), Cuadricula7);
+				cSCor.correccionCuadricula(Cuadricula8);
+				subrayarCuadricula(cSCor.isRepetido(), Cuadricula8);
+				cSCor.correccionCuadricula(Cuadricula9);
+				subrayarCuadricula(cSCor.isRepetido(), Cuadricula9);
 			}
 		});
 		return btnCorregir;
@@ -427,7 +447,13 @@ public class CargarSudoku extends JFrame {
 			ponerEnBlanco();
 	}
 
-	public void subrayarCuadricula(boolean pintar) {
+	public void subrayarCuadricula(boolean pintar, JPanel jP) {
 		System.out.println(pintar);
+		if(pintar){
+			for(int i=0; i<9; i++){
+				if(!jP.getComponent(i).getBackground().equals(Color.LIGHT_GRAY))
+					jP.getComponent(i).setBackground(Color.RED);
+			}
+		}
 	}
 }
