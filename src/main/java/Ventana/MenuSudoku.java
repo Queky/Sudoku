@@ -14,6 +14,7 @@ import java.awt.event.ActionEvent;
 public class MenuSudoku extends JFrame {
 	private JButton btnNuevoJuego;
 	private JButton btnSocre;
+	private JLabel lblNewLabel;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -41,6 +42,7 @@ public class MenuSudoku extends JFrame {
 		p.setLayout(null);
 		p.add(getBtnNuevoJuego());
 		p.add(getBtnSocre());
+		p.add(getLblNewLabel());
 	}
 
 	private JButton getBtnNuevoJuego() {
@@ -69,5 +71,13 @@ public class MenuSudoku extends JFrame {
 			btnSocre.setBounds(165, 224, 120, 30);
 		}
 		return btnSocre;
+	}
+	private JLabel getLblNewLabel() {
+		if (lblNewLabel == null) {
+			lblNewLabel = new JLabel("");
+			lblNewLabel.setIcon(new ImageIcon("C:\\Users\\BEEP\\Desktop\\cooltext117730252101418.png"));
+			lblNewLabel.setBounds(89, 28, 362, 114);
+		}
+		return lblNewLabel;
 	}
 }
