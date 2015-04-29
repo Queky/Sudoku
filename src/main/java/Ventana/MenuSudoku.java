@@ -53,7 +53,7 @@ public class MenuSudoku extends JFrame {
 			btnNuevoJuego = new JButton("NuevoJuego");
 			btnNuevoJuego.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					LoginSudoku l1 = new LoginSudoku();
+					LoginSudoku l1 = LoginSudoku.getLoguinSudoku();
 					l1.setVisible(true);
 					setVisible(false);
 					dispose();

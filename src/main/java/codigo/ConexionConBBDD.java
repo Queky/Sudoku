@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class ConexionConBBDD {
-	private static ConexionConBBDD mConexionConBBDD= new ConexionConBBDD();
+	private static ConexionConBBDD mConexionConBBDD;
 	private Connection con;
 	private ConexionConBBDD(){
 	}
