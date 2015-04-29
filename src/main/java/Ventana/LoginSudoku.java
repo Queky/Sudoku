@@ -1,5 +1,6 @@
 package Ventana;
 
+import java.sql.*;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.EventQueue;
@@ -13,11 +14,15 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+
+import codigo.ConexionConBBDD;
+
 import java.awt.event.ActionListener;
 
 
 public class LoginSudoku extends JFrame {
-
+	
+	private static LoginSudoku mLoginSudoku = new LoginSudoku();
 	private JPanel contentPane;
 	private JPanel panel;
 	private JLabel lblNombre;
@@ -45,8 +50,14 @@ public class LoginSudoku extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public LoginSudoku() {
+	private LoginSudoku() {
 		initialize();
+	}
+	public static LoginSudoku getLoguinSudoku(){
+		if(mLoginSudoku == null){
+			mLoginSudoku= new LoginSudoku(); 
+		}
+		return mLoginSudoku;
 	}
 	private void initialize() {
 		setResizable(false);
@@ -109,13 +120,11 @@ public class LoginSudoku extends JFrame {
 			btnOk = new JButton("OK");
 			btnOk.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-				
 						if(!textField.getText().equals("")){
-							
-							System.out.println("tira");
-							
+							ConexionConBBDD con = ConexionConBBDD.getConexionConBBDD();
+							con.añadirDatosLoguin(textField.getText(), comboBox.getSelectedIndex()+1 );
+								
 						}
-				
 				}
 			});
 		
@@ -126,7 +135,7 @@ public class LoginSudoku extends JFrame {
 	private JComboBox getComboBox() {
 		if (comboBox == null) {
 			comboBox = new JComboBox();
-			comboBox.setBounds(128, 45, 52, 20);
+			comboBox.setBounds(128, 45, 60, 20);
 			comboBox.addItem("1");
 			comboBox.addItem("2");
 			comboBox.addItem("3");
