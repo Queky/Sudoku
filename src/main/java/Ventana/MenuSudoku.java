@@ -1,13 +1,16 @@
 package Ventana;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Window.Type;
@@ -51,6 +54,7 @@ public class MenuSudoku extends JFrame {
 	private JButton getBtnNuevoJuego() {
 		if (btnNuevoJuego == null) {
 			btnNuevoJuego = new JButton("NuevoJuego");
+			btnNuevoJuego.setBackground(Color.LIGHT_GRAY);
 			btnNuevoJuego.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					LoginSudoku l1 = LoginSudoku.getLoguinSudoku();
@@ -67,6 +71,7 @@ public class MenuSudoku extends JFrame {
 	private JButton getBtnSocre() {
 		if (btnSocre == null) {
 			btnSocre = new JButton("Score");
+			btnSocre.setBackground(Color.LIGHT_GRAY);
 			btnSocre.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 				}
