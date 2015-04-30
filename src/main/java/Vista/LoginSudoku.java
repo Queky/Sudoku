@@ -1,4 +1,4 @@
-package Ventana;
+package Vista;
 
 import java.sql.*;
 import java.awt.BorderLayout;
