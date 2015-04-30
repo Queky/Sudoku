@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import codigo.ConexionConBBDD;
+import Modelo.ConexionConBBDD;
 
 import java.awt.event.ActionListener;
 
