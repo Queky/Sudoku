@@ -37,7 +37,7 @@ public class ConexionConBBDD {
 			e.printStackTrace();
 		}
 	}
-	public void añadirDatosLoguin(String nombreJugador, int nivelDificultad){
+	public void anyadirDatosLoguin(String nombreJugador, int nivelDificultad){
 		crearConexion();
 		Statement st;
 		try {

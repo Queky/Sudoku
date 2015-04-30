@@ -13,9 +13,7 @@ import Vista.CargarSudoku;
 
 public class RellenarSudoku {
 
-	public static void main(String[] args) throws IOException {
-		loadDoneSudoku("s001", "inaki");
-	}
+	
 
 	@SuppressWarnings("resource")
 	public static void loadDoneSudoku(String sudokuName, String sudokuLevel)

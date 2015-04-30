@@ -16,8 +16,10 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import Modelo.ConexionConBBDD;
+import Modelo.RellenarSudoku;
 
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 
 public class LoginSudoku extends JFrame {
@@ -122,7 +124,16 @@ public class LoginSudoku extends JFrame {
 				public void actionPerformed(ActionEvent e) {
 						if(!textField.getText().equals("")){
 							ConexionConBBDD con = ConexionConBBDD.getConexionConBBDD();
-							con.añadirDatosLoguin(textField.getText(), comboBox.getSelectedIndex()+1 );
+							con.anyadirDatosLoguin(textField.getText(), comboBox.getSelectedIndex()+1 );
+							RellenarSudoku r1 = new RellenarSudoku();
+							try {
+								r1.loadDoneSudoku("s001", Integer.toString(comboBox.getSelectedIndex()));
+							} catch (IOException e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+							}
+							setVisible(false);
+							dispose();
 								
 						}
 				}
