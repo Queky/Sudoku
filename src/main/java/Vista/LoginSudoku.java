@@ -2,11 +2,14 @@ package Vista;
 
 import java.sql.*;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
+import java.awt.Graphics;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -20,9 +23,11 @@ import Modelo.RellenarSudoku;
 
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.awt.Window.Type;
 
 
 public class LoginSudoku extends JFrame {
+	
 	
 	private static LoginSudoku mLoginSudoku = new LoginSudoku();
 	private JPanel contentPane;
@@ -98,14 +103,14 @@ public class LoginSudoku extends JFrame {
 	private JLabel getLblNombre() {
 		if (lblNombre == null) {
 			lblNombre = new JLabel("Nombre:");
-			lblNombre.setBounds(62, 11, 58, 24);
+			lblNombre.setBounds(72, 11, 108, 25);
 		}
 		return lblNombre;
 	}
 	private JLabel getLblNivelDeDificultad() {
 		if (lblNivelDeDificultad == null) {
 			lblNivelDeDificultad = new JLabel("Nivel de dificultad:");
-			lblNivelDeDificultad.setBounds(10, 43, 128, 24);
+			lblNivelDeDificultad.setBounds(18, 43, 108, 25);
 		}
 		return lblNivelDeDificultad;
 	}
@@ -139,7 +144,7 @@ public class LoginSudoku extends JFrame {
 				}
 			});
 		
-			btnOk.setBounds(120, 80, 60, 25);
+			btnOk.setBounds(115, 79, 60, 25);
 		}
 		return btnOk;
 	}
@@ -153,4 +158,5 @@ public class LoginSudoku extends JFrame {
 		}
 		return comboBox;
 	}
+	
 }
