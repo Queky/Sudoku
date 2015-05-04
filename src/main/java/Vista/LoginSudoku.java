@@ -122,7 +122,7 @@ public class LoginSudoku extends JFrame {
 				public void actionPerformed(ActionEvent e) {
 						if(!textField.getText().equals("")){
 							ConexionConBBDD con = ConexionConBBDD.getConexionConBBDD();
-							con.añadirDatosLoguin(textField.getText(), comboBox.getSelectedIndex()+1 );
+							con.anyadirDatosLoguin(textField.getText(), comboBox.getSelectedIndex()+1 );
 								
 						}
 				}

@@ -1,5 +1,6 @@
 package Modelo;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,9 +12,11 @@ public class CorregirSudoku {
 
 	private List<Integer> columnasVertMal;
 	private List<Integer> filasHorMal;
-	private boolean repetido;
+	private int[][] sudokuCorregido;
+	private boolean estaEnSudoku;
 	private JFormattedTextField jT;
 	private JFormattedTextField num;
+	private RellenarSudoku rS;
 
 	public CorregirSudoku() {
 		// TODO Auto-generated constructor stub
@@ -84,27 +87,35 @@ public class CorregirSudoku {
 
 	public void correccionCuadricula(JPanel cuadricula) {
 
-		repetido = false;
+		estaEnSudoku = false;
 		jT = new JFormattedTextField();
 		num = null;
 
-		for (int i = 0; i < cuadricula.getComponents().length && !repetido; i++) {
+		for (int i = 0; i < cuadricula.getComponents().length && !estaEnSudoku; i++) {
 			jT = (JFormattedTextField) cuadricula.getComponent(i);
 			if (!jT.getText().isEmpty())
 				num = jT;
-			for (int j = i + 1; j < cuadricula.getComponents().length && !repetido; j++) {
+			for (int j = i + 1; j < cuadricula.getComponents().length && !estaEnSudoku; j++) {
 				jT = (JFormattedTextField) cuadricula.getComponent(j);
 				if (!jT.getText().equals(" ")) {
 					if (num.getText().equals(jT.getText())) {
-						repetido = true;
+						estaEnSudoku = true;
 					}
 				}
 			}
 		}
 	}
+	
+	public void corregirCasilla(JFormattedTextField casillaSudo, int x, int y) {
+		sudokuCorregido=RellenarSudoku.getListaCorrecciones();
+		estaEnSudoku=false;
+		if(Integer.parseInt(casillaSudo.getText())==sudokuCorregido[x][y]){
+			estaEnSudoku=true;
+		}
+	}
 
 	public boolean isRepetido() {
-		return repetido;
+		return estaEnSudoku;
 	}
 
 	public List<Integer> getColumnasVertMal() {
