@@ -1,8 +1,6 @@
 package Vista;
 
-import java.sql.*;
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Graphics;
@@ -23,7 +21,9 @@ import Modelo.RellenarSudoku;
 
 import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.awt.Window.Type;
+import java.awt.Color;
+import java.awt.Font;
+
 
 
 public class LoginSudoku extends JFrame {
@@ -76,6 +76,15 @@ public class LoginSudoku extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 		contentPane.add(getPanel(), BorderLayout.CENTER);
+		PanelImagen p = new PanelImagen();
+		p.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(p);
+		p.setLayout(null);
+		p.add(btnOk);
+		p.add(lblNivelDeDificultad);
+		p.add(lblNombre);
+		p.add(comboBox);
+		p.add(textField);
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		Dimension windowSize = this.getSize();
 		if (windowSize.height>screenSize.height) {
@@ -103,6 +112,9 @@ public class LoginSudoku extends JFrame {
 	private JLabel getLblNombre() {
 		if (lblNombre == null) {
 			lblNombre = new JLabel("Nombre:");
+			lblNombre.setForeground(Color.BLACK);
+			lblNombre.setFont(new Font("Tahoma", Font.PLAIN, 12));
+			lblNombre.setBackground(Color.BLACK);
 			lblNombre.setBounds(72, 11, 108, 25);
 		}
 		return lblNombre;
@@ -110,6 +122,9 @@ public class LoginSudoku extends JFrame {
 	private JLabel getLblNivelDeDificultad() {
 		if (lblNivelDeDificultad == null) {
 			lblNivelDeDificultad = new JLabel("Nivel de dificultad:");
+			lblNivelDeDificultad.setForeground(Color.BLACK);
+			lblNivelDeDificultad.setFont(new Font("Tahoma", Font.PLAIN, 12));
+			lblNivelDeDificultad.setBackground(Color.BLACK);
 			lblNivelDeDificultad.setBounds(18, 43, 108, 25);
 		}
 		return lblNivelDeDificultad;
@@ -144,7 +159,7 @@ public class LoginSudoku extends JFrame {
 				}
 			});
 		
-			btnOk.setBounds(115, 79, 60, 25);
+			btnOk.setBounds(115, 79, 75, 25);
 		}
 		return btnOk;
 	}
@@ -157,6 +172,22 @@ public class LoginSudoku extends JFrame {
 			comboBox.addItem("3");
 		}
 		return comboBox;
+	}
+	class PanelImagen extends javax.swing.JPanel {
+		public PanelImagen() {
+			this.setSize(400, 280);
+		}
+
+		@Override
+		public void paintComponent(Graphics g) {
+			Dimension tamanio = getSize();
+			ImageIcon imagenFondo = new ImageIcon(getClass().getResource(
+					"/Imagenes/FondoLoguin2.jpg"));
+			g.drawImage(imagenFondo.getImage(), 0, 0, tamanio.width,
+					tamanio.height, null);
+			setOpaque(false);
+			super.paintComponent(g);
+		}
 	}
 	
 }
