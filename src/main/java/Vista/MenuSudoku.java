@@ -2,7 +2,9 @@ package Vista;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.EventQueue;
+import java.awt.Toolkit;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -16,6 +18,7 @@ import java.awt.event.ActionEvent;
 import java.awt.Window.Type;
 
 public class MenuSudoku extends JFrame {
+	private static MenuSudoku mMenuSudoku;
 	private JButton btnNuevoJuego;
 	private JButton btnSocre;
 	private JLabel lblNewLabel;
@@ -33,8 +36,14 @@ public class MenuSudoku extends JFrame {
 		});
 	}
 
-	public MenuSudoku() {
+	private MenuSudoku() {
 		initialize();
+	}
+	public static MenuSudoku getMenuSudoku(){
+		if(mMenuSudoku == null){
+			mMenuSudoku= new MenuSudoku(); 
+		}
+		return mMenuSudoku;
 	}
 
 	private void initialize() {
@@ -49,12 +58,23 @@ public class MenuSudoku extends JFrame {
 		p.add(getBtnNuevoJuego());
 		p.add(getBtnSocre());
 		p.add(getLblNewLabel());
+
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		Dimension windowSize = this.getSize();
+		if (windowSize.height>screenSize.height) {
+		windowSize.height= screenSize.height;
+		}
+		if (windowSize.width>screenSize.width){
+		windowSize.width= screenSize.width;
+		}
+		setLocation((screenSize.width-windowSize.width)/2,
+		(screenSize.height-windowSize.height)/2);
 	}
+	
 
 	private JButton getBtnNuevoJuego() {
 		if (btnNuevoJuego == null) {
 			btnNuevoJuego = new JButton("NuevoJuego");
-			btnNuevoJuego.setBackground(Color.LIGHT_GRAY);
 			btnNuevoJuego.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					LoginSudoku l1 = LoginSudoku.getLoguinSudoku();
@@ -71,12 +91,11 @@ public class MenuSudoku extends JFrame {
 	private JButton getBtnSocre() {
 		if (btnSocre == null) {
 			btnSocre = new JButton("Score");
-			btnSocre.setBackground(Color.LIGHT_GRAY);
 			btnSocre.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 				}
 			});
-			btnSocre.setBounds(165, 224, 120, 30);
+			btnSocre.setBounds(165, 215, 120, 30);
 		}
 		return btnSocre;
 	}

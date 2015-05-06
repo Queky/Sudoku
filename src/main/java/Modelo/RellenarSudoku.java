@@ -16,6 +16,7 @@ import Vista.CargarSudoku;
 
 public class RellenarSudoku {
 
+<<<<<<< HEAD
 	private static CargarSudoku cSu;
 	private static String directory = Paths.get(".").toAbsolutePath()
 			.normalize().toString();
@@ -29,6 +30,9 @@ public class RellenarSudoku {
 	public static void main(String[] args) {
 		cargarSudokuHecho("2", false);
 	}
+=======
+	
+>>>>>>> origin/Union-de-Menus
 
 	public static void cargarSudokuHecho(String pSudoku, boolean esCodigo) {
 
