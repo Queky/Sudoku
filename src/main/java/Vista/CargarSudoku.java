@@ -394,6 +394,7 @@ public class CargarSudoku extends JFrame {
 				subrayarCuadricula(cSCor.isRepetido(), cuadricula8);
 				cSCor.correccionCuadricula(cuadricula9);
 				subrayarCuadricula(cSCor.isRepetido(), cuadricula9);
+				subrayarCasilla(cSCor);
 			}
 		});
 		return btnCorregir;
@@ -447,6 +448,19 @@ public class CargarSudoku extends JFrame {
 			for(int i=0; i<9; i++){
 				if(!jP.getComponent(i).getBackground().equals(Color.LIGHT_GRAY))
 					jP.getComponent(i).setBackground(Color.RED);
+			}
+		}
+	}
+	
+	public void subrayarCasilla(CorregirSudoku pCSCor) {
+		for(int i=0;i<9;i++){
+			for(int j=0;j<9;j++){
+				if(!listaSudoku[i][j].getText().equals(" ") && listaSudoku[i][j].isEditable()){
+					pCSCor.corregirCasilla(listaSudoku[i][j], i, j);
+					if(!pCSCor.isRepetido()){
+						listaSudoku[i][j].setBackground(Color.RED);
+					}
+				}
 			}
 		}
 	}
