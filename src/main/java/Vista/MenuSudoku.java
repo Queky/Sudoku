@@ -18,6 +18,7 @@ import java.awt.event.ActionEvent;
 import java.awt.Window.Type;
 
 public class MenuSudoku extends JFrame {
+	private static MenuSudoku mMenuSudoku;
 	private JButton btnNuevoJuego;
 	private JButton btnSocre;
 	private JLabel lblNewLabel;
@@ -35,8 +36,14 @@ public class MenuSudoku extends JFrame {
 		});
 	}
 
-	public MenuSudoku() {
+	private MenuSudoku() {
 		initialize();
+	}
+	public static MenuSudoku getMenuSudoku(){
+		if(mMenuSudoku == null){
+			mMenuSudoku= new MenuSudoku(); 
+		}
+		return mMenuSudoku;
 	}
 
 	private void initialize() {

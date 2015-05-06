@@ -29,7 +29,7 @@ import java.awt.Font;
 public class LoginSudoku extends JFrame {
 	
 	
-	private static LoginSudoku mLoginSudoku = new LoginSudoku();
+	private static LoginSudoku mLoginSudoku;
 	private JPanel contentPane;
 	private JPanel panel;
 	private JLabel lblNombre;
