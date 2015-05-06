@@ -145,19 +145,10 @@ public class LoginSudoku extends JFrame {
 						if(!textField.getText().equals("")){
 							ConexionConBBDD con = ConexionConBBDD.getConexionConBBDD();
 							con.anyadirDatosLoguin(textField.getText(), comboBox.getSelectedIndex()+1 );
-<<<<<<< HEAD
-=======
-							RellenarSudoku r1 = new RellenarSudoku();
-							try {
-								r1.loadDoneSudoku("s001", Integer.toString(comboBox.getSelectedIndex()));
-							} catch (IOException e1) {
-								// TODO Auto-generated catch block
-								e1.printStackTrace();
-							}
+							RellenarSudoku.cargarSudokuHecho(Integer.toString(comboBox.getSelectedIndex()), false);
 							setVisible(false);
 							dispose();
->>>>>>> origin/Union-de-Menus
-								
+	
 						}
 				}
 			});
