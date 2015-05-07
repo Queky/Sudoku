@@ -67,6 +67,10 @@ public class Score extends JFrame {
 			btnPuntacionesMaximas = new JButton("Puntaciones Maximas");
 			btnPuntacionesMaximas.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
+					ScoreMaximo sM1 = ScoreMaximo.getScoreMaximo();
+					sM1.setVisible(true);
+					setVisible(false);
+					dispose();
 				}
 			});
 			btnPuntacionesMaximas.setBounds(70, 27, 160, 23);
@@ -76,6 +80,14 @@ public class Score extends JFrame {
 	private JButton getBtnTuPuntuacion() {
 		if (btnTuPuntuacion == null) {
 			btnTuPuntuacion = new JButton("Tu Puntuación");
+			btnTuPuntuacion.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					BusacadorDePuntuacion bS1 = BusacadorDePuntuacion.getBusacadorDePuntuacion();
+					bS1.setVisible(true);
+					setVisible(false);
+					dispose();
+				}
+			});
 			btnTuPuntuacion.setBounds(70, 61, 160, 23);
 		}
 		return btnTuPuntuacion;

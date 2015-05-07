@@ -1,7 +1,9 @@
 package Vista;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.EventQueue;
+import java.awt.Toolkit;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -14,7 +16,7 @@ import javax.swing.JProgressBar;
 import javax.swing.JTextArea;
 
 public class ScoreMaximo extends JFrame {
-
+	private static ScoreMaximo mScoreMaximo;
 	private JPanel contentPane;
 	private JLabel lblPuntacionesMaxomas;
 	private JTextArea textArea;
@@ -38,8 +40,14 @@ public class ScoreMaximo extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public ScoreMaximo() {
+	private ScoreMaximo() {
 		initialize();
+	}
+	public static ScoreMaximo getScoreMaximo(){
+		if(mScoreMaximo == null){
+			mScoreMaximo= new ScoreMaximo(); 
+		}
+		return mScoreMaximo;
 	}
 	private void initialize() {
 		setResizable(false);
@@ -51,6 +59,16 @@ public class ScoreMaximo extends JFrame {
 		contentPane.setLayout(null);
 		contentPane.add(getLblPuntacionesMaxomas());
 		contentPane.add(getTextArea());
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		Dimension windowSize = this.getSize();
+		if (windowSize.height>screenSize.height) {
+		windowSize.height= screenSize.height;
+		}
+		if (windowSize.width>screenSize.width){
+		windowSize.width= screenSize.width;
+		}
+		setLocation((screenSize.width-windowSize.width)/2,
+		(screenSize.height-windowSize.height)/2);
 	}
 	private JLabel getLblPuntacionesMaxomas() {
 		if (lblPuntacionesMaxomas == null) {

@@ -1,7 +1,9 @@
 package Vista;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.EventQueue;
+import java.awt.Toolkit;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -9,10 +11,11 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+
 import java.awt.Cursor;
 
 public class BusacadorDePuntuacion extends JFrame {
-
+	private static BusacadorDePuntuacion mBuscadorDePuntuacion;
 	private JPanel contentPane;
 	private JLabel lblIntroduceTuNombre;
 	private JTextField textField;
@@ -37,8 +40,14 @@ public class BusacadorDePuntuacion extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public BusacadorDePuntuacion() {
+	private BusacadorDePuntuacion() {
 		initialize();
+	}
+	public static BusacadorDePuntuacion getBusacadorDePuntuacion(){
+		if(mBuscadorDePuntuacion == null){
+			mBuscadorDePuntuacion= new BusacadorDePuntuacion(); 
+		}
+		return mBuscadorDePuntuacion;
 	}
 	private void initialize() {
 		setResizable(false);
@@ -51,6 +60,16 @@ public class BusacadorDePuntuacion extends JFrame {
 		contentPane.add(getLblIntroduceTuNombre());
 		contentPane.add(getTextField());
 		contentPane.add(getBtnBuscar());
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		Dimension windowSize = this.getSize();
+		if (windowSize.height>screenSize.height) {
+		windowSize.height= screenSize.height;
+		}
+		if (windowSize.width>screenSize.width){
+		windowSize.width= screenSize.width;
+		}
+		setLocation((screenSize.width-windowSize.width)/2,
+		(screenSize.height-windowSize.height)/2);
 	}
 
 	private JLabel getLblIntroduceTuNombre() {
