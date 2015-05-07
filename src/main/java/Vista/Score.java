@@ -7,11 +7,17 @@ import java.awt.Toolkit;
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
 import javax.swing.JLabel;
+import javax.swing.DropMode;
+import javax.swing.UIManager;
+import javax.swing.JToggleButton;
+import javax.swing.JScrollBar;
+import javax.swing.JButton;
+import javax.swing.JSeparator;
 
 public class Score extends JFrame {
 	private static Score mScore ;
-	private JTextArea textArea;
-	private JLabel lblPuntacionesMaximas;
+	private JButton btnPuntacionesMaximas;
+	private JButton btnTuPuntuacion;
 
 	/**
 	 * Launch the application.
@@ -45,11 +51,9 @@ public class Score extends JFrame {
 	private void initialize() {
 		setTitle("Score");
 		setResizable(false);
-		setBounds(100, 100, 400, 375);
+		setBounds(100, 100, 300, 150);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setLayout(null);
-		getContentPane().add(getTextArea());
-		getContentPane().add(getLblPuntacionesMaximas());
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		Dimension windowSize = this.getSize();
 		if (windowSize.height>screenSize.height) {
@@ -60,19 +64,21 @@ public class Score extends JFrame {
 		}
 		setLocation((screenSize.width-windowSize.width)/2,
 		(screenSize.height-windowSize.height)/2);
+		getContentPane().add(getBtnPuntacionesMaximas());
+		getContentPane().add(getBtnTuPuntuacion());
 	}
-	private JTextArea getTextArea() {
-		if (textArea == null) {
-			textArea = new JTextArea();
-			textArea.setBounds(50, 42, 290, 294);
+	private JButton getBtnPuntacionesMaximas() {
+		if (btnPuntacionesMaximas == null) {
+			btnPuntacionesMaximas = new JButton("Puntaciones Maximas");
+			btnPuntacionesMaximas.setBounds(70, 27, 160, 23);
 		}
-		return textArea;
+		return btnPuntacionesMaximas;
 	}
-	private JLabel getLblPuntacionesMaximas() {
-		if (lblPuntacionesMaximas == null) {
-			lblPuntacionesMaximas = new JLabel("Puntaciones Maximas");
-			lblPuntacionesMaximas.setBounds(400/2-135/2,12, 135, 20);
+	private JButton getBtnTuPuntuacion() {
+		if (btnTuPuntuacion == null) {
+			btnTuPuntuacion = new JButton("Tu Puntuación");
+			btnTuPuntuacion.setBounds(70, 61, 160, 23);
 		}
-		return lblPuntacionesMaximas;
+		return btnTuPuntuacion;
 	}
 }
