@@ -5,14 +5,9 @@ import java.awt.EventQueue;
 import java.awt.Toolkit;
 
 import javax.swing.JFrame;
-import javax.swing.JTextArea;
-import javax.swing.JLabel;
-import javax.swing.DropMode;
-import javax.swing.UIManager;
-import javax.swing.JToggleButton;
-import javax.swing.JScrollBar;
 import javax.swing.JButton;
-import javax.swing.JSeparator;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Score extends JFrame {
 	private static Score mScore ;
@@ -70,6 +65,10 @@ public class Score extends JFrame {
 	private JButton getBtnPuntacionesMaximas() {
 		if (btnPuntacionesMaximas == null) {
 			btnPuntacionesMaximas = new JButton("Puntaciones Maximas");
+			btnPuntacionesMaximas.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+				}
+			});
 			btnPuntacionesMaximas.setBounds(70, 27, 160, 23);
 		}
 		return btnPuntacionesMaximas;

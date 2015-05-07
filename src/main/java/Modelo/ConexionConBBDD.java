@@ -49,6 +49,19 @@ public class ConexionConBBDD {
 		}
 		cerrarConexion();
 		
+	}
+	public void anyadirCodigoSudokuUsado(String nombreJugador , String codigoSudoku){
+		crearConexion();
+		Statement st;
+		try {
+			st = con.createStatement();
+			st.executeUpdate("INSERT INTO `sudoku`.`infoJugador` (`nombreJugador`,`cod_sudoku`) VALUES ('"+nombreJugador+"','"+codigoSudoku+"');");
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		cerrarConexion();
+		
 		
 	}
 }
