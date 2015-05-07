@@ -47,11 +47,13 @@ public class RellenarSudoku {
 					if (esCodigo) {
 						jL.setText(linea);
 						cSu.setCodigoSudoku(jL);
+						obtenerCodigoSudoku(jL);
 						linea = read.readLine();
 						jL.setText(linea);
 						cSu.setNivelDificultad(jL);
 					} else {
 						cSu.setCodigoSudoku(jL);
+						obtenerCodigoSudoku(jL);
 						jL.setText(linea);
 						cSu.setNivelDificultad(jL);
 					}
@@ -107,6 +109,10 @@ public class RellenarSudoku {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	public static JLabel obtenerCodigoSudoku(JLabel pL) {
+		return pL;
 	}
 
 	public static int[][] getListaCorrecciones() {
