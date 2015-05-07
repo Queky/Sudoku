@@ -27,7 +27,7 @@ public class RellenarSudoku {
 	private static String linea;
 
 	public static void main(String[] args) {
-		cargarSudokuHecho("2", false);
+		cargarSudokuHecho("s001", true);
 	}
 
 	public static void cargarSudokuHecho(String pSudoku, boolean esCodigo) {
