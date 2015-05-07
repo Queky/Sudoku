@@ -4,8 +4,11 @@ import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.InputMethodEvent;
+import java.awt.event.InputMethodListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.util.List;
 
@@ -17,7 +20,10 @@ import javax.swing.JFormattedTextField;
 import javax.swing.SwingConstants;
 import javax.swing.JLabel;
 import javax.swing.JButton;
+
 import Modelo.CorregirSudoku;
+
+import javax.swing.Timer;
 
 public class CargarSudoku extends JFrame {
 
@@ -44,6 +50,8 @@ public class CargarSudoku extends JFrame {
 	private JButton btnCorregir;
 	private MaskFormatter mascara;
 	private CorregirSudoku cSCor;
+	private Timer tiempo;
+	private JLabel timer;
 
 	/**
 	 * Launch the application.
@@ -81,7 +89,7 @@ public class CargarSudoku extends JFrame {
 		try {
 			setTitle("Sudoku");
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			setBounds(100, 100, 600, 600);
+			setBounds(100, 100, 600, 625);
 			contentPane = new JPanel();
 			contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 			setContentPane(contentPane);
@@ -104,25 +112,26 @@ public class CargarSudoku extends JFrame {
 							.setHorizontalAlignment(JFormattedTextField.CENTER);
 				}
 			}
-			contentPane.add(getCuadricula1());
-			contentPane.add(getCuadricula2());
-			contentPane.add(getCuadricula3());
-			contentPane.add(getCuadricula4());
-			contentPane.add(getCuadricula5());
-			contentPane.add(getCuadricula6());
-			contentPane.add(getCuadricula7());
-			contentPane.add(getCuadricula8());
-			contentPane.add(getCuadricula9());
-
-			contentPane.add(getSudokuId());
-			contentPane.add(getDLevel());
-			contentPane.add(getNivelDificultad());
-			contentPane.add(getCodigoSudoku());
-			contentPane.add(getBtnNewButton());
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		contentPane.add(getCuadricula1());
+		contentPane.add(getCuadricula2());
+		contentPane.add(getCuadricula3());
+		contentPane.add(getCuadricula4());
+		contentPane.add(getCuadricula5());
+		contentPane.add(getCuadricula6());
+		contentPane.add(getCuadricula7());
+		contentPane.add(getCuadricula8());
+		contentPane.add(getCuadricula9());
+
+		contentPane.add(getSudokuId());
+		contentPane.add(getDLevel());
+		contentPane.add(getNivelDificultad());
+		contentPane.add(getCodigoSudoku());
+		contentPane.add(getBtnNewButton());
+		contentPane.add(getLabel());
 	}
 
 	private JPanel getCuadricula1() {
@@ -300,19 +309,12 @@ public class CargarSudoku extends JFrame {
 		return cuadricula9;
 	}
 
-	public JFormattedTextField[][] getListaSudoku(
-			JFormattedTextField[][] pListSud) {
-		for (int i = 0; i < 9; i++) {
-			for (int j = 0; j < 9; j++) {
-				pListSud[i][j].setText(listaSudoku[i][j].getText());
-			}
-		}
-		return pListSud;
+	public JFormattedTextField[][] getListaSudoku() {
+		return listaSudoku;
 	}
 
 	public void setCasillaSudoku(JFormattedTextField pCasillaSudoku, int x,
 			int y, boolean editable) {
-
 		listaSudoku[x][y].setText(pCasillaSudoku.getText());
 		listaSudoku[x][y].setEditable(editable);
 		listaSudoku[x][y].setBackground(Color.LIGHT_GRAY);
@@ -463,5 +465,12 @@ public class CargarSudoku extends JFrame {
 				}
 			}
 		}
+	}
+	private JLabel getLabel() {
+		if (timer == null) {
+			timer = new JLabel("");
+			timer.setBounds(270, 567, 61, 16);
+		}
+		return timer;
 	}
 }
