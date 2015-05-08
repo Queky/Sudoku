@@ -4,11 +4,8 @@ import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.InputMethodEvent;
-import java.awt.event.InputMethodListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.util.List;
 
@@ -17,13 +14,15 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.text.MaskFormatter;
 import javax.swing.JFormattedTextField;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 
 import Modelo.CorregirSudoku;
 
-import javax.swing.Timer;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class CargarSudoku extends JFrame {
 
@@ -50,8 +49,12 @@ public class CargarSudoku extends JFrame {
 	private JButton btnCorregir;
 	private MaskFormatter mascara;
 	private CorregirSudoku cSCor;
-	private Timer tiempo;
-	private JLabel timer;
+	private Timer timer;
+	private JLabel casillaTiempo;
+	private TimerTask task;
+	private int min;
+	private int seg;
+	private int contadorCorrecciones;
 
 	/**
 	 * Launch the application.
@@ -372,6 +375,7 @@ public class CargarSudoku extends JFrame {
 		btnCorregir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent pE) {
 				// TODO Auto-generated method stub
+				contadorCorrecciones++;
 				cSCor = new CorregirSudoku();
 				cSCor.correccionVertical(listaSudoku);
 				cSCor.correccionHorizontal(listaSudoku);
@@ -397,6 +401,9 @@ public class CargarSudoku extends JFrame {
 				cSCor.correccionCuadricula(cuadricula9);
 				subrayarCuadricula(cSCor.isRepetido(), cuadricula9);
 				subrayarCasilla(cSCor);
+				if(CorregirSudoku.corregirSudokuEntero(listaSudoku)){
+					JOptionPane.showMessageDialog(CargarSudoku.this, String.format("Enhorabuena!! Has acabado el Sudoku.", pE.getActionCommand()));
+				}
 			}
 		});
 		return btnCorregir;
@@ -467,10 +474,33 @@ public class CargarSudoku extends JFrame {
 		}
 	}
 	private JLabel getLabel() {
-		if (timer == null) {
-			timer = new JLabel("");
-			timer.setBounds(270, 567, 61, 16);
+		if (casillaTiempo == null) {
+			casillaTiempo = new JLabel("Tiempo");
+			casillaTiempo.setBounds(265, 565, 120, 15);
 		}
-		return timer;
+		timer = new Timer();
+		task = new TimerTask() {
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				actualizarTiempo();
+			}
+		};
+		timer.scheduleAtFixedRate(task, 0, 1000);
+		return casillaTiempo;
+	}
+
+	protected void actualizarTiempo() {
+		// TODO Auto-generated method stub
+		seg++;
+		casillaTiempo.setText("Tiempo: "+Integer.toString(min)+":"+Integer.toString(seg));
+		if(seg==59){
+			min++;
+			seg=-1;
+		}
+	}
+	
+	public int obtenerTiempo() {
+		return min*60+seg;
 	}
 }
