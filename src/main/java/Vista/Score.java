@@ -13,6 +13,7 @@ public class Score extends JFrame {
 	private static Score mScore ;
 	private JButton btnPuntacionesMaximas;
 	private JButton btnTuPuntuacion;
+	private JButton btnNewButton;
 
 	/**
 	 * Launch the application.
@@ -61,6 +62,7 @@ public class Score extends JFrame {
 		(screenSize.height-windowSize.height)/2);
 		getContentPane().add(getBtnPuntacionesMaximas());
 		getContentPane().add(getBtnTuPuntuacion());
+		getContentPane().add(getBtnNewButton());
 	}
 	private JButton getBtnPuntacionesMaximas() {
 		if (btnPuntacionesMaximas == null) {
@@ -73,7 +75,7 @@ public class Score extends JFrame {
 					dispose();
 				}
 			});
-			btnPuntacionesMaximas.setBounds(70, 27, 160, 23);
+			btnPuntacionesMaximas.setBounds(70, 11, 160, 23);
 		}
 		return btnPuntacionesMaximas;
 	}
@@ -88,8 +90,23 @@ public class Score extends JFrame {
 					dispose();
 				}
 			});
-			btnTuPuntuacion.setBounds(70, 61, 160, 23);
+			btnTuPuntuacion.setBounds(70, 45, 160, 23);
 		}
 		return btnTuPuntuacion;
+	}
+	private JButton getBtnNewButton() {
+		if (btnNewButton == null) {
+			btnNewButton = new JButton("Menu Principal");
+			btnNewButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					MenuSudoku m1 = MenuSudoku.getMenuSudoku();
+					m1.setVisible(true);
+					setVisible(false);
+					dispose();
+				}
+			});
+			btnNewButton.setBounds(70, 79, 160, 23);
+		}
+		return btnNewButton;
 	}
 }

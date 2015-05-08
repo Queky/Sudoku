@@ -1,9 +1,12 @@
 package Modelo;
 
+import java.lang.reflect.Array;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 
 public class ConexionConBBDD {
 	private static ConexionConBBDD mConexionConBBDD;
@@ -60,8 +63,52 @@ public class ConexionConBBDD {
 			
 			e.printStackTrace();
 		}
-		cerrarConexion();
-		
+		cerrarConexion();	
+	}
+	public String buscarPuntacionMasAltaDeJugador(String nombreJugador){
+		crearConexion();
+		Statement st;
+		String resultado = null;
+		try {
+			st = con.createStatement();
+			 ResultSet rs = st.executeQuery("select max(puntuacion) as puntuacion from infojugador where nombreJugador='"+nombreJugador+"';");
+			 rs.next();
+			 resultado = rs.getString("puntuacion");
+			 cerrarConexion();
+			 return resultado;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;		
+		}
+	}
+	public void añadirPuntuacionJuego(String nombreJugador , String codigoSudoku, int puntuacion){
+		crearConexion();
+		Statement st;
+		try {
+			st = con.createStatement();
+			st.executeUpdate("INSERT INTO `sudoku`.`infoJuego` (`nombreJugador`,`cod_sudoku`,`puntuacion` ) VALUES ('"+nombreJugador+"','"+codigoSudoku+"','"+puntuacion+"');");
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		cerrarConexion();	
+	}
+	public String[] buscarPuntuacionesMaximas(){
+		crearConexion();
+		Statement st;
+		String[] resultado = new String[10];
+		try {
+			st = con.createStatement();
+			 ResultSet rs = st.executeQuery("select nombreJugador, puntuacion from infojugador group by  puntuacion desc;");
+			 while(rs.next()){
+				 
+			 }
+		} catch (SQLException e) {
+			e.printStackTrace();
+					
+		}
+		return resultado;
+	}
 		
 	}
-}
+

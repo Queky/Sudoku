@@ -9,10 +9,15 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
+import Modelo.ConexionConBBDD;
+
 import java.awt.Cursor;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class BusacadorDePuntuacion extends JFrame {
 	private static BusacadorDePuntuacion mBuscadorDePuntuacion;
@@ -20,6 +25,7 @@ public class BusacadorDePuntuacion extends JFrame {
 	private JLabel lblIntroduceTuNombre;
 	private JTextField textField;
 	private JButton btnBuscar;
+	private JButton button;
 
 	/**
 	 * Launch the application.
@@ -70,6 +76,7 @@ public class BusacadorDePuntuacion extends JFrame {
 		}
 		setLocation((screenSize.width-windowSize.width)/2,
 		(screenSize.height-windowSize.height)/2);
+		contentPane.add(getButton());
 	}
 
 	private JLabel getLblIntroduceTuNombre() {
@@ -91,8 +98,32 @@ public class BusacadorDePuntuacion extends JFrame {
 	private JButton getBtnBuscar() {
 		if (btnBuscar == null) {
 			btnBuscar = new JButton("Buscar");
-			btnBuscar.setBounds(100, 47, 89, 23);
+			btnBuscar.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent e) {
+							ConexionConBBDD c1 = ConexionConBBDD.getConexionConBBDD();
+							JOptionPane.showMessageDialog(BusacadorDePuntuacion.this,
+									String.format("Tu puntación maxima es de: "+c1.buscarPuntacionMasAltaDeJugador(textField.getText()), e.getActionCommand()));
+							
+						}
+					});
+				}
+			
+			btnBuscar.setBounds(40, 47, 90, 25);
+			return btnBuscar;
+	}
+	private JButton getButton() {
+		if (button == null) {
+			button = new JButton("< Atras");
+			button.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					Score s1 = Score.getScore();
+					s1.setVisible(true);
+					setVisible(false);
+					dispose();
+				}
+			});
+			button.setBounds(150, 47, 90, 25);
 		}
-		return btnBuscar;
+		return button;
 	}
 }
