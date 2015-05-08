@@ -1,6 +1,5 @@
 package Modelo;
 
-import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +11,7 @@ public class CorregirSudoku {
 
 	private List<Integer> columnasVertMal;
 	private List<Integer> filasHorMal;
-	private int[][] sudokuCorregido;
+	private static int[][] sudokuCorregido;
 	private boolean estaEnSudoku;
 	private JFormattedTextField jT;
 	private JFormattedTextField num;
@@ -111,6 +110,28 @@ public class CorregirSudoku {
 		estaEnSudoku=false;
 		if(Integer.parseInt(casillaSudo.getText())==sudokuCorregido[x][y]){
 			estaEnSudoku=true;
+		}
+	}
+	
+	
+	public static boolean corregirSudokuEntero(JFormattedTextField[][] sudokuUsuario) {
+		sudokuCorregido=RellenarSudoku.getListaCorrecciones();
+		int numCasillasBien=0;
+		for(int i=0; i<9; i++){
+			for(int j=0; j<9; j++){
+				if(sudokuUsuario[i][j].getText().equals(Integer.toString(sudokuCorregido[i][j])))
+						numCasillasBien++;
+				}
+		}
+		if(numCasillasBien==81){
+			System.out.println("correccion correcta");
+			System.out.println(numCasillasBien);
+			return true;
+		}
+		else{
+			System.out.println("correccion incorrecta");
+			System.out.println(numCasillasBien);
+			return false;
 		}
 	}
 
