@@ -19,6 +19,7 @@ import javax.swing.SwingConstants;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 
+import Modelo.CalcularPuntuacion;
 import Modelo.CorregirSudoku;
 
 import java.util.Timer;
@@ -52,9 +53,10 @@ public class CargarSudoku extends JFrame {
 	private Timer timer;
 	private JLabel casillaTiempo;
 	private TimerTask task;
-	private int min;
-	private int seg;
+	private static int min;
+	private static int seg;
 	private int contadorCorrecciones;
+	private static boolean pararCronometro=false;
 
 	/**
 	 * Launch the application.
@@ -75,15 +77,15 @@ public class CargarSudoku extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	
+
 	// Singleton
 	public static CargarSudoku getInstance() {
-		if(mCargarSudoku==null){
+		if (mCargarSudoku == null) {
 			mCargarSudoku = new CargarSudoku();
 		}
 		return mCargarSudoku;
 	}
-	
+
 	private CargarSudoku() {
 		initialize();
 	}
@@ -94,7 +96,9 @@ public class CargarSudoku extends JFrame {
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			setBounds(100, 100, 600, 625);
 			contentPane = new JPanel();
+			contentPane.setName("VentanaSudoku");
 			contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+			setResizable(false);
 			setContentPane(contentPane);
 			contentPane.setLayout(null);
 			listaSudoku = new JFormattedTextField[9][9];
@@ -379,7 +383,8 @@ public class CargarSudoku extends JFrame {
 				cSCor = new CorregirSudoku();
 				cSCor.correccionVertical(listaSudoku);
 				cSCor.correccionHorizontal(listaSudoku);
-				subrayarVertical(cSCor.getColumnasVertMal(), cSCor.getFilasHorMal());
+				subrayarVertical(cSCor.getColumnasVertMal(),
+						cSCor.getFilasHorMal());
 				subrayarHorizontal(cSCor.getFilasHorMal(),
 						cSCor.getColumnasVertMal());
 				cSCor.correccionCuadricula(cuadricula1);
@@ -401,22 +406,31 @@ public class CargarSudoku extends JFrame {
 				cSCor.correccionCuadricula(cuadricula9);
 				subrayarCuadricula(cSCor.isRepetido(), cuadricula9);
 				subrayarCasilla(cSCor);
-				if(CorregirSudoku.corregirSudokuEntero(listaSudoku)){
-					JOptionPane.showMessageDialog(CargarSudoku.this, String.format("Enhorabuena!! Has acabado el Sudoku.", pE.getActionCommand()));
+				if (CorregirSudoku.corregirSudokuEntero(listaSudoku)) {
+					JOptionPane.showMessageDialog(
+							CargarSudoku.this,
+							String.format(
+									"Enhorabuena!! Has acabado el Sudoku!!\nTu puntuacion es de:\t"
+									+CalcularPuntuacion.calcularPuntuacion(nivelDificultad, contadorCorrecciones),
+									pE.getActionCommand()));
+					setVisible(false);
 				}
 			}
 		});
 		return btnCorregir;
 	}
-	
-	public void subrayarVertical(List<Integer> pColumnasMal, List<Integer> pFilasMal) {
+
+	public void subrayarVertical(List<Integer> pColumnasMal,
+			List<Integer> pFilasMal) {
 		System.out.println(pColumnasMal);
 		if (!pColumnasMal.isEmpty() || !pFilasMal.isEmpty()) {
 			for (int i = 0; i < 9; i++) {
 				for (int j = 0; j < 9; j++) {
-					if (listaSudoku[j][i].isEditable() && pColumnasMal.contains(i)) {
+					if (listaSudoku[j][i].isEditable()
+							&& pColumnasMal.contains(i)) {
 						listaSudoku[j][i].setBackground(Color.RED);
-					} else if (listaSudoku[j][i].isEditable() && !pColumnasMal.contains(i))
+					} else if (listaSudoku[j][i].isEditable()
+							&& !pColumnasMal.contains(i))
 						listaSudoku[j][i].setBackground(Color.WHITE);
 				}
 			}
@@ -428,7 +442,8 @@ public class CargarSudoku extends JFrame {
 		// TODO Auto-generated method stub
 		for (int i = 0; i < 9; i++) {
 			for (int j = 0; j < 9; j++) {
-				if(listaSudoku[i][j].isEditable() && listaSudoku[i][j].getBackground().equals(Color.RED))
+				if (listaSudoku[i][j].isEditable()
+						&& listaSudoku[i][j].getBackground().equals(Color.RED))
 					listaSudoku[i][j].setBackground(Color.WHITE);
 			}
 		}
@@ -436,54 +451,62 @@ public class CargarSudoku extends JFrame {
 	}
 
 	public void subrayarHorizontal(List<Integer> pFilasMal,
-		List<Integer> pColumMal) {
+			List<Integer> pColumMal) {
 		System.out.println(pFilasMal);
 		if (!pFilasMal.isEmpty() || !pColumMal.isEmpty()) {
 			for (int i = 0; i < 9; i++) {
 				for (int j = 0; j < 9; j++) {
 					if (listaSudoku[i][j].isEditable() && pFilasMal.contains(i)) {
 						listaSudoku[i][j].setBackground(Color.RED);
-					} else if (listaSudoku[i][j].isEditable() && !pFilasMal.contains(j) && !listaSudoku[i][j].getBackground().equals(Color.RED))
+					} else if (listaSudoku[i][j].isEditable()
+							&& !pFilasMal.contains(j)
+							&& !listaSudoku[i][j].getBackground().equals(
+									Color.RED))
 						listaSudoku[i][j].setBackground(Color.WHITE);
 				}
 			}
-		}else
+		} else
 			ponerEnBlanco();
 	}
 
 	public void subrayarCuadricula(boolean pintar, JPanel jP) {
 		System.out.println(pintar);
-		if(pintar){
-			for(int i=0; i<9; i++){
-				if(!jP.getComponent(i).getBackground().equals(Color.LIGHT_GRAY))
+		if (pintar) {
+			for (int i = 0; i < 9; i++) {
+				if (!jP.getComponent(i).getBackground()
+						.equals(Color.LIGHT_GRAY))
 					jP.getComponent(i).setBackground(Color.RED);
 			}
 		}
 	}
-	
+
 	public void subrayarCasilla(CorregirSudoku pCSCor) {
-		for(int i=0;i<9;i++){
-			for(int j=0;j<9;j++){
-				if(!listaSudoku[i][j].getText().equals(" ") && listaSudoku[i][j].isEditable()){
+		for (int i = 0; i < 9; i++) {
+			for (int j = 0; j < 9; j++) {
+				if (!listaSudoku[i][j].getText().equals(" ")
+						&& listaSudoku[i][j].isEditable()) {
 					pCSCor.corregirCasilla(listaSudoku[i][j], i, j);
-					if(!pCSCor.isRepetido()){
+					if (!pCSCor.isRepetido()) {
 						listaSudoku[i][j].setBackground(Color.RED);
 					}
 				}
 			}
 		}
 	}
+
 	private JLabel getLabel() {
 		if (casillaTiempo == null) {
 			casillaTiempo = new JLabel("Tiempo");
-			casillaTiempo.setBounds(265, 565, 120, 15);
+			casillaTiempo.setBounds(260, 565, 120, 15);
 		}
 		timer = new Timer();
 		task = new TimerTask() {
 			@Override
 			public void run() {
 				// TODO Auto-generated method stub
-				actualizarTiempo();
+				if(!pararCronometro){
+					actualizarTiempo();
+				}
 			}
 		};
 		timer.scheduleAtFixedRate(task, 0, 1000);
@@ -493,14 +516,16 @@ public class CargarSudoku extends JFrame {
 	protected void actualizarTiempo() {
 		// TODO Auto-generated method stub
 		seg++;
-		casillaTiempo.setText("Tiempo: "+Integer.toString(min)+":"+Integer.toString(seg));
-		if(seg==59){
+		casillaTiempo.setText("Tiempo: " + Integer.toString(min) + ":"
+				+ Integer.toString(seg));
+		if (seg == 59) {
 			min++;
-			seg=-1;
+			seg = -1;
 		}
 	}
-	
-	public int obtenerTiempo() {
-		return min*60+seg;
+
+	public static int obtenerTiempo() {
+		pararCronometro=true;
+		return min * 60 + seg;
 	}
 }

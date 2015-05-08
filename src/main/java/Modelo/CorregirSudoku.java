@@ -119,14 +119,20 @@ public class CorregirSudoku {
 		int numCasillasBien=0;
 		for(int i=0; i<9; i++){
 			for(int j=0; j<9; j++){
-				if(sudokuUsuario[i][j].getText().equals(sudokuCorregido[i][j]))
+				if(sudokuUsuario[i][j].getText().equals(Integer.toString(sudokuCorregido[i][j])))
 						numCasillasBien++;
 				}
 		}
-		if(numCasillasBien==81)
+		if(numCasillasBien==81){
+			System.out.println("correccion correcta");
+			System.out.println(numCasillasBien);
 			return true;
-		else
+		}
+		else{
+			System.out.println("correccion incorrecta");
+			System.out.println(numCasillasBien);
 			return false;
+		}
 	}
 
 	public boolean isRepetido() {
