@@ -15,6 +15,9 @@ import javax.swing.JTree;
 import javax.swing.JProgressBar;
 import javax.swing.JTextArea;
 import javax.swing.JButton;
+
+import Modelo.ConexionConBBDD;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -90,6 +93,13 @@ public class ScoreMaximo extends JFrame {
 			textArea.setEditable(false);
 			textArea.setColumns(10);
 			textArea.setBounds(0, 28, 294, 270);
+			ConexionConBBDD c1 = ConexionConBBDD.getConexionConBBDD();
+			String[] puntMax = c1.buscarPuntuacionesMaximas();
+			for (int i = 0; i < puntMax.length; i++) {
+				if(puntMax[i]!=null)
+				textArea.append(puntMax[i]+"\n");
+				
+			}
 			
 		}
 		return textArea;

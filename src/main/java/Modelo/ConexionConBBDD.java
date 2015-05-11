@@ -100,8 +100,11 @@ public class ConexionConBBDD {
 		try {
 			st = con.createStatement();
 			 ResultSet rs = st.executeQuery("select nombreJugador, puntuacion from infojugador group by  puntuacion desc;");
-			 while(rs.next()){
-				 
+			 int cont = 0;
+			 while(rs.next()&&cont != 9){
+				 String dato = (cont+1)+"-> "+rs.getString("nombreJugador")+" --> "+rs.getInt("puntuacion");
+				 resultado[cont]=dato;
+				 cont++; 
 			 }
 		} catch (SQLException e) {
 			e.printStackTrace();
