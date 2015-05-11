@@ -22,6 +22,7 @@ public class MenuSudoku extends JFrame {
 	private JButton btnNuevoJuego;
 	private JButton btnSocre;
 	private JLabel lblNewLabel;
+	private JButton btnNewButton;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -69,6 +70,7 @@ public class MenuSudoku extends JFrame {
 		}
 		setLocation((screenSize.width-windowSize.width)/2,
 		(screenSize.height-windowSize.height)/2);
+		p.add(getBtnSalir());
 	}
 	
 
@@ -99,7 +101,7 @@ public class MenuSudoku extends JFrame {
 				dispose();
 				}
 			});
-			btnSocre.setBounds(165, 215, 120, 30);
+			btnSocre.setBounds(165, 206, 120, 30);
 		}
 		return btnSocre;
 	}
@@ -110,5 +112,17 @@ public class MenuSudoku extends JFrame {
 			lblNewLabel.setBounds(87, 40, 362, 114);
 		}
 		return lblNewLabel;
+	}
+	private JButton getBtnSalir() {
+		if (btnNewButton == null) {
+			btnNewButton = new JButton("Salir");
+			btnNewButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					dispose();
+				}
+			});
+			btnNewButton.setBounds(165, 247, 120, 30);
+		}
+		return btnNewButton;
 	}
 }

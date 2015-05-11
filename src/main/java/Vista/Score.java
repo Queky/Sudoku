@@ -2,10 +2,14 @@ package Vista;
 
 import java.awt.Dimension;
 import java.awt.EventQueue;
+import java.awt.Graphics;
 import java.awt.Toolkit;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JButton;
+import javax.swing.border.EmptyBorder;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -52,6 +56,10 @@ public class Score extends JFrame {
 		getContentPane().setLayout(null);
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		Dimension windowSize = this.getSize();
+		PanelImagen p = new PanelImagen();
+		p.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(p);
+		p.setLayout(null);
 		if (windowSize.height>screenSize.height) {
 		windowSize.height= screenSize.height;
 		}
@@ -62,7 +70,7 @@ public class Score extends JFrame {
 		(screenSize.height-windowSize.height)/2);
 		getContentPane().add(getBtnPuntacionesMaximas());
 		getContentPane().add(getBtnTuPuntuacion());
-		getContentPane().add(getBtnNewButton());
+		getContentPane().add(getBtnMenuPrincipal());
 	}
 	private JButton getBtnPuntacionesMaximas() {
 		if (btnPuntacionesMaximas == null) {
@@ -94,7 +102,7 @@ public class Score extends JFrame {
 		}
 		return btnTuPuntuacion;
 	}
-	private JButton getBtnNewButton() {
+	private JButton getBtnMenuPrincipal() {
 		if (btnNewButton == null) {
 			btnNewButton = new JButton("Menu Principal");
 			btnNewButton.addActionListener(new ActionListener() {
@@ -108,5 +116,21 @@ public class Score extends JFrame {
 			btnNewButton.setBounds(70, 79, 160, 23);
 		}
 		return btnNewButton;
+	}
+	class PanelImagen extends javax.swing.JPanel {
+		public PanelImagen() {
+			this.setSize(400, 280);
+		}
+
+		@Override
+		public void paintComponent(Graphics g) {
+			Dimension tamanio = getSize();
+			ImageIcon imagenFondo = new ImageIcon(getClass().getResource(
+					"/Imagenes/FondoLogin1i.jpg"));
+			g.drawImage(imagenFondo.getImage(), 0, 0, tamanio.width,
+					tamanio.height, null);
+			setOpaque(false);
+			super.paintComponent(g);
+		}
 	}
 }
