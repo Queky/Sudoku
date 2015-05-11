@@ -93,6 +93,10 @@ public class MenuSudoku extends JFrame {
 			btnSocre = new JButton("Score");
 			btnSocre.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
+				Score s1 = Score.getScore();
+				s1.setVisible(true);
+				setVisible(false);
+				dispose();
 				}
 			});
 			btnSocre.setBounds(165, 215, 120, 30);
