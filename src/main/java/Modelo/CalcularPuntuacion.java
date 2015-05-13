@@ -14,7 +14,7 @@ public class CalcularPuntuacion {
 		tiempo = CargarSudoku.obtenerTiempo();
 		nivelDificultad = Integer.parseInt(pL.getText());
 		int resul = (puntuacionInicial * nivelDificultad)
-				- (nivelDificultad * tiempo) - (pContadorCorrecciones * 25);
+				- (nivelDificultad * tiempo/nivelDificultad) - (pContadorCorrecciones * 25);
 		if (resul > 0)
 			return resul;
 		else

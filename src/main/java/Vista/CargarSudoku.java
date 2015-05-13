@@ -412,17 +412,20 @@ public class CargarSudoku extends JFrame {
 					JOptionPane.showMessageDialog(
 							CargarSudoku.this,
 							String.format(
-									"Enhorabuena!! Has acabado el Sudoku!!\nTu puntuacion es de:\t"
+									"Enhorabuena!! Has acabado el Sudoku!!\nTu puntuacion es de:  "
 									+CalcularPuntuacion.calcularPuntuacion(nivelDificultad, contadorCorrecciones),
 									pE.getActionCommand()));
 					Jugador j1 = Jugador.getJugador();
 					ConexionConBBDD c1 = ConexionConBBDD.getConexionConBBDD();
 					c1.anyadirPuntuacionJuego(j1.getNombre(), CodigoSudoku.getText(),
 							CalcularPuntuacion.calcularPuntuacion(nivelDificultad, contadorCorrecciones));
+					ScoreMaximo s1 = ScoreMaximo.getScoreMaximo();
+					s1.setVisible(true);
 					setVisible(false);
 					dispose();
 				}
-			}
+				dispose();
+				}
 		});
 		return btnCorregir;
 	}

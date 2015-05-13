@@ -76,7 +76,7 @@ public class MenuSudoku extends JFrame {
 
 	private JButton getBtnNuevoJuego() {
 		if (btnNuevoJuego == null) {
-			btnNuevoJuego = new JButton("NuevoJuego");
+			btnNuevoJuego = new JButton("Nuevo Juego");
 			btnNuevoJuego.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					LoginSudoku l1 = LoginSudoku.getLoguinSudoku();
