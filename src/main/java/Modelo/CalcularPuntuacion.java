@@ -13,8 +13,13 @@ public class CalcularPuntuacion {
 	public static int calcularPuntuacion(JLabel pL, int pContadorCorrecciones) {
 		tiempo = CargarSudoku.obtenerTiempo();
 		nivelDificultad = Integer.parseInt(pL.getText());
-		return puntuacionInicial * nivelDificultad - nivelDificultad * tiempo
-				* pContadorCorrecciones;
+		int resul = (puntuacionInicial * nivelDificultad)
+				- (nivelDificultad * tiempo) - (pContadorCorrecciones * 25);
+		if (resul > 0)
+			return resul;
+		else
+			return 1;
+
 	}
 
 }
