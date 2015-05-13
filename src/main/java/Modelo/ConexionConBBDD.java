@@ -86,7 +86,7 @@ public class ConexionConBBDD {
 		Statement st;
 		try {
 			st = con.createStatement();
-			st.executeUpdate("INSERT INTO `sudoku`.`infoJuego` (`nombreJugador`,`cod_sudoku`,`puntuacion` ) VALUES ('"+nombreJugador+"','"+codigoSudoku+"','"+puntuacion+"');");
+			st.executeUpdate("INSERT INTO `sudoku`.`infoJugador` (`nombreJugador`,`cod_sudoku`,`puntuacion` ) VALUES ('"+nombreJugador+"','"+codigoSudoku+"','"+puntuacion+"');");
 		} catch (SQLException e) {
 			
 			e.printStackTrace();

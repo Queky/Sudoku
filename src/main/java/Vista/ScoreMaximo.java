@@ -3,11 +3,13 @@ package Vista;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.EventQueue;
+import java.awt.Graphics;
 import java.awt.Toolkit;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.ImageIcon;
 import javax.swing.JTextPane;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
@@ -17,9 +19,11 @@ import javax.swing.JTextArea;
 import javax.swing.JButton;
 
 import Modelo.ConexionConBBDD;
+import Vista.Score.PanelImagen;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
 
 public class ScoreMaximo extends JFrame {
 	private static ScoreMaximo mScoreMaximo;
@@ -64,8 +68,15 @@ public class ScoreMaximo extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		contentPane.add(getLblPuntacionesMaxomas());
-		contentPane.add(getTextArea());
+		
+		
+		PanelImagen p = new PanelImagen();
+		p.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(p);
+		p.setLayout(null);
+		getContentPane().add(getLblPuntacionesMaxomas());
+		getContentPane().add(getButton());
+		getContentPane().add(getTextArea());
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		Dimension windowSize = this.getSize();
 		if (windowSize.height>screenSize.height) {
@@ -76,23 +87,26 @@ public class ScoreMaximo extends JFrame {
 		}
 		setLocation((screenSize.width-windowSize.width)/2,
 		(screenSize.height-windowSize.height)/2);
-		contentPane.add(getButton());
+		
 	}
 	private JLabel getLblPuntacionesMaxomas() {
 		if (lblPuntacionesMaxomas == null) {
 			lblPuntacionesMaxomas = new JLabel("Puntaciones Maximas");
+			lblPuntacionesMaxomas.setForeground(new Color(255, 255, 204));
 			lblPuntacionesMaxomas.setHorizontalAlignment(SwingConstants.CENTER);
 			lblPuntacionesMaxomas.setHorizontalTextPosition(SwingConstants.CENTER);
-			lblPuntacionesMaxomas.setBounds(0, 11, 294, 14);
+			lblPuntacionesMaxomas.setBounds(0, 25, 294, 14);
 		}
 		return lblPuntacionesMaxomas;
 	}
 	private JTextArea getTextArea() {
 		if (textArea == null) {
 			textArea = new JTextArea();
+			textArea.setForeground(new Color(255, 255, 204));
+			textArea.setBackground(new Color(102, 51, 0));
 			textArea.setEditable(false);
 			textArea.setColumns(10);
-			textArea.setBounds(0, 28, 294, 270);
+			textArea.setBounds(65, 76, 165, 174);
 			ConexionConBBDD c1 = ConexionConBBDD.getConexionConBBDD();
 			String[] puntMax = c1.buscarPuntuacionesMaximas();
 			for (int i = 0; i < puntMax.length; i++) {
@@ -115,8 +129,24 @@ public class ScoreMaximo extends JFrame {
 					dispose();
 				}
 			});
-			button.setBounds(300/2-90/2, 300, 90, 20);
+			button.setBounds(105, 291, 90, 20);
 		}
 		return button;
+	}
+	class PanelImagen extends javax.swing.JPanel {
+		public PanelImagen() {
+			this.setSize(400, 280);
+		}
+
+		@Override
+		public void paintComponent(Graphics g) {
+			Dimension tamanio = getSize();
+			ImageIcon imagenFondo = new ImageIcon(getClass().getResource(
+					"/Imagenes/FondoScoreMaximo1.jpg"));
+			g.drawImage(imagenFondo.getImage(), 0, 0, tamanio.width,
+					tamanio.height, null);
+			setOpaque(false);
+			super.paintComponent(g);
+		}
 	}
 }
