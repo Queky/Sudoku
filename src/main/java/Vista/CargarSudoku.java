@@ -20,7 +20,9 @@ import javax.swing.JLabel;
 import javax.swing.JButton;
 
 import Modelo.CalcularPuntuacion;
+import Modelo.ConexionConBBDD;
 import Modelo.CorregirSudoku;
+import Modelo.Jugador;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -413,6 +415,10 @@ public class CargarSudoku extends JFrame {
 									"Enhorabuena!! Has acabado el Sudoku!!\nTu puntuacion es de:\t"
 									+CalcularPuntuacion.calcularPuntuacion(nivelDificultad, contadorCorrecciones),
 									pE.getActionCommand()));
+					Jugador j1 = Jugador.getJugador();
+					ConexionConBBDD c1 = ConexionConBBDD.getConexionConBBDD();
+					c1.añadirPuntuacionJuego(j1.getNombre(), CodigoSudoku.getText(),
+							CalcularPuntuacion.calcularPuntuacion(nivelDificultad, contadorCorrecciones));
 					setVisible(false);
 				}
 			}

@@ -17,6 +17,7 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import Modelo.ConexionConBBDD;
+import Modelo.Jugador;
 import Modelo.RellenarSudoku;
 
 import java.awt.event.ActionListener;
@@ -145,7 +146,9 @@ public class LoginSudoku extends JFrame {
 						if(!textField.getText().equals("")){
 							ConexionConBBDD con = ConexionConBBDD.getConexionConBBDD();
 							con.anyadirDatosLoguin(textField.getText(), comboBox.getSelectedIndex()+1 );
-							RellenarSudoku.cargarSudokuHecho(Integer.toString(comboBox.getSelectedIndex()), false);
+							Jugador jugador1 = Jugador.getJugador();
+							jugador1.setInfoJugador(textField.getText(), comboBox.getSelectedIndex()+1, null);
+							RellenarSudoku.cargarSudokuHecho(Integer.toString(comboBox.getSelectedIndex()+1), false);
 							setVisible(false);
 							dispose();
 	
