@@ -420,6 +420,7 @@ public class CargarSudoku extends JFrame {
 					c1.anyadirPuntuacionJuego(j1.getNombre(), CodigoSudoku.getText(),
 							CalcularPuntuacion.calcularPuntuacion(nivelDificultad, contadorCorrecciones));
 					setVisible(false);
+					dispose();
 				}
 			}
 		});
