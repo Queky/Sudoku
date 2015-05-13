@@ -417,7 +417,7 @@ public class CargarSudoku extends JFrame {
 									pE.getActionCommand()));
 					Jugador j1 = Jugador.getJugador();
 					ConexionConBBDD c1 = ConexionConBBDD.getConexionConBBDD();
-					c1.añadirPuntuacionJuego(j1.getNombre(), CodigoSudoku.getText(),
+					c1.anyadirPuntuacionJuego(j1.getNombre(), CodigoSudoku.getText(),
 							CalcularPuntuacion.calcularPuntuacion(nivelDificultad, contadorCorrecciones));
 					setVisible(false);
 				}

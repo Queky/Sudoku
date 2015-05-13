@@ -81,7 +81,7 @@ public class ConexionConBBDD {
 			return null;		
 		}
 	}
-	public void añadirPuntuacionJuego(String nombreJugador , String codigoSudoku, int puntuacion){
+	public void anyadirPuntuacionJuego(String nombreJugador , String codigoSudoku, int puntuacion){
 		crearConexion();
 		Statement st;
 		try {
