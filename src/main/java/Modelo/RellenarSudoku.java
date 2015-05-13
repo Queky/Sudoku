@@ -25,11 +25,7 @@ public class RellenarSudoku {
 	private static JLabel jL;
 	private static int[][] listaCorrecciones;
 	private static String linea;
-
-	public static void main(String[] args) {
-		cargarSudokuHecho("s001", true);
-	}
-
+	
 	public static void cargarSudokuHecho(String pSudoku, boolean esCodigo) {
 
 		try {
