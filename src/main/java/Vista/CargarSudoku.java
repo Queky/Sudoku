@@ -513,12 +513,11 @@ public class CargarSudoku extends JFrame {
 			@Override
 			public void run() {
 				// TODO Auto-generated method stub
-				if(!pararCronometro){
-					actualizarTiempo();
-				}
+				actualizarTiempo();
 			}
 		};
-		timer.scheduleAtFixedRate(task, 0, 1000);
+		if(!pararCronometro)
+			timer.scheduleAtFixedRate(task, 0, 1000);
 		return casillaTiempo;
 	}
 
