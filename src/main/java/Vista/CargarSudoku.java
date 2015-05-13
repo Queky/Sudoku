@@ -424,7 +424,6 @@ public class CargarSudoku extends JFrame {
 					setVisible(false);
 					dispose();
 				}
-				dispose();
 				}
 		});
 		return btnCorregir;
@@ -514,11 +513,12 @@ public class CargarSudoku extends JFrame {
 			@Override
 			public void run() {
 				// TODO Auto-generated method stub
-				actualizarTiempo();
+				if(!pararCronometro){
+					actualizarTiempo();
+				}
 			}
 		};
-		if(!pararCronometro)
-			timer.scheduleAtFixedRate(task, 0, 1000);
+		timer.scheduleAtFixedRate(task, 0, 1000);
 		return casillaTiempo;
 	}
 
