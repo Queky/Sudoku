@@ -52,13 +52,15 @@ public class CargarSudoku extends JFrame {
 	private JButton btnCorregir;
 	private MaskFormatter mascara;
 	private CorregirSudoku cSCor;
-	private Timer timer;
+	private static Timer timer;
 	private JLabel casillaTiempo;
 	private TimerTask task;
 	private static int min;
 	private static int seg;
 	private int contadorCorrecciones;
-	private static boolean pararCronometro=false;
+	private static boolean pararCronometro = false;
+	private JButton btnReiniciar;
+	private JButton btnSalir;
 
 	/**
 	 * Launch the application.
@@ -105,7 +107,7 @@ public class CargarSudoku extends JFrame {
 			contentPane.setLayout(null);
 			listaSudoku = new JFormattedTextField[9][9];
 			mascara = new MaskFormatter("#");
-			mascara.setInvalidCharacters("0, ");
+			mascara.setInvalidCharacters("0");
 			for (int i = 0; i < 9; i++) {
 				for (int j = 0; j < 9; j++) {
 					listaSudoku[i][j] = new JFormattedTextField(mascara);
@@ -141,6 +143,8 @@ public class CargarSudoku extends JFrame {
 		contentPane.add(getCodigoSudoku());
 		contentPane.add(getBtnNewButton());
 		contentPane.add(getLabel());
+		contentPane.add(getBtnReiniciar());
+		contentPane.add(getButton_1());
 	}
 
 	private JPanel getCuadricula1() {
@@ -376,7 +380,8 @@ public class CargarSudoku extends JFrame {
 	private JButton getBtnNewButton() {
 		if (btnCorregir == null) {
 			btnCorregir = new JButton("Corregir");
-			btnCorregir.setBounds(242, 12, 117, 29);
+			btnCorregir.setBounds(240, 558, 117, 25);
+			// 242, 12, 117, 25
 		}
 		btnCorregir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent pE) {
@@ -413,25 +418,28 @@ public class CargarSudoku extends JFrame {
 							CargarSudoku.this,
 							String.format(
 									"Enhorabuena!! Has acabado el Sudoku!!\nTu puntuacion es de:  "
-									+CalcularPuntuacion.calcularPuntuacion(nivelDificultad, contadorCorrecciones),
+											+ CalcularPuntuacion
+													.calcularPuntuacion(
+															nivelDificultad,
+															contadorCorrecciones),
 									pE.getActionCommand()));
 					Jugador j1 = Jugador.getJugador();
 					ConexionConBBDD c1 = ConexionConBBDD.getConexionConBBDD();
-					c1.anyadirPuntuacionJuego(j1.getNombre(), CodigoSudoku.getText(),
-							CalcularPuntuacion.calcularPuntuacion(nivelDificultad, contadorCorrecciones));
+					c1.anyadirPuntuacionJuego(j1.getNombre(), CodigoSudoku
+							.getText(), CalcularPuntuacion.calcularPuntuacion(
+							nivelDificultad, contadorCorrecciones));
 					ScoreMaximo s1 = ScoreMaximo.getScoreMaximo();
 					s1.setVisible(true);
 					setVisible(false);
 					dispose();
 				}
-				}
+			}
 		});
 		return btnCorregir;
 	}
 
 	public void subrayarVertical(List<Integer> pColumnasMal,
 			List<Integer> pFilasMal) {
-		System.out.println(pColumnasMal);
 		if (!pColumnasMal.isEmpty() || !pFilasMal.isEmpty()) {
 			for (int i = 0; i < 9; i++) {
 				for (int j = 0; j < 9; j++) {
@@ -461,7 +469,6 @@ public class CargarSudoku extends JFrame {
 
 	public void subrayarHorizontal(List<Integer> pFilasMal,
 			List<Integer> pColumMal) {
-		System.out.println(pFilasMal);
 		if (!pFilasMal.isEmpty() || !pColumMal.isEmpty()) {
 			for (int i = 0; i < 9; i++) {
 				for (int j = 0; j < 9; j++) {
@@ -479,7 +486,6 @@ public class CargarSudoku extends JFrame {
 	}
 
 	public void subrayarCuadricula(boolean pintar, JPanel jP) {
-		System.out.println(pintar);
 		if (pintar) {
 			for (int i = 0; i < 9; i++) {
 				if (!jP.getComponent(i).getBackground()
@@ -506,7 +512,8 @@ public class CargarSudoku extends JFrame {
 	private JLabel getLabel() {
 		if (casillaTiempo == null) {
 			casillaTiempo = new JLabel("Tiempo");
-			casillaTiempo.setBounds(260, 565, 120, 15);
+			casillaTiempo.setBounds(262, 17, 120, 15);
+			// 260, 565, 120, 15
 		}
 		timer = new Timer();
 		task = new TimerTask() {
@@ -516,8 +523,7 @@ public class CargarSudoku extends JFrame {
 				actualizarTiempo();
 			}
 		};
-		if(!pararCronometro)
-			timer.scheduleAtFixedRate(task, 0, 1000);
+		timer.scheduleAtFixedRate(task, 0, 1000);
 		return casillaTiempo;
 	}
 
@@ -533,7 +539,46 @@ public class CargarSudoku extends JFrame {
 	}
 
 	public static int obtenerTiempo() {
-		pararCronometro=true;
+		pararCronometro = true;
+		timer.cancel();
 		return min * 60 + seg;
+	}
+
+	private JButton getBtnReiniciar() {
+		if (btnReiniciar == null) {
+			btnReiniciar = new JButton("Reiniciar");
+			btnReiniciar.setBounds(66, 558, 117, 29);
+		}
+		btnReiniciar.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent pE) {
+				// TODO Auto-generated method stub
+				min = 0;
+				seg = -1;
+				for (int i = 0; i < 9; i++) {
+					for (int j = 0; j < 9; j++) {
+						if (listaSudoku[i][j].isEditable() && !listaSudoku[i][j].getText().equals(" ")) {
+							// Volver a cargar RellenarSudoku cogiendo los datos de jugador!!
+							ponerEnBlanco();
+						}
+					}
+				}
+			}
+		});
+		return btnReiniciar;
+	}
+
+	private JButton getButton_1() {
+		if (btnSalir == null) {
+			btnSalir = new JButton("Salir");
+			btnSalir.setBounds(415, 558, 117, 29);
+		}
+		btnSalir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				timer.cancel();
+				dispose();
+			}
+		});
+		return btnSalir;
 	}
 }

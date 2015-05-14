@@ -124,13 +124,9 @@ public class CorregirSudoku {
 				}
 		}
 		if(numCasillasBien==81){
-			System.out.println("correccion correcta");
-			System.out.println(numCasillasBien);
 			return true;
 		}
 		else{
-			System.out.println("correccion incorrecta");
-			System.out.println(numCasillasBien);
 			return false;
 		}
 	}
