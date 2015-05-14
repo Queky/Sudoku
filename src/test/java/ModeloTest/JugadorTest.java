@@ -8,6 +8,7 @@ import Modelo.Jugador;
 
 public class JugadorTest {
 	Jugador j1;
+
 	@Before
 	public void setUp() throws Exception {
 		j1 = Jugador.getJugador();
@@ -18,31 +19,38 @@ public class JugadorTest {
 	@After
 	public void tearDown() throws Exception {
 	}
+
 	@Test
-	public void testJugador(){
-		assertNotNull(Jugador.getJugador());	
+	public void testJugador() {
+		assertNotNull(Jugador.getJugador());
 	}
+
 	@Test
-	public void testGetJugador(){
-		assertEquals(j1,j1.getJugador());
+	public void testGetJugador() {
+		assertEquals(j1, j1.getJugador());
 	}
+
 	@Test
-	public void testSetInfoJugador(){
+	public void testSetInfoJugador() {
 		j1.setInfoJugador("Eneko", 1, "s001");
 		assertEquals(j1.getNombre(), "Eneko");
 		assertEquals(j1.getNvlDificultad(), 1);
 		assertEquals(j1.getCodSudoku(), "s001");
 	}
+
 	@Test
-	public void testGetNombre(){
+	public void testGetNombre() {
 		assertEquals(j1.getNombre(), "Eneko");
 	}
+
 	@Test
-	public void testGetNvlDificultad(){
+	public void testGetNvlDificultad() {
 		assertEquals(j1.getNvlDificultad(), 1);
-	}@Test
-	public void testGetCodSud(){
+	}
+
+	@Test
+	public void testGetCodSud() {
 		assertEquals(j1.getCodSudoku(), "s001");
 	}
-	
+
 }
