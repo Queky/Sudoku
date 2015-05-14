@@ -18,7 +18,7 @@ public class Jugador {
 	public void setInfoJugador(String pNombre, int pNvlDificultad, String pCodSudoku){
 		nombre = pNombre;
 		nvlDificultad =pNvlDificultad;
-		pCodSudoku = codSudoku;
+		codSudoku = pCodSudoku;
 	}
 	public String getNombre(){
 		return nombre;
