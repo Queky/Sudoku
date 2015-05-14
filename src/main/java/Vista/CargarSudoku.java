@@ -23,6 +23,7 @@ import Modelo.CalcularPuntuacion;
 import Modelo.ConexionConBBDD;
 import Modelo.CorregirSudoku;
 import Modelo.Jugador;
+import Modelo.RellenarSudoku;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -58,7 +59,6 @@ public class CargarSudoku extends JFrame {
 	private static int min;
 	private static int seg;
 	private int contadorCorrecciones;
-	private static boolean pararCronometro = false;
 	private JButton btnReiniciar;
 	private JButton btnSalir;
 
@@ -115,8 +115,9 @@ public class CargarSudoku extends JFrame {
 					jT.addMouseListener(new MouseAdapter() {
 						@Override
 						public void mouseClicked(MouseEvent e) {
-							if (jT.isEditable())
+							if (jT.isEditable()){
 								jT.selectAll();
+							}
 						}
 					});
 					listaSudoku[i][j]
@@ -338,7 +339,7 @@ public class CargarSudoku extends JFrame {
 		if (sudokuId == null) {
 			sudokuId = new JLabel("Codigo Sudoku:");
 			sudokuId.setHorizontalAlignment(SwingConstants.RIGHT);
-			sudokuId.setBounds(395, 17, 109, 16);
+			sudokuId.setBounds(405, 17, 109, 16);
 		}
 		return sudokuId;
 	}
@@ -346,7 +347,7 @@ public class CargarSudoku extends JFrame {
 	private JLabel getDLevel() {
 		if (dLevel == null) {
 			dLevel = new JLabel("Nivel de dificultad:");
-			dLevel.setBounds(45, 17, 119, 16);
+			dLevel.setBounds(47, 17, 119, 16);
 		}
 		return dLevel;
 	}
@@ -355,7 +356,7 @@ public class CargarSudoku extends JFrame {
 		if (nivelDificultad == null) {
 			nivelDificultad = new JLabel("");
 			nivelDificultad.setHorizontalAlignment(SwingConstants.CENTER);
-			nivelDificultad.setBounds(144, 17, 61, 16);
+			nivelDificultad.setBounds(146, 17, 61, 16);
 		}
 		return nivelDificultad;
 	}
@@ -364,7 +365,7 @@ public class CargarSudoku extends JFrame {
 		if (CodigoSudoku == null) {
 			CodigoSudoku = new JLabel("");
 			CodigoSudoku.setHorizontalAlignment(SwingConstants.CENTER);
-			CodigoSudoku.setBounds(494, 17, 61, 16);
+			CodigoSudoku.setBounds(505, 17, 61, 16);
 		}
 		return CodigoSudoku;
 	}
@@ -539,7 +540,6 @@ public class CargarSudoku extends JFrame {
 	}
 
 	public static int obtenerTiempo() {
-		pararCronometro = true;
 		timer.cancel();
 		return min * 60 + seg;
 	}
@@ -557,8 +557,8 @@ public class CargarSudoku extends JFrame {
 				seg = -1;
 				for (int i = 0; i < 9; i++) {
 					for (int j = 0; j < 9; j++) {
-						if (listaSudoku[i][j].isEditable() && !listaSudoku[i][j].getText().equals(" ")) {
-							// Volver a cargar RellenarSudoku cogiendo los datos de jugador!!
+						if (listaSudoku[i][j].isEditable() && !listaSudoku[i][j].getText().equals(" ") && !listaSudoku[i][j].getText().isEmpty()) {
+							listaSudoku[i][j].setValue(null);
 							ponerEnBlanco();
 						}
 					}
