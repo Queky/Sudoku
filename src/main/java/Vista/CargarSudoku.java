@@ -10,7 +10,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.text.ParseException;
 import java.util.List;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -20,13 +19,10 @@ import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.JLabel;
 import javax.swing.JButton;
-
 import Modelo.CalcularPuntuacion;
 import Modelo.ConexionConBBDD;
 import Modelo.CorregirSudoku;
 import Modelo.Jugador;
-import Modelo.RellenarSudoku;
-
 import java.util.Timer;
 import java.util.TimerTask;
 

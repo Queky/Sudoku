@@ -6,9 +6,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 
@@ -28,15 +25,25 @@ public class RellenarSudoku {
 	
 	public static void cargarSudokuHecho(String pSudoku, boolean esCodigo) {
 
-		try {
+
 			cSu = CargarSudoku.getInstance();
-			archiveReader = new FileReader(f);
+			try {
+				archiveReader = new FileReader(f);
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			read = new BufferedReader(archiveReader);
 			jL = new JLabel();
 
 			int posTxt = 0;
 			boolean encontrado = false;
-			linea = read.readLine();
+			try {
+				linea = read.readLine();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			while (linea != null && !encontrado) {
 				if (linea.equals(pSudoku)) {
 					encontrado = true;
@@ -44,7 +51,12 @@ public class RellenarSudoku {
 						jL.setText(linea);
 						cSu.setCodigoSudoku(jL);
 						obtenerCodigoSudoku(jL);
-						linea = read.readLine();
+						try {
+							linea = read.readLine();
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 						jL.setText(linea);
 						cSu.setNivelDificultad(jL);
 					} else {
@@ -57,12 +69,22 @@ public class RellenarSudoku {
 					if (posTxt % 9 == 0 && posTxt != 0)
 						posTxt = 0;
 					else {
-						read.mark(posTxt);
+						try {
+							read.mark(posTxt);
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 						posTxt++;
 					}
 				}
 				jL.setText(linea);
-				linea = read.readLine();
+				try {
+					linea = read.readLine();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 			posTxt = 0;
 			for (int i = 0; i < 9; i++) {
@@ -74,18 +96,17 @@ public class RellenarSudoku {
 					}
 					posTxt++;
 				}
-				linea = read.readLine();
+				try {
+					linea = read.readLine();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				posTxt = 0;
 			}
 			cargarSolucionSudoku();
 			cSu.setVisible(true);
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+
 	}
 
 	public static void cargarSolucionSudoku() {

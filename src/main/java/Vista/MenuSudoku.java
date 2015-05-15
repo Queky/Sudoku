@@ -1,13 +1,10 @@
 package Vista;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Toolkit;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
@@ -15,9 +12,12 @@ import javax.swing.JButton;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.awt.Window.Type;
 
 public class MenuSudoku extends JFrame {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8905801993435447065L;
 	private static MenuSudoku mMenuSudoku;
 	private JButton btnNuevoJuego;
 	private JButton btnSocre;
