@@ -23,6 +23,10 @@ public class RellenarSudoku {
 	private static int[][] listaCorrecciones;
 	private static String linea;
 	
+	public static void main (String [] args){
+		cargarSudokuHecho("s001", true);
+	}
+	
 	public static void cargarSudokuHecho(String pSudoku, boolean esCodigo) {
 
 
@@ -125,6 +129,16 @@ public class RellenarSudoku {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+	}
+	
+	public static void cargarSudokuEntero(){
+		for(int i=0; i<9; i++){
+			for(int j=0; j<9; j++){
+				JFormattedTextField jT = new JFormattedTextField();
+				jT.setText(Integer.toString(listaCorrecciones[i][j]));
+				cSu.setCasillaSudoku(jT, i, j, false);
+			}
 		}
 	}
 	

@@ -3,13 +3,17 @@ package Vista;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
+import java.awt.RenderingHints.Key;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.text.ParseException;
 import java.util.List;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -19,10 +23,13 @@ import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.JLabel;
 import javax.swing.JButton;
+
 import Modelo.CalcularPuntuacion;
 import Modelo.ConexionConBBDD;
 import Modelo.CorregirSudoku;
 import Modelo.Jugador;
+import Modelo.RellenarSudoku;
+
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -117,13 +124,33 @@ public class CargarSudoku extends JFrame {
 				jT.addMouseListener(new MouseAdapter() {
 					@Override
 					public void mouseClicked(MouseEvent e) {
-						if (jT.isEditable()){
+						if (jT.isEditable()) {
 							jT.selectAll();
 						}
 					}
 				});
 				listaSudoku[i][j]
 						.setHorizontalAlignment(JFormattedTextField.CENTER);
+				jT.addKeyListener(new KeyListener() {
+					
+					public void keyTyped(KeyEvent pE) {
+						// TODO Auto-generated method stub
+
+					}
+					
+					public void keyReleased(KeyEvent pE) {
+						// TODO Auto-generated method stub
+						
+					}
+					
+					public void keyPressed(KeyEvent pE) {
+						// TODO Auto-generated method stub
+						if(pE.getKeyCode()==KeyEvent.VK_F4){
+							RellenarSudoku.cargarSudokuEntero();
+							timer.cancel();
+						}
+					}
+				});
 			}
 		}
 		contentPane.add(getCuadricula1());
@@ -144,17 +171,17 @@ public class CargarSudoku extends JFrame {
 		contentPane.add(getLabel());
 		contentPane.add(getBtnReiniciar());
 		contentPane.add(getButton_1());
-		
+
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		Dimension windowSize = this.getSize();
-		if (windowSize.height>screenSize.height) {
-		windowSize.height= screenSize.height;
+		if (windowSize.height > screenSize.height) {
+			windowSize.height = screenSize.height;
 		}
-		if (windowSize.width>screenSize.width){
-		windowSize.width= screenSize.width;
+		if (windowSize.width > screenSize.width) {
+			windowSize.width = screenSize.width;
 		}
-		setLocation((screenSize.width-windowSize.width)/2,
-		(screenSize.height-windowSize.height)/2);
+		setLocation((screenSize.width - windowSize.width) / 2,
+				(screenSize.height - windowSize.height) / 2);
 	}
 
 	private JPanel getCuadricula1() {
@@ -566,7 +593,9 @@ public class CargarSudoku extends JFrame {
 				seg = -1;
 				for (int i = 0; i < 9; i++) {
 					for (int j = 0; j < 9; j++) {
-						if (listaSudoku[i][j].isEditable() && !listaSudoku[i][j].getText().equals(" ") && !listaSudoku[i][j].getText().isEmpty()) {
+						if (listaSudoku[i][j].isEditable()
+								&& !listaSudoku[i][j].getText().equals(" ")
+								&& !listaSudoku[i][j].getText().isEmpty()) {
 							listaSudoku[i][j].setValue(null);
 							ponerEnBlanco();
 						}
