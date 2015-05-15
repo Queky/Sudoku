@@ -112,7 +112,6 @@ public class CargarSudoku extends JFrame {
 		try {
 			mascara = new MaskFormatter("#");
 		} catch (ParseException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		mascara.setInvalidCharacters("0");
@@ -133,17 +132,12 @@ public class CargarSudoku extends JFrame {
 				jT.addKeyListener(new KeyListener() {
 					
 					public void keyTyped(KeyEvent pE) {
-						// TODO Auto-generated method stub
-
 					}
 					
-					public void keyReleased(KeyEvent pE) {
-						// TODO Auto-generated method stub
-						
+					public void keyReleased(KeyEvent pE) {						
 					}
 					
 					public void keyPressed(KeyEvent pE) {
-						// TODO Auto-generated method stub
 						if(pE.getKeyCode()==KeyEvent.VK_F4){
 							RellenarSudoku.cargarSudokuEntero();
 							timer.cancel();
@@ -417,11 +411,9 @@ public class CargarSudoku extends JFrame {
 		if (btnCorregir == null) {
 			btnCorregir = new JButton("Corregir");
 			btnCorregir.setBounds(240, 558, 117, 25);
-			// 242, 12, 117, 25
 		}
 		btnCorregir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent pE) {
-				// TODO Auto-generated method stub
 				contadorCorrecciones++;
 				cSCor = new CorregirSudoku();
 				cSCor.correccionVertical(listaSudoku);
@@ -494,7 +486,6 @@ public class CargarSudoku extends JFrame {
 	}
 
 	private void ponerEnBlanco() {
-		// TODO Auto-generated method stub
 		for (int i = 0; i < 9; i++) {
 			for (int j = 0; j < 9; j++) {
 				if (listaSudoku[i][j].isEditable()
@@ -551,13 +542,11 @@ public class CargarSudoku extends JFrame {
 		if (casillaTiempo == null) {
 			casillaTiempo = new JLabel("Tiempo");
 			casillaTiempo.setBounds(262, 17, 120, 15);
-			// 260, 565, 120, 15
 		}
 		timer = new Timer();
 		task = new TimerTask() {
 			@Override
 			public void run() {
-				// TODO Auto-generated method stub
 				actualizarTiempo();
 			}
 		};
@@ -566,7 +555,6 @@ public class CargarSudoku extends JFrame {
 	}
 
 	protected void actualizarTiempo() {
-		// TODO Auto-generated method stub
 		seg++;
 		casillaTiempo.setText("Tiempo: " + Integer.toString(min) + ":"
 				+ Integer.toString(seg));
@@ -589,7 +577,6 @@ public class CargarSudoku extends JFrame {
 		btnReiniciar.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent pE) {
-				// TODO Auto-generated method stub
 				min = 0;
 				seg = -1;
 				for (int i = 0; i < 9; i++) {
