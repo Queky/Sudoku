@@ -1,7 +1,9 @@
 package Vista;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.EventQueue;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -95,38 +97,38 @@ public class CargarSudoku extends JFrame {
 	}
 
 	private void initialize() {
+		setTitle("Sudoku");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 600, 625);
+		contentPane = new JPanel();
+		contentPane.setName("VentanaSudoku");
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setResizable(false);
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		listaSudoku = new JFormattedTextField[9][9];
 		try {
-			setTitle("Sudoku");
-			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			setBounds(100, 100, 600, 625);
-			contentPane = new JPanel();
-			contentPane.setName("VentanaSudoku");
-			contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-			setResizable(false);
-			setContentPane(contentPane);
-			contentPane.setLayout(null);
-			listaSudoku = new JFormattedTextField[9][9];
 			mascara = new MaskFormatter("#");
-			mascara.setInvalidCharacters("0");
-			for (int i = 0; i < 9; i++) {
-				for (int j = 0; j < 9; j++) {
-					listaSudoku[i][j] = new JFormattedTextField(mascara);
-					final JFormattedTextField jT = listaSudoku[i][j];
-					jT.addMouseListener(new MouseAdapter() {
-						@Override
-						public void mouseClicked(MouseEvent e) {
-							if (jT.isEditable()){
-								jT.selectAll();
-							}
-						}
-					});
-					listaSudoku[i][j]
-							.setHorizontalAlignment(JFormattedTextField.CENTER);
-				}
-			}
-		} catch (ParseException e) {
+		} catch (ParseException e1) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			e1.printStackTrace();
+		}
+		mascara.setInvalidCharacters("0");
+		for (int i = 0; i < 9; i++) {
+			for (int j = 0; j < 9; j++) {
+				listaSudoku[i][j] = new JFormattedTextField(mascara);
+				final JFormattedTextField jT = listaSudoku[i][j];
+				jT.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						if (jT.isEditable()){
+							jT.selectAll();
+						}
+					}
+				});
+				listaSudoku[i][j]
+						.setHorizontalAlignment(JFormattedTextField.CENTER);
+			}
 		}
 		contentPane.add(getCuadricula1());
 		contentPane.add(getCuadricula2());
@@ -146,6 +148,17 @@ public class CargarSudoku extends JFrame {
 		contentPane.add(getLabel());
 		contentPane.add(getBtnReiniciar());
 		contentPane.add(getButton_1());
+		
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		Dimension windowSize = this.getSize();
+		if (windowSize.height>screenSize.height) {
+		windowSize.height= screenSize.height;
+		}
+		if (windowSize.width>screenSize.width){
+		windowSize.width= screenSize.width;
+		}
+		setLocation((screenSize.width-windowSize.width)/2,
+		(screenSize.height-windowSize.height)/2);
 	}
 
 	private JPanel getCuadricula1() {
