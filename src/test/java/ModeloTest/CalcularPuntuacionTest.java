@@ -7,7 +7,6 @@ import org.junit.After;
 import org.junit.Before;
 
 import Modelo.CalcularPuntuacion;
-import Modelo.Jugador;
 
 public class CalcularPuntuacionTest {
 	CalcularPuntuacion cP1;
@@ -21,6 +20,6 @@ public class CalcularPuntuacionTest {
 	}
 	@Test
 	public void testCalcularPuntuacion(){
-		
+		assertNotNull(new CalcularPuntuacion());
 	}
 }

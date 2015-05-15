@@ -10,7 +10,7 @@ public class CalcularPuntuacion {
 	private static final int puntuacionInicial = 1000;
 	private static int nivelDificultad;
 
-	public static int calcularPuntuacion(int pNivelDificultad, int pContadorCorrecciones) {
+	public static int puntuacion(int pNivelDificultad, int pContadorCorrecciones) {
 		tiempo = CargarSudoku.obtenerTiempo();
 		nivelDificultad = Jugador.getJugador().getNvlDificultad();
 		int resul = (puntuacionInicial * nivelDificultad)
@@ -21,5 +21,4 @@ public class CalcularPuntuacion {
 			return 1;
 
 	}
-
 }

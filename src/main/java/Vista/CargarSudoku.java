@@ -413,12 +413,12 @@ public class CargarSudoku extends JFrame {
 							CargarSudoku.this,
 							String.format(
 									"Enhorabuena!! Has acabado el Sudoku!!\nTu puntuacion es de:  "
-									+CalcularPuntuacion.calcularPuntuacion(Jugador.getJugador().getNvlDificultad(), contadorCorrecciones),
+									+CalcularPuntuacion.puntuacion(Jugador.getJugador().getNvlDificultad(), contadorCorrecciones),
 									pE.getActionCommand()));
 					Jugador j1 = Jugador.getJugador();
 					ConexionConBBDD c1 = ConexionConBBDD.getConexionConBBDD();
 					c1.anyadirPuntuacionJuego(j1.getNombre(), CodigoSudoku.getText(),
-							CalcularPuntuacion.calcularPuntuacion(Jugador.getJugador().getNvlDificultad(), contadorCorrecciones));
+							CalcularPuntuacion.puntuacion(Jugador.getJugador().getNvlDificultad(), contadorCorrecciones));
 					ScoreMaximo s1 = ScoreMaximo.getScoreMaximo();
 					s1.setVisible(true);
 					setVisible(false);
