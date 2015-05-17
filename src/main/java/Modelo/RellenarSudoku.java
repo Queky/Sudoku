@@ -32,7 +32,7 @@ public class RellenarSudoku {
 	 * @param args the arguments
 	 */
 	public static void main (String [] args){
-		cargarSudokuHecho("s004", true);
+		cargarSudokuHecho("s003", true);
 	}
 	
 	/**
@@ -138,6 +138,12 @@ public class RellenarSudoku {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		try {
+			read.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	/**
@@ -158,7 +164,7 @@ public class RellenarSudoku {
 	/**
 	 * Devuelve la lista con la solucion del sudoku
 	 *
-	 * @return the lista correcciones
+	 * @return lista correcciones
 	 */
 	public static int[][] getListaCorrecciones() {
 		return listaSolucionSudoku;
