@@ -160,7 +160,7 @@ public class CargarSudoku extends JFrame {
 		contentPane.add(getDLevel());
 		contentPane.add(getNivelDificultad());
 		contentPane.add(getCodigoSudoku());
-		contentPane.add(getBtnNewButton());
+		contentPane.add(getBtnCorregir());
 		contentPane.add(getLabel());
 		contentPane.add(getBtnReiniciar());
 		contentPane.add(getButton_1());
@@ -407,7 +407,7 @@ public class CargarSudoku extends JFrame {
 		CodigoSudoku.setText(pCodigoSudoku.getText());
 	}
 
-	private JButton getBtnNewButton() {
+	private JButton getBtnCorregir() {
 		if (btnCorregir == null) {
 			btnCorregir = new JButton("Corregir");
 			btnCorregir.setBounds(240, 558, 117, 25);

@@ -73,7 +73,7 @@ public class ScoreMaximo extends JFrame {
 		setContentPane(p);
 		p.setLayout(null);
 		getContentPane().add(getLblPuntacionesMaxomas());
-		getContentPane().add(getButton());
+		getContentPane().add(getBtnAtras());
 		getContentPane().add(getTextArea());
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		Dimension windowSize = this.getSize();
@@ -116,7 +116,7 @@ public class ScoreMaximo extends JFrame {
 		}
 		return textArea;
 	}
-	private JButton getButton() {
+	private JButton getBtnAtras() {
 		if (button == null) {
 			button = new JButton("< Atras");
 			button.addActionListener(new ActionListener() {
