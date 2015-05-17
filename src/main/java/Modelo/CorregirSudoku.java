@@ -31,14 +31,11 @@ public class CorregirSudoku {
 
 		for (int i = 0; i < 9; i++) {
 			for (int j = 0; j < 9; j++) {
-				if (!listaSud[i][j].getText().equals(" ")
-						&& listaSud[i][j].isEditable()) {
+				if (!listaSud[i][j].getText().equals(" ") && listaSud[i][j].isEditable()) {
 					num = listaSud[i][j].getText();
 					for (int k = 0; k < 9; k++) {
 						if (k != i) {
-							if (listaSud[k][j].getText().equals(num)
-									&& !listaSud[i][j].getText().equals(" ")
-									&& listaSud[i][j].isEditable()) {
+							if (listaSud[k][j].getText().equals(num) && !listaSud[i][j].getText().equals(" ") && listaSud[i][j].isEditable()) {
 								if (!columnasVertMal.contains(j))
 									columnasVertMal.add(j);
 							}
