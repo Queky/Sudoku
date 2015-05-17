@@ -29,11 +29,11 @@ public class CorregirSudoku {
 		String num;
 		columnasVertMal = new ArrayList<Integer>();
 
-		for (int i = 0; i < 9; i++) {
-			for (int j = 0; j < 9; j++) {
+		for (int i = 0; i < listaSud.length; i++) {
+			for (int j = 0; j < listaSud.length; j++) {
 				if (!listaSud[i][j].getText().equals(" ") && listaSud[i][j].isEditable()) {
 					num = listaSud[i][j].getText();
-					for (int k = 0; k < 9; k++) {
+					for (int k = 0; k < listaSud.length; k++) {
 						if (k != i) {
 							if (listaSud[k][j].getText().equals(num) && !listaSud[i][j].getText().equals(" ") && listaSud[i][j].isEditable()) {
 								if (!columnasVertMal.contains(j))
@@ -45,6 +45,7 @@ public class CorregirSudoku {
 
 			}
 		}
+		
 		SwingUtilities.invokeLater(new Runnable() {
 
 			public void run() {
@@ -62,8 +63,8 @@ public class CorregirSudoku {
 		String num;
 		filasHorMal = new ArrayList<Integer>();
 
-		for (int i = 0; i < 9; i++) {
-			for (int j = 0; j < 9; j++) {
+		for (int i = 0; i < listaSud.length; i++) {
+			for (int j = 0; j < listaSud.length; j++) {
 				if (!listaSud[i][j].getText().equals(" ")
 						&& listaSud[i][j].isEditable()) {
 					num = listaSud[i][j].getText();
@@ -139,8 +140,8 @@ public class CorregirSudoku {
 	public static boolean corregirSudokuEntero(JFormattedTextField[][] listaSud) {
 		sudokuCorregido=RellenarSudoku.getListaCorrecciones();
 		int numCasillasBien=0;
-		for(int i=0; i<9; i++){
-			for(int j=0; j<9; j++){
+		for(int i=0; i<listaSud.length; i++){
+			for(int j=0; j<listaSud.length; j++){
 				if(listaSud[i][j].getText().equals(Integer.toString(sudokuCorregido[i][j])))
 						numCasillasBien++;
 				}
