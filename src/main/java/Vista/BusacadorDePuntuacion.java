@@ -106,7 +106,7 @@ public class BusacadorDePuntuacion extends JFrame {
 						public void actionPerformed(ActionEvent e) {
 							ConexionConBBDD c1 = ConexionConBBDD.getConexionConBBDD();
 							JOptionPane.showMessageDialog(BusacadorDePuntuacion.this,
-									String.format("Tu puntaciï¿½n maxima es de: "+c1.buscarPuntacionMasAltaDeJugador(textField.getText()), e.getActionCommand()));
+									String.format("Tu puntación maxima es de: "+c1.buscarPuntacionMasAltaDeJugador(textField.getText()), e.getActionCommand()));
 							
 						}
 					});
