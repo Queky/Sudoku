@@ -473,6 +473,8 @@ public class CargarSudoku extends JFrame {
 		for(int i=0; i<listaSudoku.length; i++){
 			for(int j=0; j<listaSudoku.length; j++){
 				listaSudoku[i][j].setValue(null);
+				listaSudoku[i][j].setBackground(Color.WHITE);
+				listaSudoku[i][j].setEditable(true);
 			}
 		}
 	}
