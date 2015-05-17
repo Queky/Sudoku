@@ -32,12 +32,6 @@ public class JugadorTest {
 		assertEquals(j1, Jugador.getJugador());
 	}
 
-	@Test
-	public void testSetInfoJugador() {
-		assertEquals(j1.getNombre(), "Eneko");
-		assertEquals(j1.getNvlDificultad(), 1);
-		assertEquals(j1.getCodSudoku(), "s001");
-	}
 
 	@Test
 	public void testGetNombre() {
