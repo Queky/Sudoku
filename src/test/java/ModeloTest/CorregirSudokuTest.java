@@ -2,20 +2,13 @@ package ModeloTest;
 
 import static org.junit.Assert.*;
 
-import java.util.List;
-
 import javax.swing.JFormattedTextField;
 import javax.swing.JPanel;
-
-import junit.framework.AssertionFailedError;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
 import Modelo.CorregirSudoku;
 import Modelo.RellenarSudoku;
-import Vista.CargarSudoku;
 
 public class CorregirSudokuTest {
 

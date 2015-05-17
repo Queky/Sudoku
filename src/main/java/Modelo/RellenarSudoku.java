@@ -25,16 +25,7 @@ public class RellenarSudoku {
 	private static JLabel jL;
 	private static int[][] listaSolucionSudoku;
 	private static String linea;
-	
-	/**
-	 * The main method.
-	 *
-	 * @param args the arguments
-	 */
-	public static void main (String [] args){
-		cargarSudokuHecho("s003", true);
-	}
-	
+
 	/**
 	 * Cargar sudoku hecho.
 	 *
