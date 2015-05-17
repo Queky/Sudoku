@@ -472,9 +472,12 @@ public class CargarSudoku extends JFrame {
 	public void reiniciar() {
 		for(int i=0; i<listaSudoku.length; i++){
 			for(int j=0; j<listaSudoku.length; j++){
-				listaSudoku[i][j].setValue(null);
-				listaSudoku[i][j].setBackground(Color.WHITE);
 				listaSudoku[i][j].setEditable(true);
+				listaSudoku[i][j].setBackground(Color.WHITE);
+				listaSudoku[i][j].setValue(null);
+				timer.cancel();
+				min=0;
+				seg=0;
 			}
 		}
 	}
