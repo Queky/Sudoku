@@ -12,7 +12,9 @@ public class JugadorTest {
 	@Before
 	public void setUp() throws Exception {
 		j1 = Jugador.getJugador();
-		j1.setInfoJugador("Eneko", 1, "s001");
+		j1.setNombre("Eneko");
+		j1.setNvlDificultad(1);
+		j1.setCodSudoku("s001");
 
 	}
 
@@ -32,7 +34,6 @@ public class JugadorTest {
 
 	@Test
 	public void testSetInfoJugador() {
-		j1.setInfoJugador("Eneko", 1, "s001");
 		assertEquals(j1.getNombre(), "Eneko");
 		assertEquals(j1.getNvlDificultad(), 1);
 		assertEquals(j1.getCodSudoku(), "s001");

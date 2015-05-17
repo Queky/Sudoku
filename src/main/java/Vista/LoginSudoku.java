@@ -147,9 +147,10 @@ public class LoginSudoku extends JFrame {
 				public void actionPerformed(ActionEvent e) {
 						if(!textField.getText().equals("")){
 							ConexionConBBDD con = ConexionConBBDD.getConexionConBBDD();
-							con.anyadirDatosLoguin(textField.getText(), comboBox.getSelectedIndex()+1 );
+							con.anyadirDatosLoguin(textField.getText());
 							Jugador jugador1 = Jugador.getJugador();
-							jugador1.setInfoJugador(textField.getText(), comboBox.getSelectedIndex()+1, null);
+							jugador1.setNombre(textField.getText());
+							jugador1.setNvlDificultad(comboBox.getSelectedIndex()+1);
 							RellenarSudoku.cargarSudokuHecho(Integer.toString(comboBox.getSelectedIndex()+1), false);
 							setVisible(false);
 							dispose();

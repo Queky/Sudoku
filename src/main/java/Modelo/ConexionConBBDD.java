@@ -38,12 +38,15 @@ public class ConexionConBBDD {
 			e.printStackTrace();
 		}
 	}
-	public void anyadirDatosLoguin(String nombreJugador, int nivelDificultad){
+	public void anyadirDatosLoguin(String nombreJugador){
 		crearConexion();
 		Statement st;
 		try {
+			if(!existe(nombreJugador)){
 			st = con.createStatement();
-			st.executeUpdate("INSERT INTO `sudoku`.`infojuego` (`nombreJugador`,`nivel_dificultad`) VALUES ('"+nombreJugador+"','"+nivelDificultad+"');");
+			st.executeUpdate("INSERT INTO `sudoku`.`jugador` (`nombre`) VALUES ('"+nombreJugador+"');");
+			}
+			
 		} catch (SQLException e) {
 			
 			e.printStackTrace();
@@ -110,6 +113,25 @@ public class ConexionConBBDD {
 		}
 		return resultado;
 	}
-		
+	public boolean existe(String nJugador){
+		crearConexion();
+		Statement st;
+		String resul;
+		boolean encontrado=false;
+		try {
+			st = con.createStatement();
+			 ResultSet rs = st.executeQuery("select nombre from jugador where nombre='"+nJugador+"';");
+			 while(rs.next()){
+			 resul = rs.getString("nombre");
+			 if(resul.equalsIgnoreCase(nJugador)){
+				 encontrado =true;
+			 }
+			 }
+		} catch (SQLException e) {
+			e.printStackTrace();
+					
+		}
+		return encontrado;
+	}	
 	}
 

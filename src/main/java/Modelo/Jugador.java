@@ -15,10 +15,16 @@ public class Jugador {
 		}
 		return mJugador;
 	}
-	public void setInfoJugador(String pNombre, int pNvlDificultad, String pCodSudoku){
+	public void setNombre(String pNombre){
 		nombre = pNombre;
-		nvlDificultad =pNvlDificultad;
-		codSudoku = pCodSudoku;
+	}
+	public void setNvlDificultad(int pNvlDificultad){
+		nvlDificultad = pNvlDificultad;
+		
+	}
+	public void setCodSudoku(String pCodSudoku){
+		codSudoku= pCodSudoku;
+		
 	}
 	public String getNombre(){
 		return nombre;
