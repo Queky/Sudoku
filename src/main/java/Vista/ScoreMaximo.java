@@ -56,6 +56,7 @@ public class ScoreMaximo extends JFrame {
 		if(mScoreMaximo == null){
 			mScoreMaximo= new ScoreMaximo(); 
 		}
+		mScoreMaximo.initialize();
 		return mScoreMaximo;
 	}
 	private void initialize() {
@@ -66,8 +67,7 @@ public class ScoreMaximo extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
-		
+		getTextArea();
 		PanelImagen p = new PanelImagen();
 		p.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(p);

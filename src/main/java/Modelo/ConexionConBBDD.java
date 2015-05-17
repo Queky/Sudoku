@@ -15,6 +15,7 @@ public class ConexionConBBDD {
 		if(mConexionConBBDD == null){
 			mConexionConBBDD= new ConexionConBBDD(); 
 		}
+		
 		return mConexionConBBDD;
 		
 		
@@ -26,7 +27,7 @@ public class ConexionConBBDD {
 		}catch (ClassNotFoundException e1){};
 		//Establecemos Conexion
 		try{
-			String url="jdbc:mysql://localhost:3306/sudoku?user=root&password=";
+			String url="jdbc:mysql://localhost:3306/sudoku?user=root&password=root";
 			con=DriverManager.getConnection(url);
 			System.out.println("conexion abierta");
 		}catch(SQLException e5){System.out.println(e5.toString()); }
@@ -107,11 +108,13 @@ public class ConexionConBBDD {
 				 resultado[cont]=dato;
 				 cont++; 
 			 }
+			 cerrarConexion();
 		} catch (SQLException e) {
 			e.printStackTrace();
 					
 		}
 		return resultado;
+		
 	}
 	public boolean existe(String nJugador){
 		crearConexion();
