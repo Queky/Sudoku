@@ -461,11 +461,20 @@ public class CargarSudoku extends JFrame {
 					ScoreMaximo s1 = ScoreMaximo.getScoreMaximo();
 					s1.setVisible(true);
 					setVisible(false);
+					reiniciar();
 					dispose();
 				}
 			}
 		});
 		return btnCorregir;
+	}
+	
+	public void reiniciar() {
+		for(int i=0; i<listaSudoku.length; i++){
+			for(int j=0; j<listaSudoku.length; j++){
+				listaSudoku[i][j].setValue(null);
+			}
+		}
 	}
 
 	public void subrayarVertical(List<Integer> pColumnasMal,
