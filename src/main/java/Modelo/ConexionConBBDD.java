@@ -79,7 +79,7 @@ public class ConexionConBBDD {
 			 return resultado;
 		} catch (SQLException e) {
 			e.printStackTrace();
-			return "No tienes puntuación";		
+			return "No tienes puntuaciï¿½n";		
 		}
 	}
 	public void anyadirPuntuacionJuego(String nombreJugador , String codigoSudoku, int puntuacion){

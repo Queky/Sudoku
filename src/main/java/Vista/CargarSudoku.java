@@ -65,6 +65,7 @@ public class CargarSudoku extends JFrame {
 	private int contadorCorrecciones;
 	private JButton btnReiniciar;
 	private JButton btnSalir;
+	private boolean actualizar;
 
 	/**
 	 * Launch the application.
@@ -140,7 +141,6 @@ public class CargarSudoku extends JFrame {
 					public void keyPressed(KeyEvent pE) {
 						if(pE.getKeyCode()==KeyEvent.VK_F4){
 							RellenarSudoku.cargarSudokuEntero();
-							timer.cancel();
 						}
 					}
 				});
@@ -175,6 +175,7 @@ public class CargarSudoku extends JFrame {
 		}
 		setLocation((screenSize.width - windowSize.width) / 2,
 				(screenSize.height - windowSize.height) / 2);
+		actualizar=true;
 	}
 
 	private JPanel getCuadricula1() {
@@ -442,6 +443,7 @@ public class CargarSudoku extends JFrame {
 				subrayarCuadricula(cSCor.isRepetido(), cuadricula9);
 				subrayarCasilla(cSCor);
 				if (CorregirSudoku.corregirSudokuEntero(listaSudoku)) {
+					actualizar=false;
 					JOptionPane.showMessageDialog(
 							CargarSudoku.this,
 							String.format(
@@ -461,7 +463,6 @@ public class CargarSudoku extends JFrame {
 					ScoreMaximo s1 = ScoreMaximo.getScoreMaximo();
 					s1.setVisible(true);
 					setVisible(false);
-					reiniciar();
 					dispose();
 				}
 			}
@@ -475,11 +476,11 @@ public class CargarSudoku extends JFrame {
 				listaSudoku[i][j].setEditable(true);
 				listaSudoku[i][j].setBackground(Color.WHITE);
 				listaSudoku[i][j].setValue(null);
-				timer.cancel();
-				min=0;
-				seg=0;
 			}
 		}
+		min=0;
+		seg=0;
+		actualizar=true;
 	}
 
 	public void subrayarVertical(List<Integer> pColumnasMal,
@@ -569,17 +570,17 @@ public class CargarSudoku extends JFrame {
 	}
 
 	protected void actualizarTiempo() {
-		seg++;
+		if(actualizar)
+			seg++;
 		casillaTiempo.setText("Tiempo: " + Integer.toString(min) + ":"
 				+ Integer.toString(seg));
-		if (seg == 59) {
+		if (seg == 59 && actualizar) {
 			min++;
 			seg = -1;
 		}
 	}
 
 	public static int obtenerTiempo() {
-		timer.cancel();
 		return min * 60 + seg;
 	}
 

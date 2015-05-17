@@ -45,6 +45,7 @@ public class RellenarSudoku {
 
 
 			cSu = CargarSudoku.getInstance();
+			cSu.reiniciar();
 			try {
 				archiveReader = new FileReader(f);
 			} catch (FileNotFoundException e) {
