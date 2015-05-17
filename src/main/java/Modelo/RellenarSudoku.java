@@ -34,7 +34,6 @@ public class RellenarSudoku {
 			try {
 				archiveReader = new FileReader(f);
 			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			read = new BufferedReader(archiveReader);
@@ -45,7 +44,6 @@ public class RellenarSudoku {
 			try {
 				linea = read.readLine();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			while (linea != null && !encontrado) {
@@ -58,7 +56,6 @@ public class RellenarSudoku {
 						try {
 							linea = read.readLine();
 						} catch (IOException e) {
-							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
 						jL.setText(linea);
@@ -76,7 +73,6 @@ public class RellenarSudoku {
 						try {
 							read.mark(posTxt);
 						} catch (IOException e) {
-							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
 						posTxt++;
@@ -86,7 +82,6 @@ public class RellenarSudoku {
 				try {
 					linea = read.readLine();
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
@@ -103,7 +98,6 @@ public class RellenarSudoku {
 				try {
 					linea = read.readLine();
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				posTxt = 0;
@@ -127,7 +121,6 @@ public class RellenarSudoku {
 				posTxt=0;
 			}
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

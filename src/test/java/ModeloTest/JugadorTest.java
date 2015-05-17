@@ -27,7 +27,7 @@ public class JugadorTest {
 
 	@Test
 	public void testGetJugador() {
-		assertEquals(j1, j1.getJugador());
+		assertEquals(j1, Jugador.getJugador());
 	}
 
 	@Test

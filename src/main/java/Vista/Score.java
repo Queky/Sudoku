@@ -14,6 +14,11 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class Score extends JFrame {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3800618096632955197L;
 	private static Score mScore ;
 	private JButton btnPuntacionesMaximas;
 	private JButton btnTuPuntuacion;
@@ -89,7 +94,7 @@ public class Score extends JFrame {
 	}
 	private JButton getBtnTuPuntuacion() {
 		if (btnTuPuntuacion == null) {
-			btnTuPuntuacion = new JButton("Tu Puntuación");
+			btnTuPuntuacion = new JButton("Tu Puntuaciï¿½n");
 			btnTuPuntuacion.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					BusacadorDePuntuacion bS1 = BusacadorDePuntuacion.getBusacadorDePuntuacion();
@@ -118,6 +123,11 @@ public class Score extends JFrame {
 		return btnNewButton;
 	}
 	class PanelImagen extends javax.swing.JPanel {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 		public PanelImagen() {
 			this.setSize(400, 280);
 		}

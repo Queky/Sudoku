@@ -1,6 +1,5 @@
 package Vista;
 
-import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Toolkit;
@@ -20,6 +19,11 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class BusacadorDePuntuacion extends JFrame {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7914238406122291062L;
 	private static BusacadorDePuntuacion mBuscadorDePuntuacion;
 	private JPanel contentPane;
 	private JLabel lblIntroduceTuNombre;
@@ -102,7 +106,7 @@ public class BusacadorDePuntuacion extends JFrame {
 						public void actionPerformed(ActionEvent e) {
 							ConexionConBBDD c1 = ConexionConBBDD.getConexionConBBDD();
 							JOptionPane.showMessageDialog(BusacadorDePuntuacion.this,
-									String.format("Tu puntación maxima es de: "+c1.buscarPuntacionMasAltaDeJugador(textField.getText()), e.getActionCommand()));
+									String.format("Tu puntaciï¿½n maxima es de: "+c1.buscarPuntacionMasAltaDeJugador(textField.getText()), e.getActionCommand()));
 							
 						}
 					});

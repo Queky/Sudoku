@@ -9,6 +9,10 @@ import javax.swing.border.EmptyBorder;
 
 public class SudokuFinalizado extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6281566832447795690L;
 	private JPanel contentPane;
 
 	/**

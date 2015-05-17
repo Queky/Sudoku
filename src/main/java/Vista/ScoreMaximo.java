@@ -1,6 +1,5 @@
 package Vista;
 
-import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Graphics;
@@ -10,22 +9,21 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.ImageIcon;
-import javax.swing.JTextPane;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
-import javax.swing.JTree;
-import javax.swing.JProgressBar;
 import javax.swing.JTextArea;
 import javax.swing.JButton;
 
 import Modelo.ConexionConBBDD;
-import Vista.Score.PanelImagen;
-
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 
 public class ScoreMaximo extends JFrame {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5540315821664196488L;
 	private static ScoreMaximo mScoreMaximo;
 	private JPanel contentPane;
 	private JLabel lblPuntacionesMaxomas;
@@ -134,6 +132,11 @@ public class ScoreMaximo extends JFrame {
 		return button;
 	}
 	class PanelImagen extends javax.swing.JPanel {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 		public PanelImagen() {
 			this.setSize(400, 280);
 		}

@@ -21,15 +21,17 @@ import Modelo.Jugador;
 import Modelo.RellenarSudoku;
 
 import java.awt.event.ActionListener;
-import java.io.IOException;
 import java.awt.Color;
 import java.awt.Font;
 
 
 
 public class LoginSudoku extends JFrame {
-	
-	
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3284235349426069829L;
 	private static LoginSudoku mLoginSudoku;
 	private JPanel contentPane;
 	private JPanel panel;
@@ -37,7 +39,7 @@ public class LoginSudoku extends JFrame {
 	private JLabel lblNivelDeDificultad;
 	private JTextField textField;
 	private JButton btnOk;
-	private JComboBox comboBox;
+	private JComboBox<String> comboBox;
 
 	/**
 	 * Launch the application.
@@ -160,9 +162,9 @@ public class LoginSudoku extends JFrame {
 		}
 		return btnOk;
 	}
-	private JComboBox getComboBox() {
+	private JComboBox<String> getComboBox() {
 		if (comboBox == null) {
-			comboBox = new JComboBox();
+			comboBox = new JComboBox<String>();
 			comboBox.setBounds(128, 45, 60, 20);
 			comboBox.addItem("1");
 			comboBox.addItem("2");
@@ -171,6 +173,11 @@ public class LoginSudoku extends JFrame {
 		return comboBox;
 	}
 	class PanelImagen extends javax.swing.JPanel {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 		public PanelImagen() {
 			this.setSize(400, 280);
 		}

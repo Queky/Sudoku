@@ -1,7 +1,5 @@
 package Modelo;
 
-import javax.swing.JLabel;
-
 import Vista.CargarSudoku;
 
 public class CalcularPuntuacion {

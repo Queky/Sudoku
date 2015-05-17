@@ -6,6 +6,13 @@ import java.awt.Graphics;
 import javax.swing.ImageIcon;
 
 public class PanelImagen extends javax.swing.JPanel {
+
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5929627489525756902L;
+
 	public PanelImagen() {
 		this.setSize(400, 280);
 	}

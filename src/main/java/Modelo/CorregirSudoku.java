@@ -15,11 +15,7 @@ public class CorregirSudoku {
 	private boolean estaEnSudoku;
 	private JFormattedTextField jT;
 	private JFormattedTextField num;
-	private RellenarSudoku rS;
 
-	public CorregirSudoku() {
-		// TODO Auto-generated constructor stub
-	}
 
 	public void correccionVertical(JFormattedTextField[][] listaSud) {
 		String num;
@@ -47,7 +43,6 @@ public class CorregirSudoku {
 		SwingUtilities.invokeLater(new Runnable() {
 
 			public void run() {
-				// TODO Auto-generated method stub
 				limpiarLista(columnasVertMal);
 			}
 		});
@@ -78,7 +73,6 @@ public class CorregirSudoku {
 		SwingUtilities.invokeLater(new Runnable() {
 
 			public void run() {
-				// TODO Auto-generated method stub
 				limpiarLista(filasHorMal);
 			}
 		});
