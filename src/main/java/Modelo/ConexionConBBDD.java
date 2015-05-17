@@ -27,7 +27,7 @@ public class ConexionConBBDD {
 		}catch (ClassNotFoundException e1){};
 		//Establecemos Conexion
 		try{
-			String url="jdbc:mysql://localhost:3306/sudoku?user=root&password=";
+			String url="jdbc:mysql://localhost:3306/sudoku?user=root&password=root";
 			con=DriverManager.getConnection(url);
 		}catch(SQLException e5){System.out.println(e5.toString()); }
 	}
