@@ -471,6 +471,9 @@ public class CargarSudoku extends JFrame {
 	}
 	
 	public void reiniciar() {
+		min=0;
+		seg=0;
+		actualizar=true;
 		for(int i=0; i<listaSudoku.length; i++){
 			for(int j=0; j<listaSudoku.length; j++){
 				listaSudoku[i][j].setBackground(Color.WHITE);
@@ -479,9 +482,6 @@ public class CargarSudoku extends JFrame {
 				listaSudoku[i][j].setValue(null);
 			}
 		}
-		min=0;
-		seg=0;
-		actualizar=true;
 	}
 
 	public void subrayarVertical(List<Integer> pColumnasMal,
@@ -571,14 +571,14 @@ public class CargarSudoku extends JFrame {
 	}
 
 	protected void actualizarTiempo() {
-		if(actualizar)
-			seg++;
 		casillaTiempo.setText("Tiempo: " + Integer.toString(min) + ":"
 				+ Integer.toString(seg));
 		if (seg == 59 && actualizar) {
 			min++;
-			seg = -1;
+			seg = 0;
 		}
+		if(actualizar)
+			seg++;
 	}
 
 	public static int obtenerTiempo() {
@@ -594,7 +594,7 @@ public class CargarSudoku extends JFrame {
 
 			public void actionPerformed(ActionEvent pE) {
 				min = 0;
-				seg = -1;
+				seg = 0;
 				for (int i = 0; i < 9; i++) {
 					for (int j = 0; j < 9; j++) {
 						if (listaSudoku[i][j].isEditable()
@@ -617,10 +617,15 @@ public class CargarSudoku extends JFrame {
 		}
 		btnSalir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				timer.cancel();
+				setTimer(false);
 				dispose();
 			}
 		});
 		return btnSalir;
+	}
+	
+	public static void setTimer(boolean t) {
+		if(!t)
+			timer.cancel();
 	}
 }

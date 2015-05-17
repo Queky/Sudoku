@@ -119,6 +119,7 @@ public class MenuSudoku extends JFrame {
 			btnNewButton = new JButton("Salir");
 			btnNewButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
+					CargarSudoku.setTimer(false);
 					dispose();
 				}
 			});
