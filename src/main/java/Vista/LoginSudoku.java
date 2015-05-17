@@ -173,10 +173,11 @@ public class LoginSudoku extends JFrame {
 		return comboBox;
 	}
 	class PanelImagen extends javax.swing.JPanel {
+
 		/**
 		 * 
 		 */
-		private static final long serialVersionUID = 1L;
+		private static final long serialVersionUID = -3846848060373381412L;
 
 		public PanelImagen() {
 			this.setSize(400, 280);

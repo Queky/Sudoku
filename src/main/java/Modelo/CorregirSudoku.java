@@ -7,6 +7,9 @@ import javax.swing.JFormattedTextField;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
+/**
+ * Clase CorregirSudoku
+ */
 public class CorregirSudoku {
 
 	private List<Integer> columnasVertMal;
@@ -17,6 +20,11 @@ public class CorregirSudoku {
 	private JFormattedTextField num;
 
 
+	/**
+	 * Correccion vertical.
+	 *
+	 * @param listaSud lista con los numeros precargados en la ventana CargarSudoku
+	 */
 	public void correccionVertical(JFormattedTextField[][] listaSud) {
 		String num;
 		columnasVertMal = new ArrayList<Integer>();
@@ -48,6 +56,11 @@ public class CorregirSudoku {
 		});
 	}
 
+	/**
+	 * Correccion horizontal.
+	 *
+	 * @param listaSud lista con los numeros precargados en la ventana CargarSudoku
+	 */
 	public void correccionHorizontal(JFormattedTextField[][] listaSud) {
 		String num;
 		filasHorMal = new ArrayList<Integer>();
@@ -78,6 +91,11 @@ public class CorregirSudoku {
 		});
 	}
 
+	/**
+	 * Correccion cuadricula.
+	 *
+	 * @param cuadricula cuadricula con las casillas del sudoku
+	 */
 	public void correccionCuadricula(JPanel cuadricula) {
 
 		estaEnSudoku = false;
@@ -99,6 +117,13 @@ public class CorregirSudoku {
 		}
 	}
 	
+	/**
+	 * Corregir casilla.
+	 *
+	 * @param casillaSudo una casilla del sudoku
+	 * @param x posicion en el array
+	 * @param y posicion en el array
+	 */
 	public void corregirCasilla(JFormattedTextField casillaSudo, int x, int y) {
 		sudokuCorregido=RellenarSudoku.getListaCorrecciones();
 		estaEnSudoku=false;
@@ -108,12 +133,18 @@ public class CorregirSudoku {
 	}
 	
 	
-	public static boolean corregirSudokuEntero(JFormattedTextField[][] sudokuUsuario) {
+	/**
+	 * Corregir sudoku entero.
+	 *
+	 * @param listaSud lista con los numeros precargados en la ventana CargarSudoku
+	 * @return true si todas las casillas estan bien, false si no lo estan
+	 */
+	public static boolean corregirSudokuEntero(JFormattedTextField[][] listaSud) {
 		sudokuCorregido=RellenarSudoku.getListaCorrecciones();
 		int numCasillasBien=0;
 		for(int i=0; i<9; i++){
 			for(int j=0; j<9; j++){
-				if(sudokuUsuario[i][j].getText().equals(Integer.toString(sudokuCorregido[i][j])))
+				if(listaSud[i][j].getText().equals(Integer.toString(sudokuCorregido[i][j])))
 						numCasillasBien++;
 				}
 		}
@@ -125,18 +156,38 @@ public class CorregirSudoku {
 		}
 	}
 
+	/**
+	 * Variable para saber si una casilla del sudoku esta repetida
+	 *
+	 * @return true si esta repetida, false si no
+	 */
 	public boolean isRepetido() {
 		return estaEnSudoku;
 	}
 
+	/**
+	 * Tiene el numero de columnas mal
+	 *
+	 * @return lista con las columnas mal
+	 */
 	public List<Integer> getColumnasVertMal() {
 		return columnasVertMal;
 	}
 
+	/**
+	 * Tiene el numero de filas mal 
+	 *
+	 * @return lista con las filas mal
+	 */
 	public List<Integer> getFilasHorMal() {
 		return filasHorMal;
 	}
 
+	/**
+	 * Limpia la lista
+	 *
+	 * @param pList lista con filas o columnas mal
+	 */
 	public void limpiarLista(List<Integer> pList) {
 		pList.removeAll(pList);
 	}

@@ -11,6 +11,9 @@ import javax.swing.JLabel;
 
 import Vista.CargarSudoku;
 
+/**
+ * Clase RellenarSudoku
+ */
 public class RellenarSudoku {
 
 	private static CargarSudoku cSu;
@@ -20,13 +23,24 @@ public class RellenarSudoku {
 	private static FileReader archiveReader;
 	private static BufferedReader read;
 	private static JLabel jL;
-	private static int[][] listaCorrecciones;
+	private static int[][] listaSolucionSudoku;
 	private static String linea;
 	
+	/**
+	 * The main method.
+	 *
+	 * @param args the arguments
+	 */
 	public static void main (String [] args){
-		cargarSudokuHecho("s001", true);
+		cargarSudokuHecho("s004", true);
 	}
 	
+	/**
+	 * Cargar sudoku hecho.
+	 *
+	 * @param pSudoku codigo o nivel de dificultad del sudoku
+	 * @param esCodigo true si es codigo, false si es un nivel de dificultad
+	 */
 	public static void cargarSudokuHecho(String pSudoku, boolean esCodigo) {
 
 
@@ -52,7 +66,6 @@ public class RellenarSudoku {
 					if (esCodigo) {
 						jL.setText(linea);
 						cSu.setCodigoSudoku(jL);
-						obtenerCodigoSudoku(jL);
 						try {
 							linea = read.readLine();
 						} catch (IOException e) {
@@ -62,7 +75,6 @@ public class RellenarSudoku {
 						cSu.setNivelDificultad(jL);
 					} else {
 						cSu.setCodigoSudoku(jL);
-						obtenerCodigoSudoku(jL);
 						jL.setText(linea);
 						cSu.setNivelDificultad(jL);
 					}
@@ -107,14 +119,17 @@ public class RellenarSudoku {
 
 	}
 
+	/**
+	 * Carga en una lista la solucion del sudoku
+	 */
 	public static void cargarSolucionSudoku() {
 		
 		int posTxt=0;
-		listaCorrecciones = new int[9][9];
+		listaSolucionSudoku = new int[9][9];
 		try {
 			for (int i = 0; i < 9; i++) {
 				for(int j=0; j<9; j++){
-					listaCorrecciones[i][j]=Character.getNumericValue(linea.charAt(posTxt));
+					listaSolucionSudoku[i][j]=Character.getNumericValue(linea.charAt(posTxt));
 					posTxt++;
 				}
 				linea = read.readLine();
@@ -125,22 +140,28 @@ public class RellenarSudoku {
 		}
 	}
 	
+	/**
+	 * Rellena el sudoku entero con la solucion correcta
+	 * 
+	 * Solo funciona al introducir por teclado F4, es un truco
+	 */
 	public static void cargarSudokuEntero(){
 		for(int i=0; i<9; i++){
 			for(int j=0; j<9; j++){
 				JFormattedTextField jT = new JFormattedTextField();
-				jT.setText(Integer.toString(listaCorrecciones[i][j]));
+				jT.setText(Integer.toString(listaSolucionSudoku[i][j]));
 				cSu.setCasillaSudoku(jT, i, j, false);
 			}
 		}
 	}
-	
-	public static JLabel obtenerCodigoSudoku(JLabel pL) {
-		return pL;
-	}
 
+	/**
+	 * Devuelve la lista con la solucion del sudoku
+	 *
+	 * @return the lista correcciones
+	 */
 	public static int[][] getListaCorrecciones() {
-		return listaCorrecciones;
+		return listaSolucionSudoku;
 	}
 	
 }

@@ -132,10 +132,11 @@ public class ScoreMaximo extends JFrame {
 		return button;
 	}
 	class PanelImagen extends javax.swing.JPanel {
+
 		/**
 		 * 
 		 */
-		private static final long serialVersionUID = 1L;
+		private static final long serialVersionUID = -5438132861981044633L;
 
 		public PanelImagen() {
 			this.setSize(400, 280);

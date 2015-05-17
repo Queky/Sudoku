@@ -123,10 +123,11 @@ public class Score extends JFrame {
 		return btnNewButton;
 	}
 	class PanelImagen extends javax.swing.JPanel {
+
 		/**
 		 * 
 		 */
-		private static final long serialVersionUID = 1L;
+		private static final long serialVersionUID = -2376637899305635309L;
 
 		public PanelImagen() {
 			this.setSize(400, 280);
