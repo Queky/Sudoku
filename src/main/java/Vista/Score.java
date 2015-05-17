@@ -94,7 +94,7 @@ public class Score extends JFrame {
 	}
 	private JButton getBtnTuPuntuacion() {
 		if (btnTuPuntuacion == null) {
-			btnTuPuntuacion = new JButton("Tu Puntuaciï¿½n");
+			btnTuPuntuacion = new JButton("Tu Puntuación");
 			btnTuPuntuacion.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					BusacadorDePuntuacion bS1 = BusacadorDePuntuacion.getBusacadorDePuntuacion();
